@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            width: auto;
+            padding-right: 15px;
+            padding-left: 15px;
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        @media (min-width: 1200px) {
+            .container {
+                max-width: 1140px;
+            }
+        }
+
+        .d-flex {
+            display: flex;
+            flex-direction: row;
+            background: #f6f6f6;
+            border-radius: 0 0 5px 5px;
+            padding: 25px;
+        }
+
+        form {
+            flex: 4;
+        }
+
+        .title {
+            background: -webkit-gradient(linear, left top, right bottom, color-stop(0, #5195A8), color-stop(100, #70EAFF));
+            background: -moz-linear-gradient(top left, #5195A8 0%, #70EAFF 100%);
+            background: -ms-linear-gradient(top left, #5195A8 0%, #70EAFF 100%);
+            background: -o-linear-gradient(top left, #5195A8 0%, #70EAFF 100%);
+            background: linear-gradient(to bottom right, #5195A8 0%, #70EAFF 100%);
+            border-radius: 5px 5px 0 0;
+            padding: 20px;
+            color: #f6f6f6;
+        }
+
+        h2 {
+            margin: 0;
+            padding-left: 15px;
+        }
+
+        .required {
+            color: red;
+        }
+
+        label,
+        table {
+            display: block;
+            margin: 15px;
+        }
+
+        label>span {
+            float: left;
+            width: 25%;
+            margin-top: 12px;
+            padding-right: 10px;
+        }
+
+        input[type="text"],
+        input[type="tel"],
+        input[type="email"],
+        input[type="date"],
+        select {
+            width: 70%;
+            height: 30px;
+            padding: 5px 10px;
+            margin-bottom: 10px;
+            border: 1px solid #dadada;
+            color: #888;
+        }
+
+        input[type="date"] {
+            width: 20%;
+        }
+
+
+
+        table {
+            margin: 0;
+            padding: 0;
+        }
+
+        th {
+            border-bottom: 1px solid #dadada;
+            padding: 10px 0;
+        }
+
+        tr>td:nth-child(1) {
+            text-align: left;
+            color: #2d2d2a;
+        }
+
+        tr>td:nth-child(2) {
+            text-align: right;
+            color: #52ad9c;
+        }
+
+        td {
+            border-bottom: 1px solid #dadada;
+            padding: 25px 25px 25px 0;
+        }
+
+        p {
+            display: block;
+            color: #888;
+            margin: 0;
+            padding-left: 25px;
+        }
+
+
+        button {
+            width: 100%;
+            margin-top: 10px;
+            padding: 10px;
+            border: none;
+            border-radius: 30px;
+            background: #52ad9c;
+            color: #fff;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        button:hover {
+            cursor: pointer;
+            background: #428a7d;
+        }
+
+        /* start reponsive */
+        @media only screen and (min-width : 320px) and (max-width:534px) {
+
+            /* Styles */
+            label {
+                margin: 0 10px;
+            }
+
+            label>span {
+                float: left;
+                width: 100%;
+                padding-right: 10px;
+                padding-bottom: 10px;
+            }
+
+            input[type="text"],
+            input[type="tel"],
+            input[type="email"],
+            input[type="date"],
+            select {
+                width: 93%;
+                height: 30px;
+                padding: 5px 10px;
+                margin-bottom: 10px;
+                border: 1px solid #dadada;
+                color: #888;
+            }
+
+            select {
+                width: 100%;
+                height: 45px;
+            }
+
+            .d-flex {
+                padding: 0px;
+            }
+
+            .buttonSubmit {
+                width: 50%;
+                margin: auto;
+            }
+
+            .buttonItem {
+                margin-bottom: 20px;
+            }
+        }
+
+        @media only screen and (min-width : 535px) and (max-width : 768px) {
+
+            /* Styles */
+            label {
+                display: block;
+                margin: 5px;
+                /* margin-bottom: 0px; */
+            }
+
+            label>span {
+                float: left;
+                width: 100%;
+                padding-right: 10px;
+                padding-bottom: 10px;
+            }
+
+            input[type="text"],
+            input[type="tel"],
+            input[type="email"],
+            input[type="date"],
+            select {
+                width: 95%;
+                height: 30px;
+                padding: 5px 10px;
+                margin-bottom: 10px;
+                border: 1px solid #dadada;
+                color: #888;
+            }
+
+            select {
+                width: 100%;
+                height: 45px;
+            }
+        }
+
+
+        @media only screen and (min-width : 768px) {
+
+            /* Styles */
+            select {
+                width: 73%;
+                height: 45px;
+            }
+        }
+
+        @media only screen and (min-width : 1200px) {
+
+            /* Styles */
+            select {
+                width: 72%;
+                height: 45px;
+            }
+        }
+
+
+
+
+        /* end reponsive */
+        /* /// */
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="title">
+            <h2>Tư Vấn - Báo Giá - Đặt Lịch Ngay</h2>
+        </div>
+        <div class="d-flex">
+            <form method="POST" id="orderForm">
+                <label>
+                    <span class="fname">Nội dung công việc<span class="required">*</span></span>
+                    <input type="text" name="cvCont" id="cvCont" required
+                        placeholder='Ví dụ: Vệ sinh máy lạnh, sửa máy giặt,...'>
+                </label>
+                <label>
+                    <span class="lname">Họ và tên <span class="required"></span></span>
+                    <input type="text" name="tenCont" id="tenCont" placeholder='Thợ Việt'>
+                </label>
+                <label>
+                    <span>Ngày làm<span class="required">*</span></span>
+                    <input type="date" name="dateCont" id="dateCont" required>
+                </label>
+                <label>
+                    <span>Quận, huyện <span class="required">*</span></span>
+
+                    <select id="qCont">
+                        <option value="select">Chọn Quận, Huyện...</option>
+                        <option value="Quận 1"> Quận 1</option>
+                        <option value="Quận 3"> Quận 3</option>
+                        <option value="Quận 4"> Quận 4</option>
+                        <option value="Quận 5"> Quận 5</option>
+                        <option value="Quận 6"> Quận 6</option>
+                        <option value="Quận 7"> Quận 7</option>
+                        <option value="Quận 8"> Quận 8</option>
+                        <option value="Quận 10"> Quận 10</option>
+                        <option value="Quận 11"> Quận 11</option>
+                        <option value="Quận12"> Quận 12</option>
+                        <option value="TP Thủ Đức">Thành phố Thủ Đức</option>
+                        <option value="Bình Tân">Quận Bình Tân</option>
+                        <option value="Bình Thạnh">Quận Bình Thạnh</option>
+                        <option value="Gò Vấp"> Quận Gò Vấp</option>
+                        <option value="Phú Nhuận">Quận Phú Nhuận</option>
+                        <option value="Tân Bình">Quận Tân Bình</option>
+                        <option value="Tân Phú">Quận Tân Phú</option>
+                        <option value="Bình Chánh">Huyện Bình Chánh</option>
+                        <option value="Cần Giờ">Huyện Cần Giờ</option>
+                        <option value="Củ Chi"> Huyện Củ Chi</option>
+                        <option value="Hooc Môn">Huyện Hóc Môn</option>
+                        <option value="Nhà Bè"> Huyện Nhà Bè</option>
+                    </select>
+                </label>
+                <label>
+                    <span>Địa Chỉ<span class="required">*</span></span>
+                    <input type="text" name="diaChiCont" placeholder="Số nhà, tên đường" id="diaChiCont" required>
+                </label>
+                <label>
+                    <span>Số điện thoại <span class="required">*</span></span>
+                    <input type="tel" name="sdtCont" id="sdtCont" required>
+                </label>
+
+                <label>
+                    <span>Ghi Chú<span class="required">*</span></span>
+                    <input type="text" name="ghiChuCont" id="ghiChuCont" required>
+                </label>
+                <!-- <button type="button" onclick="return onSubmitForm()">Đặt Lịch</button> -->
+                <div class="buttonSubmit">
+                    <button class="buttonItem" type="submit">Đặt Lịch</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+    <!-- /wp:paragraph -->
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+    <script>
+        const form = document.getElementById('orderForm');
+        form.addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            const data1 = {
+                yccvCont: document.getElementById('cvCont').value,
+                tenCont: document.getElementById('tenCont').value,
+                sdtCont: document.getElementById('qCont').value,
+                quanCont: document.getElementById('qCont').value,
+                diaChiCont: document.getElementById('diaChiCont').value,
+                dateCont: document.getElementById('dateCont').value,
+                ghiChuCont: document.getElementById('ghiChuCont').value,
+                from_cus: 1
+            }
+
+            try {
+                const res = await fetch('https://data.thoviet.com/api/addWork', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        // 'Access-Control-Allow-Origin': '*',
+                    },
+                    body: JSON.stringify(data1),
+                })
+
+                if (res.status !== 200) {
+                    const err = new Error("Error")
+                    throw err;
+                }
+                if (confirm('Đặt lịch thành công!')) {
+                    window.location.replace('https://thoviet.vn/');
+                }
+                console.log('data', data);
+            } catch (error) {
+                console.log(error);
+            }
+        });
+
+
+    </script>
+    <!-- start  -->
+    <!-- /wp:paragraph -->
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
