@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="Description" content="Enter your description here" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
+    <title>Title</title>
+</head>
+<style>
+    .banner-footertv {
+        position: fixed;
+        bottom: 0;
+        z-index: 2;
+        height: 40px;
+        width: 100%;
+        left: 0;
+    }
+
+    .backup-fo {
+        background-image: url('https://thoviet.com.vn/wp-content/uploads/2023/04/banner-footer-amination-BR.jpg');
+        background-position: center;
+        /* Center the image */
+        background-repeat: no-repeat;
+        /* Do not repeat the image */
+        background-size: cover;
+        /* Resize the background image to cover the entire container */
+    }
+
+    .paga1 {
+        color: #fff;
+        white-space: nowrap;
+        clear: both;
+        float: left;
+        text-transform: uppercase;
+        font-size: 20px;
+        margin: auto;
+        padding-top: 5px;
+        font-weight: 800;
+        font-family: 'Roboto';
+    }
+
+    @-webkit-keyframes marquee {
+        0% {
+            text-indent: 100%;
+        }
+
+        100% {
+            text-indent: -100%;
+        }
+    }
+
+    .star-news {
+        padding: 0 10px;
+        color: yellow;
+        text-shadow: 0.5px 0 red, -0.5px 0 red, 0 0.5px red, 0 -0.5px red, 0.5px 0.5px red, -0.5px -0.5px red, 0.5px -0.5px red, -0.5px 0.5px red !important;
+    }
+
+    .output1 div {
+        background-color: white;
+        color: black;
+        padding: 5px;
+    }
+
+    .output1 div:nth-child(odd) {
+        background-color: grey;
+
+    }
+</style>
+
+<body>
+    <div
+        style="color:white; margin: auto; margin-top: 5px; width: fit-content; height: 600px; border-radius: 15px;  justify-content: space-between; overflow: hidden; z-index: 1;">
+        <marquee direction="up" height="100%" data-speed=50 scrollamount="30" hspace="30%">
+            <div id="output1" class="output1" style=" text-transform: uppercase; color: black">
+
+            </div>
+        </marquee>
+           
+    </div>
+    <script>
+        const ul = document.getElementById('output1');
+        const list = document.createDocumentFragment();
+        const url = 'https://data.thoviet.com/api/showAllWork';
+        function load() {
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    // 'Access-Control-Allow-Origin': '*',
+                }
+            }).then((response) => {
+                return response.json();
+            }).then((data) => {
+                let authors = data;
+                console.log(authors);
+                authors.map(function (author) {
+                    var string = author.phone_number;
+                    var result = string.substring(0, string.length - 3);
+                    var plusString = result + 'xxx';
+                    // alert(result);
+                    const divItem = document.createElement('div');
+                    divItem.innerHTML = `
+                    <p><b>${author.work_content}</b></p>
+                    <p>${author.district}</p>
+                    <p>${plusString}</p>
+                        `;
+                    output1.appendChild(divItem);
+                });
+            }).catch(function (error) {
+                console.log(error);
+            });
+        }
+        // output1.appendChild(list);
+        // console.log(list);
+        load();
+    </script>
+
+    <!-- <script>
+        const listWork = document.getElementById('output1');
+        getDataListWork();
+        async function getDataListWork() {
+            const api_url =
+                "https://data.thoviet.com/api/showAllWork";
+            var h = new Headers();
+            h.append = ("Accept", "application/json");
+            var req = new Request(
+                api_url, {
+                method: "POST",
+                headers: h,
+                mode: "no-cors"
+
+            }
+            )
+            const response = await fetch(req);
+            console.log(response);
+            const { data } = await response.json();
+            console.log(data);
+            output1.innerHTML = 'Loading...';
+            // setTimeout(() => {
+            //     output1.innerHTML = '';
+            //     data.forEach(e => {
+            //         const divItem = document.createElement('div');
+            //         divItem.innerHTML = `
+            //             ${e.yccvCont}`;
+            //         output1.appendChild(divItem);
+            //     });
+            // }, 2000);
+        }
+        // const paga1 = document.getElementById('output1');
+        // animate(paga1);
+        // function animate(element) {
+        //     let elementWidth = element.offsetWidth;
+        //     let parentWidth = element.parentElement.offsetWidth;
+        //     let flag = 0;
+        //     setInterval(() => {
+        //         element.style.marginTop = --flag + "px";
+        //         if (elementWidth == -flag) {
+        //             flag = parentWidth;
+        //         }
+        //     }, 5);
+        // }
+
+    </script> -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/js/bootstrap.min.js"></script>
+</body>
+
+</html>

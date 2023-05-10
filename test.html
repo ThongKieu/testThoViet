@@ -57,6 +57,7 @@
         table {
             display: block;
             margin: 15px;
+
         }
 
         label>span {
@@ -72,9 +73,9 @@
         input[type="date"],
         select {
             width: 70%;
-            height: 30px;
+            height: 20px;
             padding: 5px 10px;
-            margin-bottom: 10px;
+            margin-bottom: 0;
             border: 1px solid #dadada;
             color: #888;
         }
@@ -122,20 +123,115 @@
             width: 100%;
             margin-top: 10px;
             padding: 10px;
-            border: none;
+            border: 2px solid #c84e22;
             border-radius: 30px;
-            background: #52ad9c;
-            color: #fff;
+            color: #c84e22;
             font-size: 15px;
             font-weight: bold;
         }
 
         button:hover {
             cursor: pointer;
-            background: #428a7d;
+            background: #c84e22;
+            color: white
+        }
+
+        .rowOrder {
+            display: flex;
+        }
+
+        .col8Order {
+            display: flex;
+            width: 70%;
+            align-items: center;
+        }
+
+        .col8Order>span {
+            width: 54%;
+            margin-bottom: 15px;
+        }
+
+        #diaChiCont {
+            width: 88%;
+            margin-top: 10px;
+        }
+
+        .col4Order {
+            display: flex;
+            width: 30%;
+            align-items: center;
+        }
+
+        .col4Order>select {
+
+            width: 100%;
+            margin-right: 23px;
+            height: 77%;
+        }
+
+        #dateCont {
+            margin-bottom: 10px;
         }
 
         /* start reponsive */
+        @media only screen and (max-width:320px) {
+
+            /* Styles */
+            label {
+                margin: 0 10px;
+            }
+
+            label>span {
+                float: left;
+                width: 100%;
+                padding-right: 10px;
+                padding-bottom: 10px;
+            }
+
+            input[type="text"],
+            input[type="tel"],
+            input[type="email"],
+            input[type="date"] {
+                width: 93%;
+                height: 20px;
+                padding: 5px 10px;
+                /* margin-bottom: 10px; */
+                border: 1px solid #dadada;
+                color: #888;
+            }
+
+            #diaChiCont {
+                width: 90%;
+            }
+
+            .d-flex {
+                padding: 0px;
+            }
+
+            .buttonSubmit {
+                width: 50%;
+                margin: auto;
+            }
+
+            .buttonItem {
+                margin-bottom: 20px;
+            }
+
+            .col4Order>select {
+                margin-right: 0;
+                padding-left: 1px;
+                height: 32px;
+                margin-top: 28px;
+            }
+
+            .col8Order {
+                display: block;
+
+            }
+
+
+        }
+
         @media only screen and (min-width : 320px) and (max-width:534px) {
 
             /* Styles */
@@ -153,19 +249,17 @@
             input[type="text"],
             input[type="tel"],
             input[type="email"],
-            input[type="date"],
-            select {
+            input[type="date"] {
                 width: 93%;
-                height: 30px;
+                height: 20px;
                 padding: 5px 10px;
-                margin-bottom: 10px;
+                /* margin-bottom: 10px; */
                 border: 1px solid #dadada;
                 color: #888;
             }
 
-            select {
-                width: 100%;
-                height: 45px;
+            #diaChiCont {
+                width: 90%;
             }
 
             .d-flex {
@@ -180,15 +274,29 @@
             .buttonItem {
                 margin-bottom: 20px;
             }
+
+            .col4Order>select {
+                margin-right: 0;
+                padding-left: 1px;
+                height: 32px;
+                margin-top: 28px;
+            }
+
+            .col8Order {
+                display: block;
+
+            }
+
+
         }
 
         @media only screen and (min-width : 535px) and (max-width : 768px) {
 
-            /* Styles */
+
             label {
                 display: block;
-                margin: 5px;
-                /* margin-bottom: 0px; */
+                margin: 0 10px;
+
             }
 
             label>span {
@@ -211,28 +319,93 @@
                 color: #888;
             }
 
-            select {
+            #diaChiCont {
+                width: 93%;
+            }
+
+            .col8Order {
+                display: block;
+            }
+
+            .col4Order>select {
+                margin-right: 0;
+                padding-left: 1px;
+                height: 42px;
+                margin-top: 28px;
+            }
+        }
+
+        @media only screen and (min-width : 768px) {}
+
+        @media only screen and (min-width: 820px) {
+
+            /* Styles */
+            #tenCont {
+                margin-left: 30%;
+            }
+
+            #diaChiCont {
+                margin-left: 10px;
+            }
+
+            .lname {
+                width: 33%;
+            }
+
+            .grid {
+                display: grid;
+                grid-template-columns: auto auto auto auto auto auto;
+
+            }
+
+            .gridItem1 {
+                display: flex;
+                grid-column: 1 / span 5;
+            }
+
+            .gridItem2 {
+                display: flex;
+                grid-column: 6;
+            }
+
+            .gridItem2>span {
+                width: 38%;
+            }
+
+            .col4Order>select {
+                margin-top: 5%;
+                margin-right: 3px;
+            }
+
+
+        }
+
+        @media only screen and (min-width : 821px) {
+
+            /* Styles */
+            .grid {
+                display: block;
+            }
+
+            #tenCont {
                 width: 100%;
-                height: 45px;
+                margin: 0 20px;
             }
-        }
 
-
-        @media only screen and (min-width : 768px) {
-
-            /* Styles */
-            select {
-                width: 73%;
-                height: 45px;
+            #sdtCont {
+                width: 100%;
+                margin-left: -18px;
+                margin-right: 18px;
             }
-        }
 
-        @media only screen and (min-width : 1200px) {
+            #diaChiCont {
+                margin-left: 0px;
+            }
 
-            /* Styles */
-            select {
-                width: 72%;
-                height: 45px;
+            .col4Order>select {
+                margin-top: 3%;
+                margin-right: 22px;
+
             }
         }
 
@@ -256,55 +429,60 @@
                     <input type="text" name="cvCont" id="cvCont" required
                         placeholder='Ví dụ: Vệ sinh máy lạnh, sửa máy giặt,...'>
                 </label>
+                <div class="grid">
+                    <label class="gridItem1">
+                        <span class="lname">Họ và tên <span class="required"></span></span>
+                        <input type="text" name="tenCont" id="tenCont" placeholder='Thợ Việt'>
+                    </label>
+                    <label class="gridItem2">
+                        <span>Số điện thoại <span class="required">*</span></span>
+                        <input type="tel" name="sdtCont" id="sdtCont" required>
+                    </label>
+                </div>
                 <label>
-                    <span class="lname">Họ và tên <span class="required"></span></span>
-                    <input type="text" name="tenCont" id="tenCont" placeholder='Thợ Việt'>
+                    <div class="rowOrder">
+                        <div class="col8Order">
+                            <span>Địa Chỉ<span class="required">*</span></span>
+                            <input type="text" name="diaChiCont" placeholder="Số nhà, tên đường" id="diaChiCont"
+                                required>
+                        </div>
+                        <div class="col4Order">
+
+                            <select id="qCont">
+                                <option value="select"> Quận</option>
+                                <option value="Quận 1"> Quận 1</option>
+                                <option value="Quận 3"> Quận 3</option>
+                                <option value="Quận 4"> Quận 4</option>
+                                <option value="Quận 5"> Quận 5</option>
+                                <option value="Quận 6"> Quận 6</option>
+                                <option value="Quận 7"> Quận 7</option>
+                                <option value="Quận 8"> Quận 8</option>
+                                <option value="Quận 10"> Quận 10</option>
+                                <option value="Quận 11"> Quận 11</option>
+                                <option value="Quận12"> Quận 12</option>
+                                <option value="TP Thủ Đức">Thành phố Thủ Đức</option>
+                                <option value="Bình Tân">Quận Bình Tân</option>
+                                <option value="Bình Thạnh">Quận Bình Thạnh</option>
+                                <option value="Gò Vấp"> Quận Gò Vấp</option>
+                                <option value="Phú Nhuận">Quận Phú Nhuận</option>
+                                <option value="Tân Bình">Quận Tân Bình</option>
+                                <option value="Tân Phú">Quận Tân Phú</option>
+                                <option value="Bình Chánh">Huyện Bình Chánh</option>
+                                <option value="Cần Giờ">Huyện Cần Giờ</option>
+                                <option value="Củ Chi"> Huyện Củ Chi</option>
+                                <option value="Hooc Môn">Huyện Hóc Môn</option>
+                                <option value="Nhà Bè"> Huyện Nhà Bè</option>
+                            </select>
+                        </div>
+                    </div>
+                </label>
+                <label>
+                    <span>Ghi Chú<span class="required">*</span></span>
+                    <input type="text" name="ghiChuCont" id="ghiChuCont" required>
                 </label>
                 <label>
                     <span>Ngày làm<span class="required">*</span></span>
                     <input type="date" name="dateCont" id="dateCont" required>
-                </label>
-                <label>
-                    <span>Quận, huyện <span class="required">*</span></span>
-
-                    <select id="qCont">
-                        <option value="select">Chọn Quận, Huyện...</option>
-                        <option value="Quận 1"> Quận 1</option>
-                        <option value="Quận 3"> Quận 3</option>
-                        <option value="Quận 4"> Quận 4</option>
-                        <option value="Quận 5"> Quận 5</option>
-                        <option value="Quận 6"> Quận 6</option>
-                        <option value="Quận 7"> Quận 7</option>
-                        <option value="Quận 8"> Quận 8</option>
-                        <option value="Quận 10"> Quận 10</option>
-                        <option value="Quận 11"> Quận 11</option>
-                        <option value="Quận12"> Quận 12</option>
-                        <option value="TP Thủ Đức">Thành phố Thủ Đức</option>
-                        <option value="Bình Tân">Quận Bình Tân</option>
-                        <option value="Bình Thạnh">Quận Bình Thạnh</option>
-                        <option value="Gò Vấp"> Quận Gò Vấp</option>
-                        <option value="Phú Nhuận">Quận Phú Nhuận</option>
-                        <option value="Tân Bình">Quận Tân Bình</option>
-                        <option value="Tân Phú">Quận Tân Phú</option>
-                        <option value="Bình Chánh">Huyện Bình Chánh</option>
-                        <option value="Cần Giờ">Huyện Cần Giờ</option>
-                        <option value="Củ Chi"> Huyện Củ Chi</option>
-                        <option value="Hooc Môn">Huyện Hóc Môn</option>
-                        <option value="Nhà Bè"> Huyện Nhà Bè</option>
-                    </select>
-                </label>
-                <label>
-                    <span>Địa Chỉ<span class="required">*</span></span>
-                    <input type="text" name="diaChiCont" placeholder="Số nhà, tên đường" id="diaChiCont" required>
-                </label>
-                <label>
-                    <span>Số điện thoại <span class="required">*</span></span>
-                    <input type="tel" name="sdtCont" id="sdtCont" required>
-                </label>
-
-                <label>
-                    <span>Ghi Chú<span class="required">*</span></span>
-                    <input type="text" name="ghiChuCont" id="ghiChuCont" required>
                 </label>
                 <!-- <button type="button" onclick="return onSubmitForm()">Đặt Lịch</button> -->
                 <div class="buttonSubmit">
@@ -332,7 +510,7 @@
                 diaChiCont: document.getElementById('diaChiCont').value,
                 dateCont: document.getElementById('dateCont').value,
                 ghiChuCont: document.getElementById('ghiChuCont').value,
-                from_cus: 1
+                from_cus: 0
             }
 
             try {
@@ -349,7 +527,7 @@
                     const err = new Error("Error")
                     throw err;
                 }
-                if (confirm('Đặt lịch thành công!')) {
+                if (confirm('Đặt lịch thành công! Trở về trang chủ')) {
                     window.location.replace('https://thoviet.vn/');
                 }
                 console.log('data', data);
