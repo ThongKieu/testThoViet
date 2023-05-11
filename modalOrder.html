@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> -->
 
     <title>Modal - Order</title>
+
     <style>
         @import url(https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css);
         @import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css);
@@ -74,58 +75,7 @@
         }
     </style>
 
-    <script type="module">
-        // Import the functions you need from the SDKs you need
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-app.js";
-        import { getAuth, signInWithPhoneNumber } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-auth.js";
-        // TODO: Add SDKs for Firebase products that you want to use
-        // https://firebase.google.com/docs/web/setup#available-libraries
 
-        // Your web app's Firebase configuration
-        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-        const firebaseConfig = {
-            apiKey: "AIzaSyBl5rDC-JcMqyi0Ds7xQWkDRXwW7rFAa0A",
-            authDomain: "appthoviet.firebaseapp.com",
-            databaseURL: "https://appthoviet-default-rtdb.asia-southeast1.firebasedatabase.app",
-            projectId: "appthoviet",
-            storageBucket: "appthoviet.appspot.com",
-            messagingSenderId: "886027498015",
-            appId: "1:886027498015:web:59d9efe286b74e198a5b2a",
-            measurementId: "G-FNYWG3WVSP"
-        };
-        // firebase.initializeApp(firebaseConfig);
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-
-        function phoneAuth() {
-            var numberPhone = document.getElementById("numberPhone").value;
-            console.log(numberPhone);
-            signInWithPhoneNumber(auth, numberPhone).then((confirmationResult) => {
-                window.confirmationResult = confirmationResult;
-                // coderesult = confirmationResult;
-                document.getElementById('sender').style.display = 'none';
-                document.getElementById('verifier').style.display = 'block';
-            })
-                .catch((error) => {
-                    alert(error.message);
-                    console.log(error);
-                })
-        }
-        const btnEl = document.querySelector('#send');
-        btnEl.addEventListener('click', phoneAuth);
-        function codeverifier() {
-            var code = document.getElementById('verificationcode').style.display = 'block';
-            coderesult.confirm(code).then(function () {
-                document.getElementById('p-conf')[0].style.display = "block";
-                document.getElementById('n-conf')[0].style.display = 'none';
-            }).catch(function () {
-                document.getElementById('p-conf')[0].style.display = "none";
-                document.getElementById('n-conf')[0].style.display = 'block';
-            })
-        }
-
-    </script>
 </head>
 
 <body>
@@ -148,6 +98,7 @@
                 <div class="modal-body">
                     <div class="form-title text-center">
                         <h4><b>Đặt Lịch - Tư Vấn - Báo Giá</b></h4>
+                        <div id="done"></div>
                     </div>
                     <div class="d-flex flex-column text-center">
                         <div id="sender">
@@ -158,26 +109,27 @@
                                 <input type="text" class="form-control" id="numberPhone" placeholder="Số điện thoại">
                             </div>
                             <div id="recaptcha-container"></div>
-                            <button type="button" id="send" class="btn btn-info btn-block btn-round">Đặt Ngay</button>
+                            <button type="button" id="orderButton" class="btn btn-info btn-block btn-round">Đặt
+                                Ngay</button>
                         </div>
                         <div class="verifier" style="display: none;">
                             <input type=" text" id="verificationcode" placeholder="Mã OTP" class="form-control">
-                            <button type="button" id="verify" onclick="codeverifier()"
+                            <button type="button" id="verifyButton" onclick="codeverifier()"
                                 class="btn btn-info btn-block btn-round">Xác
                                 Nhận</button>
                             <div class="p-conf">Thành Công!</div>
                             <div class="n-conf">Mã OTP Sai! Vui lòng nhập lại! </div>
                         </div>
-
                     </div>
                 </div>
-
             </div>
         </div>
-        <!-- <script type="module">
+
+        <script type="module">
             import { initializeApp } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-app.js";
             import { getAuth, signInWithPhoneNumber } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-auth.js";
-            // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+            // import { RecaptchaVerifier } from "https://www.gstatic.com/firebasejs/9.21.0/firebase.js";
+
             const firebaseConfig = {
                 apiKey: "AIzaSyBl5rDC-JcMqyi0Ds7xQWkDRXwW7rFAa0A",
                 authDomain: "appthoviet.firebaseapp.com",
@@ -188,27 +140,66 @@
                 appId: "1:886027498015:web:59d9efe286b74e198a5b2a",
                 measurementId: "G-FNYWG3WVSP"
             };
-            // Initialize Firebase
             const app = initializeApp(firebaseConfig);
             const auth = getAuth(app);
-            const phoneAuth = (async) => {
+
+            // window.recaptchaVerifier = new RecaptchaVerifier('recaptcha-container', {}, auth);
+            //var appVerifier = new RecaptchaVerifier('recaptcha-container', auth); // Replace 'recaptcha-container' with the ID of the reCAPTCHA element if using reCAPTCHA for verification
+            const numberPhoneInput = document.querySelector('#numberPhone');
+            const orderButtonId = document.querySelector('#orderButton');
+            const successDiv = document.querySelector('.p-conf');
+            const errorDiv = document.querySelector('.n-conf');
+            var applicationVerifier = new app.getAuth.RecaptchaVerifier(
+                'recaptcha-container');
+            const order = async () => {
+                const numberPhoneVal = numberPhoneInput.value;
+                console.log(numberPhoneVal);
+                signInWithPhoneNumber(auth, numberPhoneVal, applicationVerifier)
+
+                    .then((confirmationResult) => {
+                        return window.confirmationResult = confirmationResult;
+                        console.log(confirmationResult);
+
+                    })
+                    .catch((error) => {
+                        alert(error.message)
+                        console.log(error.message);
+                    })
+            }
+            // window.recaptchaVerifier = new RecaptchaVerifier('recaptcha-container', auth);
+
+            function phoneAuth() {
                 var numberPhone = document.getElementById("numberPhone").value;
-                // const appVerifier = window.recaptchaVerifier;
-                // console.log(appVerifier);
                 console.log(numberPhone);
-                signInWithPhoneNumber(auth, numberPhone)
+
+                signInWithPhoneNumber(getAuth, numberPhone, applicationVerifier)
                     .then((confirmationResult) => {
                         window.confirmationResult = confirmationResult;
+                        console.log(confirmationResult);
                         document.getElementById('sender').style.display = 'none';
                         document.getElementById('verifier').style.display = 'block';
-                    }).catch((error) => {
-                        alert(error.message)
-                        document.getElementById('p-conf')[0].style.display = "none";
-                        document.getElementById('n-conf')[0].style.display = 'block';
-                    });
+                    })
+                    .catch((error) => {
+                        alert(error.message);
+                        console.log(error);
+                    })
+                // console.log(verifyPhoneNumber);
             }
-            const btnEl = document.querySelector('#send');
-            btnEl.addEventListener('click', phoneAuth); -->
+
+            orderButtonId.addEventListener('click', order);
+            // const code = getCodeFromUserInput();
+            function codeverifier() {
+                var code = document.getElementById('verificationcode').style.display = 'block';
+                confirmationResult.confirm(code).then(function () {
+                    document.getElementById('p-conf')[0].style.display = "block";
+                    document.getElementById('n-conf')[0].style.display = 'none';
+                }).catch(function () {
+                    document.getElementById('p-conf')[0].style.display = "none";
+                    document.getElementById('n-conf')[0].style.display = 'block';
+                })
+            }
+
+        </script>
         </script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
