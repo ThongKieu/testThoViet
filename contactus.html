@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <style>
+        .containerContact {
+            border: 1px solid black;
+            border-radius: 5px;
+            padding: 15px;
+        }
+
+        .gridContactLeft {
+            grid-area: left;
+            width: 100%;
+        }
+
+        .gridContactLeft h3 {
+            font-size: 30px;
+            text-align: center;
+        }
+
+        .gridContactLeft input {
+            width: 100%;
+            border: none;
+            border-bottom: 1px solid #ccc;
+            padding-left: 0;
+            padding-right: 0;
+            border-radius: 0;
+            background: none;
+            outline: none;
+            margin-top: 5px;
+        }
+
+        .gridContactLeft input:focus {
+            border-bottom: 1px solid black;
+
+        }
+
+        .gridContactLeft select {
+            width: 100%;
+            border: none;
+            border-bottom: 1px solid #ccc;
+            padding-left: 0;
+            padding-right: 0;
+            border-radius: 0;
+            background: none;
+            outline: none;
+        }
+
+        .gridContactLeft select:focus {
+            border-bottom: 1px solid black;
+        }
+
+
+
+        .form-control {
+            display: block;
+            width: 100%;
+            height: calc(1.5em + 0.75rem + 2px);
+            padding: 0.375rem 0.75rem;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #495057;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #ced4da;
+            border-radius: 0.25rem;
+            -webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+            transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+            -o-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+        }
+
+        .gridContactRight {
+            grid-area: right;
+            width: 100%;
+        }
+
+        .containerContact {
+            width: 90%;
+            margin: auto;
+            display: grid;
+            grid-template-areas:
+                'left   left right';
+            height: 500px;
+        }
+
+        .gridContactLeft {
+            background-color: white;
+        }
+
+        .gridContactRight {
+            color: white;
+            background-color: #3d89f8;
+            text-align: center;
+        }
+
+        .containerContact label {
+            font-size: 14px;
+            color: #b3b3b3;
+            margin: 0 0 10px 0;
+            display: inline-block;
+            padding: 0;
+        }
+
+        .contactWork {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+        }
+
+        .workCont {
+            width: 100%;
+            margin-right: 20px;
+        }
+
+        .namePro {
+            width: 100%;
+            margin-right: 30px;
+        }
+
+        .noteOrder {
+            margin-right: 30px;
+            margin-top: 15px;
+        }
+
+        .buttonSubmit {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .buttonItem {
+            padding: 10px 5px;
+            border: none;
+            color: white;
+            background-color: #35477d;
+            font-size: 15px;
+        }
+
+        .contentContactRight {
+            padding: 5px;
+        }
+
+        /* reponsive  */
+        /* Smartphones (portrait) ----------- */
+        @media only screen and (max-width : 320px) {
+            /* Styles */
+        }
+
+        /* Smartphones (portrait and landscape) ----------- */
+        @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+            /* Styles */
+        }
+
+        @media only screen and (max-width : 768px) {
+
+            /* Styles */
+            .containerContact {
+                width: 90%;
+                margin: auto;
+                display: block;
+                height: 100%;
+            }
+
+            .contactWork {
+                display: block;
+                margin-top: 15px;
+            }
+
+            .workCont {
+                width: 100%;
+                margin-right: 0;
+                margin-top: 20px;
+            }
+
+            .namePro {
+                width: 100%;
+                margin-right: 0;
+                margin-top: 20px;
+            }
+
+            .noteOrder {
+                margin-right: 0;
+                margin-top: 20px;
+            }
+        }
+
+        /* iPads (landscape) ----------- */
+        /* @media only screen and (min-device-width : 480px) and (max-device-width : 768px) {
+
+            
+        .containerContact {
+            width: 50%;
+            margin: auto;
+            display: block;
+            height: 100%;
+        }
+
+        .contactWork {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+        }
+        }
+
+        */
+
+        /* iPads (portrait and landscape) ----------- */
+        @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+            /* Styles */
+        }
+
+
+
+        /* Desktops and laptops ----------- */
+        @media only screen and (min-width : 1224px) {
+            /* Styles */
+        }
+
+        /* Large screens ----------- */
+        @media only screen and (min-width : 1824px) {
+            /* Styles */
+        }
+
+        /* end reponsive */
+    </style>
+</head>
+
+<body>
+    <div class="containerContact">
+        <div class="gridContactLeft">
+            <h3>Tư Vấn - Báo Giá - Đặt Lịch Ngay</h3>
+            <div class="contactWork">
+                <div class="workCont">
+                    <label class="yccv">Yêu cầu công việc <span>(*)</span></label>
+                    <br>
+                    <input class="inputText" type="text" name="cvCont" id="cvCont" required
+                        placeholder='Ví dụ: Vệ sinh máy lạnh, sửa máy giặt,...'>
+                </div>
+                <div class="namePro">
+                    <label class="ten">Tên<span>(*)</span></label>
+                    <br>
+                    <input class="inputText" type="text" name="tenCont" id="tenCont" placeholder='Thợ Việt'>
+                </div>
+            </div>
+            <div class="contactWork">
+                <div class="workCont">
+                    <label>Số điện thoại<span>(*)</span></label>
+                    <input class="inputTel" type="tel" name="sdtCont" id="sdtCont" required>
+                </div>
+                <div class="namePro">
+                    <label>Ngày làm<span class="required">*</span></label>
+                    <input type="date" class="inputDate" name="dateCont" id="dateCont" placeholder="DD-MM-YYYY"
+                        required>
+                </div>
+
+            </div>
+            <div class="contactWork">
+                <div class="workCont">
+                    <label class="spanDiaChi">Địa Chỉ<span>(*)</span></label>
+                    <input type="text" class="inputText" name="diaChiCont" placeholder="Số nhà, tên đường"
+                        id="diaChiCont" required>
+                </div>
+                <div class="namePro">
+                    <label>Quận, Huyện<span class="required">*</span></label> <br>
+                    <select id="qCont" class="selectDistrict">
+                        <option value="select"> Quận</option>
+                        <option value="Quận 1"> Quận 1</option>
+                        <option value="Quận 3"> Quận 3</option>
+                        <option value="Quận 4"> Quận 4</option>
+                        <option value="Quận 5"> Quận 5</option>
+                        <option value="Quận 6"> Quận 6</option>
+                        <option value="Quận 7"> Quận 7</option>
+                        <option value="Quận 8"> Quận 8</option>
+                        <option value="Quận 10"> Quận 10</option>
+                        <option value="Quận 11"> Quận 11</option>
+                        <option value="Quận12"> Quận 12</option>
+                        <option value="TP Thủ Đức">Thành phố Thủ Đức</option>
+                        <option value="Bình Tân">Quận Bình Tân</option>
+                        <option value="Bình Thạnh">Quận Bình Thạnh</option>
+                        <option value="Gò Vấp"> Quận Gò Vấp</option>
+                        <option value="Phú Nhuận">Quận Phú Nhuận</option>
+                        <option value="Tân Bình">Quận Tân Bình</option>
+                        <option value="Tân Phú">Quận Tân Phú</option>
+                        <option value="Bình Chánh">Huyện Bình Chánh</option>
+                        <option value="Cần Giờ">Huyện Cần Giờ</option>
+                        <option value="Củ Chi"> Huyện Củ Chi</option>
+                        <option value="Hooc Môn">Huyện Hóc Môn</option>
+                        <option value="Nhà Bè"> Huyện Nhà Bè</option>
+                    </select>
+                </div>
+
+            </div>
+            <div class="noteOrder">
+                <label>Ghi Chú<span class="required">*</span></label>
+                <input type="text" class="inputText" name="ghiChuCont " id="ghiChuCont" required>
+            </div>
+
+            <div class="buttonSubmit" style="text-align: center;">
+                <button class="buttonItem" style="width: 50%;" type="submit">Đặt Lịch</button>
+            </div>
+        </div>
+        <div class="gridContactRight" style="word-wrap: break-word;">
+            <div class="contentContactRight">
+                <h2 style="text-align: center; ">CÔNG TY <br> TNHH DỊCH VỤ KỸ THUẬT <br> THỢ VIỆT</h2>
+                <p><b>MSDN:</b> 0311158568</p>
+                <p><b> Trụ sở chính:</b> 25/6 Phùng Văn Cung, Phường 2, <br> Q. Phú Nhuận, Tp.HCM</p>
+                <p><b> VPGD:</b> 0311158568</p>
+                <p><b> Số TK:</b> 119 -0000 -80546 tại NH Công Thương Việt Nam – Chi nhánh 2 TP. HCM ( Vietinbank)</p>
+                <p><b>Website:</b> www.thoviet.com.vn</p>
+                <p> <b>Email:</b> info@thoviet.com.vn</p>
+                <p><b>Tel:</b> 1800 8122</p>
+                <p><b>Hotline:</b> 0903 532 938</p>
+            </div>
+        </div>
+
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

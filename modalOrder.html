@@ -127,8 +127,7 @@
 
         <script type="module">
             import { initializeApp } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-app.js";
-            import { getAuth, signInWithPhoneNumber } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-auth.js";
-            // import { RecaptchaVerifier } from "https://www.gstatic.com/firebasejs/9.21.0/firebase.js";
+            import { getAuth, signInWithPhoneNumber, RecaptchaVerifier } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-auth.js";
 
             const firebaseConfig = {
                 apiKey: "AIzaSyBl5rDC-JcMqyi0Ds7xQWkDRXwW7rFAa0A",
@@ -143,51 +142,44 @@
             const app = initializeApp(firebaseConfig);
             const auth = getAuth(app);
 
-            // window.recaptchaVerifier = new RecaptchaVerifier('recaptcha-container', {}, auth);
-            //var appVerifier = new RecaptchaVerifier('recaptcha-container', auth); // Replace 'recaptcha-container' with the ID of the reCAPTCHA element if using reCAPTCHA for verification
             const numberPhoneInput = document.querySelector('#numberPhone');
             const orderButtonId = document.querySelector('#orderButton');
             const successDiv = document.querySelector('.p-conf');
             const errorDiv = document.querySelector('.n-conf');
-            var applicationVerifier = new app.getAuth.RecaptchaVerifier(
-                'recaptcha-container');
-            const order = async () => {
-                const numberPhoneVal = numberPhoneInput.value;
-                console.log(numberPhoneVal);
-                signInWithPhoneNumber(auth, numberPhoneVal, applicationVerifier)
 
+
+            window.recaptchaVerifier = new RecaptchaVerifier('recaptcha-container', {}, auth);
+            // recaptchaVerifier.render().then((widgetId) => {
+            //     window.recaptchaWidgetId = widgetId;
+            // });
+            orderButtonId.addEventListener('click', function order(e) {
+                e.preventDefault();
+                const numberPhoneVal = numberPhoneInput.value;
+                const appVerifier = window.recaptchaVerifier;
+                console.log(numberPhoneVal);
+                if (isPhoneNumberValid()) {
+                    signInWithPhoneNumber(auth, numberPhoneVal, appVerifier)
+                        .then((confirmationResult) => {
+                            return window.confirmationResult = confirmationResult;
+                            console.log(confirmationResult);
+
+                        })
+                        .catch((error) => {
+                            alert(error.message);
+                        })
+                }
+                else (signInWithPhoneNumber(auth, numberPhoneVal, appVerifier)
                     .then((confirmationResult) => {
                         return window.confirmationResult = confirmationResult;
                         console.log(confirmationResult);
 
                     })
                     .catch((error) => {
-                        alert(error.message)
-                        console.log(error.message);
-                    })
-            }
-            // window.recaptchaVerifier = new RecaptchaVerifier('recaptcha-container', auth);
-
-            function phoneAuth() {
-                var numberPhone = document.getElementById("numberPhone").value;
-                console.log(numberPhone);
-
-                signInWithPhoneNumber(getAuth, numberPhone, applicationVerifier)
-                    .then((confirmationResult) => {
-                        window.confirmationResult = confirmationResult;
-                        console.log(confirmationResult);
-                        document.getElementById('sender').style.display = 'none';
-                        document.getElementById('verifier').style.display = 'block';
-                    })
-                    .catch((error) => {
                         alert(error.message);
-                        console.log(error);
-                    })
-                // console.log(verifyPhoneNumber);
-            }
+                    }))
 
-            orderButtonId.addEventListener('click', order);
-            // const code = getCodeFromUserInput();
+            })
+
             function codeverifier() {
                 var code = document.getElementById('verificationcode').style.display = 'block';
                 confirmationResult.confirm(code).then(function () {
@@ -198,6 +190,17 @@
                     document.getElementById('n-conf')[0].style.display = 'block';
                 })
             }
+            isPhoneNumberValid();
+            function getPhoneNumberFromUserInput() {
+                return document.getElementById('numberPhone').value;
+            }
+            function isPhoneNumberValid() {
+                var pattern = /^\+[0-9\s\-\(\)]+$/;
+                var phoneNumber = getPhoneNumberFromUserInput();
+                return phoneNumber.search(pattern) !== -1;
+                console.log(phoneNumber);
+            }
+
 
         </script>
         </script>

@@ -5,9 +5,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>Document</title>
     <style>
-        .container {
+        .container1 {
             width: auto;
             padding-right: 15px;
             padding-left: 15px;
@@ -16,12 +18,12 @@
         }
 
         @media (min-width: 1200px) {
-            .container {
+            .container1 {
                 max-width: 1140px;
             }
         }
 
-        .d-flex {
+        .d-flex1 {
             display: flex;
             flex-direction: row;
             background: #f6f6f6;
@@ -29,22 +31,18 @@
             padding: 25px;
         }
 
-        form {
+        .formOrder {
             flex: 4;
         }
 
-        .title {
-            background: -webkit-gradient(linear, left top, right bottom, color-stop(0, #5195A8), color-stop(100, #70EAFF));
-            background: -moz-linear-gradient(top left, #5195A8 0%, #70EAFF 100%);
-            background: -ms-linear-gradient(top left, #5195A8 0%, #70EAFF 100%);
-            background: -o-linear-gradient(top left, #5195A8 0%, #70EAFF 100%);
-            background: linear-gradient(to bottom right, #5195A8 0%, #70EAFF 100%);
+        .title1 {
+            background: black;
             border-radius: 5px 5px 0 0;
             padding: 20px;
             color: #f6f6f6;
         }
 
-        h2 {
+        .texth2 {
             margin: 0;
             padding-left: 15px;
         }
@@ -53,25 +51,31 @@
             color: red;
         }
 
-        label,
-        table {
+        .labelOrder {
             display: block;
             margin: 15px;
 
         }
 
-        label>span {
+        .labelOrder>span {
             float: left;
             width: 25%;
             margin-top: 12px;
             padding-right: 10px;
         }
 
-        input[type="text"],
-        input[type="tel"],
-        input[type="email"],
-        input[type="date"],
-        select {
+        .spanDiaChi {
+            float: left;
+            width: 25%;
+            margin-top: 12px;
+            padding-right: 10px;
+        }
+
+        .inputText,
+        .inputTel,
+        .inputEmail,
+        .inputDate,
+        .selectDistrict {
             width: 70%;
             height: 20px;
             padding: 5px 10px;
@@ -80,46 +84,11 @@
             color: #888;
         }
 
-        input[type="date"] {
+        .inputDate {
             width: 20%;
         }
 
-
-
-        table {
-            margin: 0;
-            padding: 0;
-        }
-
-        th {
-            border-bottom: 1px solid #dadada;
-            padding: 10px 0;
-        }
-
-        tr>td:nth-child(1) {
-            text-align: left;
-            color: #2d2d2a;
-        }
-
-        tr>td:nth-child(2) {
-            text-align: right;
-            color: #52ad9c;
-        }
-
-        td {
-            border-bottom: 1px solid #dadada;
-            padding: 25px 25px 25px 0;
-        }
-
-        p {
-            display: block;
-            color: #888;
-            margin: 0;
-            padding-left: 25px;
-        }
-
-
-        button {
+        .buttonItem {
             width: 100%;
             margin-top: 10px;
             padding: 10px;
@@ -130,372 +99,175 @@
             font-weight: bold;
         }
 
-        button:hover {
+        .buttonItem:hover {
             cursor: pointer;
             background: #c84e22;
             color: white
         }
 
-        .rowOrder {
-            display: flex;
-        }
 
-        .col8Order {
+        .colOrder {
             display: flex;
-            width: 70%;
             align-items: center;
         }
 
-        .col8Order>span {
-            width: 54%;
-            margin-bottom: 15px;
-        }
-
-        #diaChiCont {
-            width: 88%;
-            margin-top: 10px;
-        }
-
-        .col4Order {
-            display: flex;
-            width: 30%;
-            align-items: center;
-        }
-
-        .col4Order>select {
+        .colOrder>select {
 
             width: 100%;
             margin-right: 23px;
-            height: 77%;
+            height: 32px;
         }
 
         #dateCont {
             margin-bottom: 10px;
         }
 
+        #diaChiCont {
+            width: 300%;
+        }
+
         /* start reponsive */
-        @media only screen and (max-width:320px) {
+
+
+        /* Smartphones (portrait) ----------- */
+        @media only screen and (max-width : 768px) {
 
             /* Styles */
-            label {
-                margin: 0 10px;
-            }
-
-            label>span {
-                float: left;
+            .labelOrder>span {
                 width: 100%;
-                padding-right: 10px;
-                padding-bottom: 10px;
-            }
-
-            input[type="text"],
-            input[type="tel"],
-            input[type="email"],
-            input[type="date"] {
-                width: 93%;
-                height: 20px;
-                padding: 5px 10px;
-                /* margin-bottom: 10px; */
-                border: 1px solid #dadada;
-                color: #888;
-            }
-
-            #diaChiCont {
-                width: 90%;
-            }
-
-            .d-flex {
-                padding: 0px;
-            }
-
-            .buttonSubmit {
-                width: 50%;
-                margin: auto;
-            }
-
-            .buttonItem {
-                margin-bottom: 20px;
-            }
-
-            .col4Order>select {
-                margin-right: 0;
-                padding-left: 1px;
-                height: 32px;
-                margin-top: 28px;
-            }
-
-            .col8Order {
-                display: block;
-
-            }
-
-
-        }
-
-        @media only screen and (min-width : 320px) and (max-width:534px) {
-
-            /* Styles */
-            label {
-                margin: 0 10px;
-            }
-
-            label>span {
-                float: left;
-                width: 100%;
-                padding-right: 10px;
-                padding-bottom: 10px;
-            }
-
-            input[type="text"],
-            input[type="tel"],
-            input[type="email"],
-            input[type="date"] {
-                width: 93%;
-                height: 20px;
-                padding: 5px 10px;
-                /* margin-bottom: 10px; */
-                border: 1px solid #dadada;
-                color: #888;
-            }
-
-            #diaChiCont {
-                width: 90%;
-            }
-
-            .d-flex {
-                padding: 0px;
-            }
-
-            .buttonSubmit {
-                width: 50%;
-                margin: auto;
-            }
-
-            .buttonItem {
-                margin-bottom: 20px;
-            }
-
-            .col4Order>select {
-                margin-right: 0;
-                padding-left: 1px;
-                height: 32px;
-                margin-top: 28px;
-            }
-
-            .col8Order {
-                display: block;
-
-            }
-
-
-        }
-
-        @media only screen and (min-width : 535px) and (max-width : 768px) {
-
-
-            label {
-                display: block;
-                margin: 0 10px;
-
-            }
-
-            label>span {
-                float: left;
-                width: 100%;
-                padding-right: 10px;
-                padding-bottom: 10px;
-            }
-
-            input[type="text"],
-            input[type="tel"],
-            input[type="email"],
-            input[type="date"],
-            select {
-                width: 95%;
-                height: 30px;
-                padding: 5px 10px;
                 margin-bottom: 10px;
-                border: 1px solid #dadada;
-                color: #888;
             }
 
-            #diaChiCont {
-                width: 93%;
+            .spanDiaChi {
+                float: none !important;
             }
 
-            .col8Order {
+            .colOrder>select {
+                width: 100%;
+                margin-right: 0px;
+                height: 32px;
+            }
+
+            .inputText,
+            .inputTel,
+            .inputEmail,
+            .inputDate,
+            .selectDistrict {
+                width: 100%;
+            }
+
+            .labelOrder>span {
+                width: 100%;
+                margin-bottom: 10px;
                 display: block;
             }
 
-            .col4Order>select {
-                margin-right: 0;
-                padding-left: 1px;
-                height: 42px;
-                margin-top: 28px;
+            .d-flex1 {
+                padding-left: 5px;
             }
         }
 
-        @media only screen and (min-width : 768px) {}
+        @media only screen and (min-width : 768px) and (max-width : 1200px) {
+            .colOrder>span {
 
-        @media only screen and (min-width: 820px) {
-
-            /* Styles */
-            #tenCont {
-                margin-left: 30%;
-            }
-
-            #diaChiCont {
-                margin-left: 10px;
-            }
-
-            .lname {
-                width: 33%;
-            }
-
-            .grid {
-                display: grid;
-                grid-template-columns: auto auto auto auto auto auto;
-
-            }
-
-            .gridItem1 {
-                display: flex;
-                grid-column: 1 / span 5;
-            }
-
-            .gridItem2 {
-                display: flex;
-                grid-column: 6;
-            }
-
-            .gridItem2>span {
-                width: 38%;
-            }
-
-            .col4Order>select {
-                margin-top: 5%;
-                margin-right: 3px;
-            }
-
-
-        }
-
-        @media only screen and (min-width : 821px) {
-
-            /* Styles */
-            .grid {
-                display: block;
-            }
-
-            #tenCont {
+                float: none;
                 width: 100%;
-                margin: 0 20px;
+                margin-top: 12px;
+                padding-right: 10px;
             }
 
-            #sdtCont {
-                width: 100%;
-                margin-left: -18px;
-                margin-right: 18px;
-            }
-
-            #diaChiCont {
-                margin-left: 0px;
-            }
-
-            .col4Order>select {
-                margin-top: 3%;
-                margin-right: 22px;
-
-            }
         }
-
-
 
 
         /* end reponsive */
+        .grid {
+            display: grid;
+            grid-template-columns: auto auto;
+        }
+
+        .gridItem {
+            display: flex;
+        }
+
         /* /// */
     </style>
 </head>
 
 <body>
-    <div class="container">
-        <div class="title">
-            <h2>Tư Vấn - Báo Giá - Đặt Lịch Ngay</h2>
+    <span class="bg-danger" style="width: 50px;">text</span><br>
+    <span>Demo Text</span>
+    <div class="container1">
+        <div class="title1">
+            <h3 class="texth2">Tư Vấn - Báo Giá - Đặt Lịch Ngay</h3>
         </div>
-        <div class="d-flex">
-            <form method="POST" id="orderForm">
-                <label>
+        <div class="d-flex1">
+            <form method="POST" id="orderForm" class="formOrder">
+                <label class="labelOrder">
                     <span class="fname">Nội dung công việc<span class="required">*</span></span>
-                    <input type="text" name="cvCont" id="cvCont" required
+                    <input class="inputText" type="text" name="cvCont" id="cvCont" required
                         placeholder='Ví dụ: Vệ sinh máy lạnh, sửa máy giặt,...'>
                 </label>
-                <div class="grid">
-                    <label class="gridItem1">
-                        <span class="lname">Họ và tên <span class="required"></span></span>
-                        <input type="text" name="tenCont" id="tenCont" placeholder='Thợ Việt'>
+                <div class="grid ">
+                    <label class="labelOrder gridItem">
+                        <span class="lname ">Họ và tên <span class="required"></span></span>
+                        <input class="inputText" type="text" name="tenCont" id="tenCont" placeholder='Thợ Việt'>
                     </label>
-                    <label class="gridItem2">
-                        <span>Số điện thoại <span class="required">*</span></span>
-                        <input type="tel" name="sdtCont" id="sdtCont" required>
+                    <label class="labelOrder gridItem">
+                        <span>Số điện thoại<span class="required">*</span></span>
+                        <input class="inputTel" type="tel" name="sdtCont" id="sdtCont" required>
                     </label>
                 </div>
-                <label>
-                    <div class="rowOrder">
-                        <div class="col8Order">
-                            <span>Địa Chỉ<span class="required">*</span></span>
-                            <input type="text" name="diaChiCont" placeholder="Số nhà, tên đường" id="diaChiCont"
-                                required>
-                        </div>
-                        <div class="col4Order">
+                <label class="labelOrder">
+                    <span class="spanDiaChi">Địa Chỉ<span class="required">*</span></span>
+                    <div class="colOrder">
+                        <input type="text" class="inputText" name="diaChiCont" placeholder="Số nhà, tên đường"
+                            id="diaChiCont" required>
+                        <select id="qCont" class="selectDistrict">
+                            <option value="select"> Quận</option>
+                            <option value="Quận 1"> Quận 1</option>
+                            <option value="Quận 3"> Quận 3</option>
+                            <option value="Quận 4"> Quận 4</option>
+                            <option value="Quận 5"> Quận 5</option>
+                            <option value="Quận 6"> Quận 6</option>
+                            <option value="Quận 7"> Quận 7</option>
+                            <option value="Quận 8"> Quận 8</option>
+                            <option value="Quận 10"> Quận 10</option>
+                            <option value="Quận 11"> Quận 11</option>
+                            <option value="Quận12"> Quận 12</option>
+                            <option value="TP Thủ Đức">Thành phố Thủ Đức</option>
+                            <option value="Bình Tân">Quận Bình Tân</option>
+                            <option value="Bình Thạnh">Quận Bình Thạnh</option>
+                            <option value="Gò Vấp"> Quận Gò Vấp</option>
+                            <option value="Phú Nhuận">Quận Phú Nhuận</option>
+                            <option value="Tân Bình">Quận Tân Bình</option>
+                            <option value="Tân Phú">Quận Tân Phú</option>
+                            <option value="Bình Chánh">Huyện Bình Chánh</option>
+                            <option value="Cần Giờ">Huyện Cần Giờ</option>
+                            <option value="Củ Chi"> Huyện Củ Chi</option>
+                            <option value="Hooc Môn">Huyện Hóc Môn</option>
+                            <option value="Nhà Bè"> Huyện Nhà Bè</option>
+                        </select>
 
-                            <select id="qCont">
-                                <option value="select"> Quận</option>
-                                <option value="Quận 1"> Quận 1</option>
-                                <option value="Quận 3"> Quận 3</option>
-                                <option value="Quận 4"> Quận 4</option>
-                                <option value="Quận 5"> Quận 5</option>
-                                <option value="Quận 6"> Quận 6</option>
-                                <option value="Quận 7"> Quận 7</option>
-                                <option value="Quận 8"> Quận 8</option>
-                                <option value="Quận 10"> Quận 10</option>
-                                <option value="Quận 11"> Quận 11</option>
-                                <option value="Quận12"> Quận 12</option>
-                                <option value="TP Thủ Đức">Thành phố Thủ Đức</option>
-                                <option value="Bình Tân">Quận Bình Tân</option>
-                                <option value="Bình Thạnh">Quận Bình Thạnh</option>
-                                <option value="Gò Vấp"> Quận Gò Vấp</option>
-                                <option value="Phú Nhuận">Quận Phú Nhuận</option>
-                                <option value="Tân Bình">Quận Tân Bình</option>
-                                <option value="Tân Phú">Quận Tân Phú</option>
-                                <option value="Bình Chánh">Huyện Bình Chánh</option>
-                                <option value="Cần Giờ">Huyện Cần Giờ</option>
-                                <option value="Củ Chi"> Huyện Củ Chi</option>
-                                <option value="Hooc Môn">Huyện Hóc Môn</option>
-                                <option value="Nhà Bè"> Huyện Nhà Bè</option>
-                            </select>
-                        </div>
                     </div>
                 </label>
-                <label>
+                <label class="labelOrder">
                     <span>Ghi Chú<span class="required">*</span></span>
-                    <input type="text" name="ghiChuCont" id="ghiChuCont" required>
+                    <input type="text" class="inputText" name="ghiChuCont " id="ghiChuCont" required>
                 </label>
-                <label>
+                <label class="labelOrder">
                     <span>Ngày làm<span class="required">*</span></span>
-                    <input type="date" name="dateCont" id="dateCont" required>
+                    <input type="date" class="inputDate" name="dateCont" id="dateCont" placeholder="DD-MM-YYYY"
+                        required>
                 </label>
-                <!-- <button type="button" onclick="return onSubmitForm()">Đặt Lịch</button> -->
-                <div class="buttonSubmit">
-                    <button class="buttonItem" type="submit">Đặt Lịch</button>
+                <div class="buttonSubmit" style="text-align: center;">
+                    <button class="buttonItem" style="width: 50%;" type="submit">Đặt Lịch</button>
                 </div>
             </form>
 
-        </div>
-    </div>
 
-    <!-- /wp:paragraph -->
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        </div>
+
+    </div>
 
     <script>
         const form = document.getElementById('orderForm');
@@ -510,7 +282,7 @@
                 diaChiCont: document.getElementById('diaChiCont').value,
                 dateCont: document.getElementById('dateCont').value,
                 ghiChuCont: document.getElementById('ghiChuCont').value,
-                from_cus: 0
+                from_cus: 1
             }
 
             try {
@@ -538,10 +310,6 @@
 
 
     </script>
-    <!-- start  -->
-    <!-- /wp:paragraph -->
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
@@ -550,6 +318,15 @@
         crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
 </body>
 
