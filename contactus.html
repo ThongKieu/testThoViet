@@ -9,6 +9,7 @@
 
     <!-- Bootstrap CSS -->
     <style>
+        /* style css order form  */
         .containerContact {
             border: 1px solid black;
             border-radius: 5px;
@@ -90,7 +91,6 @@
             display: grid;
             grid-template-areas:
                 'left   left right';
-            height: 500px;
         }
 
         .gridContactLeft {
@@ -149,17 +149,11 @@
             padding: 5px;
         }
 
+        .buttonItem:not(:disabled):not(.disabled) {
+            cursor: pointer;
+        }
+
         /* reponsive  */
-        /* Smartphones (portrait) ----------- */
-        @media only screen and (max-width : 320px) {
-            /* Styles */
-        }
-
-        /* Smartphones (portrait and landscape) ----------- */
-        @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
-            /* Styles */
-        }
-
         @media only screen and (max-width : 768px) {
 
             /* Styles */
@@ -191,46 +185,19 @@
                 margin-right: 0;
                 margin-top: 20px;
             }
+
+            #orderForm {
+                padding-left: 10px;
+                padding-right: 10px;
+            }
         }
 
-        /* iPads (landscape) ----------- */
-        /* @media only screen and (min-device-width : 480px) and (max-device-width : 768px) {
-
-            
-        .containerContact {
-            width: 50%;
-            margin: auto;
-            display: block;
-            height: 100%;
-        }
-
-        .contactWork {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 15px;
-        }
-        }
-
-        */
-
-        /* iPads (portrait and landscape) ----------- */
-        @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
-            /* Styles */
-        }
-
-
-
-        /* Desktops and laptops ----------- */
-        @media only screen and (min-width : 1224px) {
-            /* Styles */
-        }
-
-        /* Large screens ----------- */
-        @media only screen and (min-width : 1824px) {
-            /* Styles */
+        #orderForm {
+            padding-left: 10px;
         }
 
         /* end reponsive */
+        /* end style css order form  */
     </style>
 </head>
 
@@ -238,96 +205,142 @@
     <div class="containerContact">
         <div class="gridContactLeft">
             <h3>Tư Vấn - Báo Giá - Đặt Lịch Ngay</h3>
-            <div class="contactWork">
-                <div class="workCont">
-                    <label class="yccv">Yêu cầu công việc <span>(*)</span></label>
-                    <br>
-                    <input class="inputText" type="text" name="cvCont" id="cvCont" required
-                        placeholder='Ví dụ: Vệ sinh máy lạnh, sửa máy giặt,...'>
+            <form action="" id="orderForm" method="post">
+                <div class="contactWork">
+                    <div class="workCont">
+                        <label class="yccv">Yêu cầu công việc <span>(*)</span></label>
+                        <br>
+                        <input class="inputText" type="text" name="cvCont" id="cvCont" required
+                            placeholder='Ví dụ: Vệ sinh máy lạnh, sửa máy giặt,...'>
+                    </div>
+                    <div class="namePro">
+                        <label class="ten">Tên<span>(*)</span></label>
+                        <br>
+                        <input class="inputText" type="text" name="tenCont" id="tenCont" placeholder='Thợ Việt'>
+                    </div>
                 </div>
-                <div class="namePro">
-                    <label class="ten">Tên<span>(*)</span></label>
-                    <br>
-                    <input class="inputText" type="text" name="tenCont" id="tenCont" placeholder='Thợ Việt'>
+                <div class="contactWork">
+                    <div class="workCont">
+                        <label>Số điện thoại<span>(*)</span></label>
+                        <input class="inputTel" type="tel" name="sdtCont" id="sdtCont" required>
+                    </div>
+                    <div class="namePro">
+                        <label>Ngày làm<span class="required">*</span></label>
+                        <input type="date" class="inputDate" name="dateCont" id="dateCont" placeholder="DD-MM-YYYY" required>
+                        </div>
+
                 </div>
-            </div>
-            <div class="contactWork">
-                <div class="workCont">
-                    <label>Số điện thoại<span>(*)</span></label>
-                    <input class="inputTel" type="tel" name="sdtCont" id="sdtCont" required>
+                <div class="contactWork">
+                    <div class="workCont">
+                        <label class="spanDiaChi">Địa Chỉ<span>(*)</span></label>
+                        <input type="text" class="inputText" name="diaChiCont" placeholder="Số nhà, tên đường" id="diaChiCont" required>
+                        </div>
+                        <div class="namePro">
+                            <label>Quận, Huyện<span class="required">*</span></label> <br>
+                            <select id="qCont" class="selectDistrict" required>
+                                <option value=""> Quận</option>
+                                <option value="Quận 1"> Quận 1</option>
+                                <option value="Quận 3"> Quận 3</option>
+                                <option value="Quận 4"> Quận 4</option>
+                                <option value="Quận 5"> Quận 5</option>
+                                <option value="Quận 6"> Quận 6</option>
+                                <option value="Quận 7"> Quận 7</option>
+                                <option value="Quận 8"> Quận 8</option>
+                                <option value="Quận 10"> Quận 10</option>
+                                <option value="Quận 11"> Quận 11</option>
+                                <option value="Quận12"> Quận 12</option>
+                                <option value="TP Thủ Đức">Thành phố Thủ Đức</option>
+                                <option value="Bình Tân">Quận Bình Tân</option>
+                                <option value="Bình Thạnh">Quận Bình Thạnh</option>
+                                <option value="Gò Vấp"> Quận Gò Vấp</option>
+                                <option value="Phú Nhuận">Quận Phú Nhuận</option>
+                                <option value="Tân Bình">Quận Tân Bình</option>
+                                <option value="Tân Phú">Quận Tân Phú</option>
+                                <option value="Bình Chánh">Huyện Bình Chánh</option>
+                                <option value="Cần Giờ">Huyện Cần Giờ</option>
+                                <option value="Củ Chi"> Huyện Củ Chi</option>
+                                <option value="Hooc Môn">Huyện Hóc Môn</option>
+                                <option value="Nhà Bè"> Huyện Nhà Bè</option>
+                            </select>
+                            </div>
+
                 </div>
-                <div class="namePro">
-                    <label>Ngày làm<span class="required">*</span></label>
-                    <input type="date" class="inputDate" name="dateCont" id="dateCont" placeholder="DD-MM-YYYY"
-                        required>
+                <div class="noteOrder">
+                    <label>Ghi Chú<span class="required">*</span></label>
+                    <input type="text" class="inputText" name="ghiChuCont " id="ghiChuCont" required>
                 </div>
 
-            </div>
-            <div class="contactWork">
-                <div class="workCont">
-                    <label class="spanDiaChi">Địa Chỉ<span>(*)</span></label>
-                    <input type="text" class="inputText" name="diaChiCont" placeholder="Số nhà, tên đường"
-                        id="diaChiCont" required>
-                </div>
-                <div class="namePro">
-                    <label>Quận, Huyện<span class="required">*</span></label> <br>
-                    <select id="qCont" class="selectDistrict">
-                        <option value="select"> Quận</option>
-                        <option value="Quận 1"> Quận 1</option>
-                        <option value="Quận 3"> Quận 3</option>
-                        <option value="Quận 4"> Quận 4</option>
-                        <option value="Quận 5"> Quận 5</option>
-                        <option value="Quận 6"> Quận 6</option>
-                        <option value="Quận 7"> Quận 7</option>
-                        <option value="Quận 8"> Quận 8</option>
-                        <option value="Quận 10"> Quận 10</option>
-                        <option value="Quận 11"> Quận 11</option>
-                        <option value="Quận12"> Quận 12</option>
-                        <option value="TP Thủ Đức">Thành phố Thủ Đức</option>
-                        <option value="Bình Tân">Quận Bình Tân</option>
-                        <option value="Bình Thạnh">Quận Bình Thạnh</option>
-                        <option value="Gò Vấp"> Quận Gò Vấp</option>
-                        <option value="Phú Nhuận">Quận Phú Nhuận</option>
-                        <option value="Tân Bình">Quận Tân Bình</option>
-                        <option value="Tân Phú">Quận Tân Phú</option>
-                        <option value="Bình Chánh">Huyện Bình Chánh</option>
-                        <option value="Cần Giờ">Huyện Cần Giờ</option>
-                        <option value="Củ Chi"> Huyện Củ Chi</option>
-                        <option value="Hooc Môn">Huyện Hóc Môn</option>
-                        <option value="Nhà Bè"> Huyện Nhà Bè</option>
-                    </select>
-                </div>
+                <div class="buttonSubmit" style="text-align: center;">
+                    <button class="buttonItem" style="width: 50%;" type="submit">Đặt Lịch</button>
 
-            </div>
-            <div class="noteOrder">
-                <label>Ghi Chú<span class="required">*</span></label>
-                <input type="text" class="inputText" name="ghiChuCont " id="ghiChuCont" required>
-            </div>
-
-            <div class="buttonSubmit" style="text-align: center;">
-                <button class="buttonItem" style="width: 50%;" type="submit">Đặt Lịch</button>
-            </div>
+                </div>
+            </form>
         </div>
         <div class="gridContactRight" style="word-wrap: break-word;">
             <div class="contentContactRight">
-                <h2 style="text-align: center; ">CÔNG TY <br> TNHH DỊCH VỤ KỸ THUẬT <br> THỢ VIỆT</h2>
-                <p><b>MSDN:</b> 0311158568</p>
-                <p><b> Trụ sở chính:</b> 25/6 Phùng Văn Cung, Phường 2, <br> Q. Phú Nhuận, Tp.HCM</p>
-                <p><b> VPGD:</b> 0311158568</p>
-                <p><b> Số TK:</b> 119 -0000 -80546 tại NH Công Thương Việt Nam – Chi nhánh 2 TP. HCM ( Vietinbank)</p>
+                <h2 style="text-align: center; ">CÔNG TY TNHH DỊCH VỤ KỸ THUẬT <br> THỢ VIỆT</h2>
+                <p><b> Phạm vi phục vụ:</b> Thợ Việt cung cấp dịch vụ trên khắp các quận, huyện của TPHCM và các tỉnh lân cận.</p>
+                <p><b> Đặt biệt:</b> Thợ Việt cung cấp dịch vụ dò nước trên khắp các tỉnh, thành trên cả nước.</p>
                 <p><b>Website:</b> www.thoviet.com.vn</p>
-                <p> <b>Email:</b> info@thoviet.com.vn</p>
-                <p><b>Tel:</b> 1800 8122</p>
+                <p><b>Email:</b> info@thoviet.com.vn</p>
+                <p><b>Tel:</b> 1800 8122 (Miễn phí cước gọi)</p>
                 <p><b>Hotline:</b> 0903 532 938</p>
             </div>
         </div>
 
     </div>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <input type="date" data-date="" id="textdat1" data-date-format="DD MMMM YYYY" value="2015-08-09">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
+    <script>
+        const form = document.getElementById('orderForm');
+        form.addEventListener('submit', async function (e) {
+            e.preventDefault();
+            const data1 = {
+                yccvCont: document.getElementById('cvCont').value + '' + 'thoviet.com.vn',
+                tenCont: document.getElementById('tenCont').value,
+                sdtCont: document.getElementById('sdtCont').value,
+                quanCont: document.getElementById('qCont').value,
+                diaChiCont: document.getElementById('diaChiCont').value,
+                dateCont: document.getElementById('dateCont').value,
+                ghiChuCont: document.getElementById('ghiChuCont').value,
+                from_cus: 1
+            }
+
+            try {
+                const res = await fetch('https://data.thoviet.com/api/addWork', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        // 'Access-Control-Allow-Origin': '*',
+                    },
+                    body: JSON.stringify(data1),
+                })
+
+                if (res.status !== 200) {
+                    const err = new Error("Error")
+                    throw err;
+                }
+                if (confirm('Đặt lịch thành công! Trở về trang chủ')) {
+                    window.location.replace('https://thoviet.vn/');
+                }
+                console.log('data', data);
+            } catch (error) {
+                console.log(error);
+            }
+        });
+        const d = new Date("2015-03-25");
+        document.getElementById("dateCont").innerHTML = d;
+        console.log(d);
+        document.getElementById("dateCont").value = moment().format('dd-MM-yyyy');
+        console.log();
+    </script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
 </body>
 
 </html>

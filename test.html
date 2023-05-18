@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
     <title>Document</title>
     <style>
         .container1 {
@@ -254,6 +256,7 @@
                     <span>Ghi Chú<span class="required">*</span></span>
                     <input type="text" class="inputText" name="ghiChuCont " id="ghiChuCont" required>
                 </label>
+                <!-- fix __________________ -->
                 <label class="labelOrder">
                     <span>Ngày làm<span class="required">*</span></span>
                     <input type="date" class="inputDate" name="dateCont" id="dateCont" placeholder="DD-MM-YYYY"
@@ -266,21 +269,52 @@
 
 
         </div>
-
+        <style>
+            .date-picker {
+                position: relative;
+            }
+          
+          .date-picker input {
+            cursor: pointer;
+          }
+          
+          .date-picker::after {
+            content: '\f073';
+            font-family: FontAwesome;
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            cursor: pointer;
+          }</style>
+        <input type="text" id="date-input" readonly>
     </div>
-
+    <label class="labelOrder">
+        <span>Ngày làm<span class="required">*</span></span>
+        <input type="datetime-local" class="inputDate" name="dateCont" id="dateCont" placeholder="dd-mm-yyyy" required>
+    </label>
+    
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+        config = {
+            enableTime: false,
+            dateFormat: "d-m-Y",
+            minDate: "today"
+        }
+        flatpickr("input[type = datetime-local]", config);
+    </script>
     <script>
         const form = document.getElementById('orderForm');
         form.addEventListener('submit', async function (e) {
             e.preventDefault();
 
             const data1 = {
-                yccvCont: document.getElementById('cvCont').value,
+                yccvCont: document.getElementById('cvCont').value + 'thoviet.com.vn',
                 tenCont: document.getElementById('tenCont').value,
                 sdtCont: document.getElementById('qCont').value,
                 quanCont: document.getElementById('qCont').value,
                 diaChiCont: document.getElementById('diaChiCont').value,
-                dateCont: document.getElementById('dateCont').value,
+                dateCont: document.getElementById('dateCont').value, //----------------
                 ghiChuCont: document.getElementById('ghiChuCont').value,
                 from_cus: 1
             }
@@ -310,6 +344,7 @@
 
 
     </script>
+    
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>

@@ -119,54 +119,6 @@
         // console.log(list);
         load();
     </script>
-
-    <!-- <script>
-        const listWork = document.getElementById('output1');
-        getDataListWork();
-        async function getDataListWork() {
-            const api_url =
-                "https://data.thoviet.com/api/showAllWork";
-            var h = new Headers();
-            h.append = ("Accept", "application/json");
-            var req = new Request(
-                api_url, {
-                method: "POST",
-                headers: h,
-                mode: "no-cors"
-
-            }
-            )
-            const response = await fetch(req);
-            console.log(response);
-            const { data } = await response.json();
-            console.log(data);
-            output1.innerHTML = 'Loading...';
-            // setTimeout(() => {
-            //     output1.innerHTML = '';
-            //     data.forEach(e => {
-            //         const divItem = document.createElement('div');
-            //         divItem.innerHTML = `
-            //             ${e.yccvCont}`;
-            //         output1.appendChild(divItem);
-            //     });
-            // }, 2000);
-        }
-        // const paga1 = document.getElementById('output1');
-        // animate(paga1);
-        // function animate(element) {
-        //     let elementWidth = element.offsetWidth;
-        //     let parentWidth = element.parentElement.offsetWidth;
-        //     let flag = 0;
-        //     setInterval(() => {
-        //         element.style.marginTop = --flag + "px";
-        //         if (elementWidth == -flag) {
-        //             flag = parentWidth;
-        //         }
-        //     }, 5);
-        // }
-
-    </script> -->
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/js/bootstrap.min.js"></script>
 </body>

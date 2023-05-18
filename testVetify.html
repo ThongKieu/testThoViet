@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="Description" content="Enter your description here" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
+    <title>Title</title>
+    <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-auth.js"></script>
+</head>
+
+<body>
+    <input type="tel" id="phone-input" placeholder="Phone number">
+    <button id="send-verification-btn">Send Verification Code</button>
+    <input type="text" id="verification-code-input" placeholder="Verification code">
+    <button id="verify-code-btn">Verify Code</button>
+    <!-- <input type="tel" id="phone-input" placeholder="Phone number">
+    <button id="send-verification-btn">Send Verification Code</button> -->
+    <script type="text/javascript">
+        // Import the functions you need from the SDKs you need
+
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        var firebaseConfig = {
+            apiKey: "AIzaSyBl5rDC-JcMqyi0Ds7xQWkDRXwW7rFAa0A",
+            authDomain: "appthoviet.firebaseapp.com",
+            databaseURL: "https://appthoviet-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "appthoviet",
+            storageBucket: "appthoviet.appspot.com",
+            messagingSenderId: "886027498015",
+            appId: "1:886027498015:web:e641dc105b199eca8a5b2a",
+            measurementId: "G-LJJ8QGQ92R"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        document.getElementById('send-verification-btn').addEventListener('click', function () {
+            var phoneNumber = document.getElementById('phone-input').value;
+            var appVerifier = new firebase.auth.RecaptchaVerifier('send-verification-btn', {
+                size: 'invisible'
+            });
+
+            firebase.auth().signInWithPhoneNumber(phoneNumber, appVerifier)
+                .then(function (confirmationResult) {
+                    window.confirmationResult = confirmationResult;
+                    console.log('Verification code sent successfully.');
+                })
+                .catch(function (error) {
+                    console.error('Error sending verification code:', error);
+                });
+        });
+
+        // Verify code
+        document.getElementById('verify-code-btn').addEventListener('click', function () {
+            var verificationCode = document.getElementById('verification-code-input').value;
+            var confirmationResult = window.confirmationResult;
+
+            confirmationResult.confirm(verificationCode)
+                .then(function (result) {
+                    console.log('Phone number verified:', result.user);
+                })
+                .catch(function (error) {
+                    console.error('Error verifying code:', error);
+                });
+        });
+        // const config = {
+
+        // };
+
+        // firebase.initializeApp(config);
+
+        // Send verification code
+        // document.getElementById('send-verification-btn').addEventListener('click', function () {
+        //     var phoneNumber = document.getElementById('phone-input').value;
+        //     var appVerifier = new firebase.auth.RecaptchaVerifier('send-verification-btn', {
+        //         size: 'invisible'
+        //     });
+
+        //     firebase.auth().signInWithPhoneNumber(phoneNumber, appVerifier)
+        //         .then(function (confirmationResult) {
+        //             // SMS verification code sent successfully
+        //             var verificationCode = prompt('Please enter the verification code:', '');
+        //             return confirmationResult.confirm(verificationCode);
+        //         })
+        //         .then(function (result) {
+        //             // Phone number successfully verified
+        //             console.log('Phone number verified:', result.user);
+        //         })
+        //         .catch(function (error) {
+        //             // Error occurred while sending or verifying the code
+        //             console.error('Error:', error);
+        //         });
+        // });
+
+    </script>
+    <!-- <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-analytics.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+            apiKey: "AIzaSyBl5rDC-JcMqyi0Ds7xQWkDRXwW7rFAa0A",
+            authDomain: "appthoviet.firebaseapp.com",
+            databaseURL: "https://appthoviet-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "appthoviet",
+            storageBucket: "appthoviet.appspot.com",
+            messagingSenderId: "886027498015",
+            appId: "1:886027498015:web:59d9efe286b74e198a5b2a",
+            measurementId: "G-FNYWG3WVSP"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+    </script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+</body>
+
+</html>

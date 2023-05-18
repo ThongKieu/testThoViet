@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="Description" content="Enter your description here" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
+    <title>Title</title>
+</head>
+<style>
+    .container {
+        width: 302px;
+        height: 175px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+    }
+
+    #number,
+    #verificationcode {
+        width: calc(100% -24px);
+        padding: 10px;
+        font-size: 20px;
+        margin-bottom: 5px;
+        outline: none;
+    }
+
+    #send,
+    #vetify {
+        width: 100%;
+        height: 40px;
+        outline: none;
+    }
+
+    .p-conf,
+    .n-conf {
+        width: calc(100%-22px);
+        border: 2px solid green;
+        border-radius: 4px;
+        padding: 8px 10px;
+        margin: 4px 0;
+        background-color: rgba(0, 249, 12, 0.5);
+    }
+
+    .n-conf {
+        border: 2px solid red;
+
+        background-color: rgba(225, 0, 4, 0.5);
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div id="sender">
+            <input type="text" placeholder="so dien thoai" id="number">
+            <div id="recaptcha-container"></div>
+            <button type="submit" id="send">send</button>
+        </div>
+        <div id="vetifier" style="display: none;">
+            <input type=" text" id="verificationcode" placeholder="Mã OTP" class="form-control">
+            <input type="button" id="verify" value="verify" onclick="codeverifier()">
+            <div class="p-conf">Thành Công!</div>
+            <div class="n-conf">Mã OTP Sai! Vui lòng nhập lại! </div>
+        </div>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase.js"></script>
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyBl5rDC-JcMqyi0Ds7xQWkDRXwW7rFAa0A",
+            authDomain: "appthoviet.firebaseapp.com",
+            databaseURL: "https://appthoviet-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "appthoviet",
+            storageBucket: "appthoviet.appspot.com",
+            messagingSenderId: "886027498015",
+            appId: "1:886027498015:web:e641dc105b199eca8a5b2a",
+            measurementId: "G-LJJ8QGQ92R"
+        };
+        firebase.initializeApp(firebaseConfig);
+
+        render();
+        function render() {
+            window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
+            recaptchaVerifier.render();
+        }
+        var number = document.getElementById('number');
+        var validatePhoneNumber = e => {
+            var regexp = /((09|03|07|08|05)+([0-9]{8})\b)/g;
+            return regexp.test(number)
+        }
+        var send1 = document.getElementById('send');
+        send1.addEventListener('submit', function phoneAuth(e) {
+            e.preventDefault();
+            if (validatePhoneNumber()) {
+                var recaptchaVerifier = window.recaptchaVerifier;
+                firebase.auth().signInWidthPhoneNumber(number, recaptchaVerifier).then(function (confirmationResult) {
+                    window.confirmationResult = confirmationResult;
+                    coderesult = confirmationResult;
+                    document.getElementById('sender').style.display = 'none';
+                    document.getElementById('vetifier').style.display = 'block';
+                }).catch(function (error) {
+                    alert(error.message);
+                })
+            } else { alert("nhap code kia cha noi"); }
+
+
+        })
+        function codeverifier() {
+            var code = document.getElementById('verificationcode').value
+            coderesult.comfirm(code).then(function () {
+                document.getElementById('p-conf')[0].style.display = "block";
+                document.getElementById('n-conf')[0].style.display = 'none';
+
+            }).catch(function () {
+                document.getElementById('p-conf')[0].style.display = "none";
+                document.getElementById('n-conf')[0].style.display = 'block';
+            })
+        }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+</body>
+
+</html>
