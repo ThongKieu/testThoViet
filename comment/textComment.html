@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Comment Form</title>
+  <link rel="stylesheet" type="text/css" href="./styleComment.css">
+</head>
+<body>
+  <!-- Main Body -->
+  <section>
+    <div class="container mt-5">
+      <form id="algin-form">
+        <div class="">
+          <div class="">
+            <h4 class="h4Cmt">Bình Luận</h4>
+            <hr style="background-color: white;">
+            <div id="infoCmt" class="row">
+              <div class="form-group col-6">
+                <label for="name">Tên (<span style="color: red;">*</span>)</label>
+                <input type="text" name="name" id="fullname" class="form-control form-controlFi"
+                  style="background-color: white;" required>
+              </div>
+              <div class="form-group col-6">
+                <label for="email">Số điện thoại(<span style="color: red;">*</span>)</label>
+                <input type="text" name="email" id="email" class="form-control" style="background-color: white;"
+                  required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="message">Nội dung (<span style="color: red;">*</span>)</label>
+              <textarea name="msg" id="" msg cols="30" rows="1" class="form-control resize-ta" style="background-color: white; overflow: hidden;"
+                placeholder="Điều quý khách hàng muốn nói!" required></textarea>
+            </div>
+            <div class="form-group">
+              <button type="button" id="post" class="btn">Bình Luận</button>
+            </div>
+          </div>
+          <div id="blogCmt">
+            <div class="blog-comment">
+              <h3 class="text-success" style="color:black !important; ">Bình Luận</h3>
+              <hr />
+              <ul class="comments">
+                <li class="clearfix">
+                  <p class="contentCmt">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Etiam a sapien odio, sit amet <a href="#">JohnDoe</a> says : 
+                    <a href="#" id="replyCmtTV" ><small>Reply</small></a>
+                  </p>
+                  <div id="replyCmt" style="display: none;">
+                  <form action="">
+                    <div id="infoCmt" class="row">
+                      <div class="form-group col-6">
+                        <label for="name">Tên (<span style="color: red;">*</span>)</label>
+                        <input type="text" name="name" id="fullname" class="form-control form-controlFi"
+                          style="background-color: white;" required>
+                      </div>
+                      <div class="form-group col-6">
+                        <label for="email">Số điện thoại(<span style="color: red;">*</span>)</label>
+                        <input type="text" name="email" id="email" class="form-control" style="background-color: white;"
+                          required>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="message">Nội dung (<span style="color: red;">*</span>)</label>
+                      <textarea name="msg" id="" msg cols="30" rows="1" class="form-control resize-ta" style="background-color: white; overflow: hidden;"
+                      placeholder="Điều quý khách hàng muốn nói!" required></textarea>
+                    </div>
+                    <div class="form-group">
+                      <button type="button" id="post" class="btn">Bình Luận</button>
+                    </div>
+                  </div>
+                  </form>
+                </li>
+                <li class="clearfix" >
+                  <p class="contentCmt">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Etiam a sapien odio, sit amet <a href="#">JohnDoe</a> says : <a href="#"><small>Reply</small></a>
+                  </p>
+                  <ul class="comments">
+                    <p class="contentCmt">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Etiam a sapien odio, sit amet <a href="#">JohnDoe</a> says : <a href="#"><small>Reply</small></a>
+                    </p>
+                    </p>
+                  </ul>
+                  
+                </li>
+              </ul>
+            </div>
+          </div>
+      </form>
+    </div>
+  </section>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+  <script src="./textComment.js"></script>
+</body>
+</html>

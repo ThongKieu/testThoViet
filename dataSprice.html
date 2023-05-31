@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="Description" content="Enter your description here" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>Bảng Giá</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+        }
+
+        table {
+            display: grid;
+            border-collapse: collapse;
+            min-width: 100%;
+            grid-template-columns:
+                minmax(150px, 1fr) minmax(150px, 1.67fr) minmax(150px, 1.67fr) minmax(150px, 1.67fr) minmax(150px, 3.33fr) minmax(150px, 1.67fr) minmax(150px, 3.33fr) minmax(150px, 1.67fr);
+        }
+
+        thead,
+        tbody,
+        tr {
+            display: contents;
+        }
+
+        th,
+        td {
+            padding: 15px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        th {
+            position: sticky;
+            top: 0;
+            background: #6c7ae0;
+            text-align: left;
+            font-weight: normal;
+            font-size: 1.1rem;
+            color: white;
+        }
+
+        th:last-child {
+            border: 0;
+        }
+
+        td {
+            padding-top: 10px;
+            padding-bottom: 10px;
+            color: #808080;
+        }
+
+        tr:nth-child(even) td {
+            background: #f8f6ff;
+        }
+        .active { background-color: lime; }
+        .top_active { background-color: green; }
+    </style>
+</head>
+
+<body>
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle found_top_level top_active" href="#" id="menu-200" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">About</a>
+
+        <ul id="top_level_menu_item" class="dropdown-menu dropdown-menu-arrow dropdown-menu-right dropdown-menu-xl-left"
+            aria-labelledby="menu-200">
+
+            <li class="dropdown-submenu"><a id="sub_menu_set_active" class="dropdown-item active"
+                    href="/dataSprice.html">Track Info</a></li>
+            <li class="dropdown-submenu"><a class="dropdown-item " href="/contactus.html">Directions</a></li>
+            <li class="dropdown-submenu"><a class="dropdown-item " href="/demo.html">Rules</a></li>
+            <li class="dropdown-submenu"><a class="dropdown-item " href="/modalOrder.html">History</a></li>
+
+        </ul>
+    </li>
+    <div class="container mt-5">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>First name</th>
+                    <th>Last name</th>
+                    <th>Email</th>
+                    <th>Street</th>
+                    <th>Country</th>
+                    <th>University</th>
+                    <th>IBAN</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>000001</td>
+                    <td>Lani</td>
+                    <td>Ovendale</td>
+                    <td>lovendale0@w3.org</td>
+                    <td>7850 Old Shore Drive</td>
+                    <td>United Kingdom</td>
+                    <td>University of Plymouth</td>
+                    <td>BG34 MPVP 8782 88EX H1CJ SC</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script>
+        const ul = document.getElementById('output1');
+        const list = document.createDocumentFragment();
+        const url = 'https://data.thoviet.com/api/showAllWork';
+        function load() {
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    // 'Access-Control-Allow-Origin': '*',
+                }
+            }).then((response) => {
+                return response.json();
+            }).then((data) => {
+                let authors = data;
+                console.log(authors);
+                authors.map(function (author) {
+
+                    const divItem = document.createElement('div');
+                    divItem.innerHTML = `
+                    <p><b>${author.work_content}</b></p>
+                    <p>${author.district}</p>
+                    <p>${plusString}</p>
+                        `;
+                    output1.appendChild(divItem);
+                });
+            }).catch(function (error) {
+                console.log(error);
+            });
+        }
+        // output1.appendChild(list);
+        // console.log(list);
+        load();
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+    <script>
+        var has_active_class = $('#sub_menu_set_active').hasClass('active');
+         $('#sub_menu_set_active').closest('.dropdown-menu').prev('.found_top_level').toggleClass('top_active', has_active_class);
+     </script>
+</body>
+
+</html>

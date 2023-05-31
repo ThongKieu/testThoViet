@@ -202,10 +202,341 @@
 </head>
 
 <body>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <div class="containerContact">
         <div class="gridContactLeft">
             <h3>Tư Vấn - Báo Giá - Đặt Lịch Ngay</h3>
             <form action="" id="orderForm" method="post">
+                <div class="contactWork">
+                    <div class="workCont">
+                        <label class="yccv">Yêu cầu công việc<span class="required "
+                                style="float: none !important;">(*)</span></label>
+                        <br>
+                        <input class="inputText" type="text" name="cvCont" id="cvCont" required
+                            placeholder='Ví dụ: Vệ sinh máy lạnh, sửa máy giặt,...'>
+                    </div>
+                    <div class="namePro">
+                        <label class="ten">Họ Và Tên</label>
+                        <input class="inputText" type="text" name="tenCont" id="tenCont" placeholder='Nguyễn Văn A'>
+                    </div>
+                </div>
+                <div class="contactWork">
+                    <div class="workCont">
+                        <label>Số điện thoại<span class="required " style="float: none !important;">(*)</span></label>
+                        <input class="inputTel" type="tel" name="sdtCont" id="sdtCont" placeholder="VD: 0903 532 938"
+                            required>
+                    </div>
+                    <div class="namePro">
+                        <label>Ngày làm<span class="required " style="float: none !important;">(*)</span></label>
+                        <input type="datetime-local" class="inputDate" name="dateCont" id="dateCont"
+                            placeholder="dd-mm-yyyy" required>
+                    </div>
+
+                </div>
+                <div class="contactWork">
+                    <div class="workCont">
+                        <label class="spanDiaChi">Địa Chỉ<span class="required "
+                                style="float: none !important;">(*)</span></label>
+                        <input type="text" class="inputText" name="diaChiCont" placeholder="Số nhà, tên đường"
+                            id="diaChiCont" required>
+                    </div>
+                    <div class="namePro">
+                        <label>Quận, Huyện<span class="required " style="float: none !important;">(*)</span></label>
+                        <br>
+                        <select id="qCont" required>
+                            <option value="">Chọn</option>
+                            <option value="Quận 1"> Quận 1</option>
+                            <option value="Quận 3"> Quận 3</option>
+                            <option value="Quận 4"> Quận 4</option>
+                            <option value="Quận 5"> Quận 5</option>
+                            <option value="Quận 6"> Quận 6</option>
+                            <option value="Quận 7"> Quận 7</option>
+                            <option value="Quận 8"> Quận 8</option>
+                            <option value="Quận 10"> Quận 10</option>
+                            <option value="Quận 11"> Quận 11</option>
+                            <option value="Quận 12"> Quận 12</option>
+                            <option value="TP Thủ Đức">Thành phố Thủ Đức</option>
+                            <option value="Bình Tân">Quận Bình Tân</option>
+                            <option value="Bình Thạnh">Quận Bình Thạnh</option>
+                            <option value="Gò Vấp"> Quận Gò Vấp</option>
+                            <option value="Phú Nhuận">Quận Phú Nhuận</option>
+                            <option value="Tân Bình">Quận Tân Bình</option>
+                            <option value="Tân Phú">Quận Tân Phú</option>
+                            <option value="Bình Chánh">Huyện Bình Chánh</option>
+                            <option value="Cần Giờ">Huyện Cần Giờ</option>
+                            <option value="Củ Chi"> Huyện Củ Chi</option>
+                            <option value="Hooc Môn">Huyện Hóc Môn</option>
+                            <option value="Nhà Bè"> Huyện Nhà Bè</option>
+                            <option value="Dĩ An"> Dĩ An - Bình Dương</option>
+                            <option value="Thuận An">Thuận An - Bình Dương</option>
+                            <option value="Khác">Khác</option>
+                        </select>
+                    </div>
+
+                </div>
+                <div class="noteOrder">
+                    <label>Ghi Chú<span class="required " style="float: none !important;"></span></label>
+                    <input type="text" class="inputText" name="ghiChuCont " id="ghiChuCont"
+                        placeholder="VD: Mang thang cao,...">
+                </div>
+
+                <div class="buttonSubmit" style="text-align: center;">
+                    <button class="buttonItem" style="width: 50%;" type="submit">Đặt Lịch</button>
+                </div>
+            </form>
+        </div>
+        <div class="gridContactRight" >
+            <div class="contentContactRight">
+                <h3 style="text-align: center; background-color:#3d89f8; color: white ">THỢ VIỆT ĐÃ TIẾP NHẬN VÀ XỬ LÝ
+                </h3>
+                <div style="color:black; margin: auto; margin-top: 5px; width: fit-content; height: 600px; border-radius: 15px;  justify-content: space-between; overflow: hidden; z-index: 1;">
+                    <marquee direction="up" height="100%" data-speed=100 scrollamount="10" hspace="20%" vspace="0%"
+                         class="card1">
+                        <div id="output1"></div>
+                    </marquee>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+        const ul2 = document.getElementById('output1');
+        const list = document.createDocumentFragment();
+        // const url = 'https://data.thoviet.com/api/showAllWork';
+        const url = 'https://data.thoviet.com/api/list_work_show';
+        function load() {
+            fetch(url, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    // 'Access-Control-Allow-Origin': '*',
+                }
+            }).then((response) => {
+                return response.json();
+            }).then((data) => {
+                let authors = data;
+                console.log(authors);
+                authors.map(function (author) {
+
+                    const divItem = document.createElement('div');
+                    divItem.innerHTML = `
+                        <span style="color:#0619f9;"><b>${author.work_content}</b></span> <br>
+                        <span>${author.work_name_cus} - ${author.work_distric}</span> <br>
+                        <span><b>${author.work_phone} </b></span>
+						<hr>
+                    `;
+                    ul2.appendChild(divItem);
+                });
+            }).catch(function (error) {
+                console.log(error);
+            });
+        }
+        // output1.appendChild(list);
+        // console.log(list);
+        load();
+    </script>
+    <script>
+        config = {
+            enableTime: false,
+            dateFormat: "d-m-Y",
+            minDate: "today"
+        }
+        flatpickr("input[type = datetime-local]", config);
+    </script>
+    <script>
+        const form = document.getElementById('orderForm');
+        form.addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            const data1 = {
+                yccvCont: document.getElementById('cvCont').value + '&nbsp' + '(' + window.location.href + ')',
+                tenCont: document.getElementById('tenCont').value,
+                sdtCont: document.getElementById('sdtCont').value,
+                quanCont: document.getElementById('qCont').value,
+                diaChiCont: document.getElementById('diaChiCont').value,
+                dateCont: document.getElementById('dateCont').value,
+                ghiChuCont: document.getElementById('ghiChuCont').value,
+                from_cus: 1
+            }
+
+            try {
+                const res = await fetch('https://data.thoviet.com/api/addWork', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        // 'Access-Control-Allow-Origin': '*',
+                    },
+                    body: JSON.stringify(data1),
+                })
+
+                if (res.status !== 200) {
+                    const err = new Error("Error")
+                    throw err;
+                }
+                if (confirm('Đặt lịch thành công! Trở về trang chủ')) {
+                    window.location.replace('https://thoviet.com.vn/');
+                }
+                console.log('data', data);
+            } catch (error) {
+                console.log(error);
+            }
+        });
+
+
+    </script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <div class="containerContact">
+        <div class="gridContactLeft">
+            <h3>Tư Vấn - Báo Giá - Đặt Lịch Ngay</h3>
+            <form action="" id="orderForm" method="post">
+                <div class="">
+                    <div class="workCont">
+                        <label class="yccv">Yêu cầu công việc<span class="required "
+                                style="float: none !important;">(*)</span></label>
+                        <br>
+                        <input class="inputText" type="text" name="cvCont" id="cvCont1" required
+                            placeholder='Ví dụ: Vệ sinh máy lạnh, sửa máy giặt,...'>
+                    </div>
+                    <div class="namePro">
+                        <label class="ten">Họ Và Tên</label>
+                        <input class="inputText" type="text" name="tenCont" id="tenCont1" placeholder='Nguyễn Văn A'>
+                    </div>
+                </div>
+                <div class="">
+                    <div class="workCont">
+                        <label>Số điện thoại<span class="required " style="float: none !important;">(*)</span></label>
+                        <input class="inputTel" type="tel" name="sdtCont" id="sdtCont1" placeholder="VD: 0903 532 938"
+                            required>
+                    </div>
+                    <div class="namePro">
+                        <label>Ngày làm<span class="required " style="float: none !important;">(*)</span></label>
+                        <input type="datetime-local" class="inputDate" name="dateCont1" id="dateCont1"
+                            placeholder="dd-mm-yyyy" required>
+                    </div>
+
+                </div>
+                <div class="">
+                    <div class="workCont">
+                        <label class="spanDiaChi">Địa Chỉ<span class="required "
+                                style="float: none !important;">(*)</span></label>
+                        <input type="text" class="inputText" name="diaChiCont" placeholder="Số nhà, tên đường"
+                            id="diaChiCont1" required>
+                    </div>
+                    <div class="namePro">
+                        <label>Quận, Huyện<span class="required " style="float: none !important;">(*)</span></label>
+                        <br>
+                        <select id="qCont1" required>
+                                                       <option value="">Chọn</option>
+                            <option value="Quận 1"> Quận 1</option>
+                            <option value="Quận 3"> Quận 3</option>
+                            <option value="Quận 4"> Quận 4</option>
+                            <option value="Quận 5"> Quận 5</option>
+                            <option value="Quận 6"> Quận 6</option>
+                            <option value="Quận 7"> Quận 7</option>
+                            <option value="Quận 8"> Quận 8</option>
+                            <option value="Quận 10"> Quận 10</option>
+                            <option value="Quận 11"> Quận 11</option>
+                            <option value="Quận 12"> Quận 12</option>
+                            <option value="TP Thủ Đức">Thành phố Thủ Đức</option>
+                            <option value="Bình Tân">Quận Bình Tân</option>
+                            <option value="Bình Thạnh">Quận Bình Thạnh</option>
+                            <option value="Gò Vấp"> Quận Gò Vấp</option>
+                            <option value="Phú Nhuận">Quận Phú Nhuận</option>
+                            <option value="Tân Bình">Quận Tân Bình</option>
+                            <option value="Tân Phú">Quận Tân Phú</option>
+                            <option value="Bình Chánh">Huyện Bình Chánh</option>
+                            <option value="Cần Giờ">Huyện Cần Giờ</option>
+                            <option value="Củ Chi"> Huyện Củ Chi</option>
+                            <option value="Hooc Môn">Huyện Hóc Môn</option>
+                            <option value="Nhà Bè"> Huyện Nhà Bè</option>
+                            <option value="Dĩ An"> Dĩ An - Bình Dương</option>
+                            <option value="Thuận An">Thuận An - Bình Dương</option>
+                            <option value="Khác">Khác</option>
+                        </select>
+                    </div>
+
+                </div>
+                <div class="noteOrder" style="margin-right:0px">
+                    <label>Ghi Chú<span class="required " style="float: none !important;"></span></label>
+                    <input type="text" class="inputText" name="ghiChuCont " id="ghiChuCont1"
+                        placeholder="VD: Mang thang cao,...">
+                </div>
+
+                <div class="buttonSubmit" style="text-align: center;">
+                    <button class="buttonItem" style="width: 50%;" type="submit">Đặt Lịch</button>
+
+                </div>
+            </form>
+        </div>
+        <div class="gridContactRight" style="word-wrap: break-word; display: none;">
+            <div class="contentContactRight">
+                <h2 style="text-align: center; background-color:#3d89f8; ">CÔNG TY TNHH DỊCH VỤ KỸ THUẬT THỢ VIỆT
+                </h2>
+                <p><b>MSDN:</b> 0311158568</p>
+                <p><b> Số TK:</b> 119 -0000 -80546 tại NH Công Thương Việt Nam – Chi nhánh 2 TP. HCM ( Vietinbank)</p>
+                <p><b>Website:</b> www.thoviet.com.vn</p>
+                <p><b>Email:</b> info@thoviet.com.vn</p>
+                <p><b>Tel:</b> 1800 8122 (Miễn phí cước gọi)</p>
+                <p><b>Hotline:</b> 0903 532 938</p>
+            </div>
+        </div>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+        config = {
+            enableTime: false,
+            dateFormat: "d-m-Y",
+            minDate: "today"
+        }
+        flatpickr("input[type = datetime-local]", config);
+    </script>
+    <script>
+        const form1 = document.getElementById('orderForm');
+        form1.addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            const data1 = {
+                yccvCont: document.getElementById('cvCont1').value + '&nbsp' + '(' + window.location.href + ')',
+                tenCont: document.getElementById('tenCont1').value,
+                sdtCont: document.getElementById('sdtCont1').value,
+                quanCont: document.getElementById('qCont1').value,
+                diaChiCont: document.getElementById('diaChiCont1').value,
+                dateCont: document.getElementById('dateCont1').value,
+                ghiChuCont: document.getElementById('ghiChuCont1').value,
+                from_cus: 1
+            }
+
+            try {
+                const res = await fetch('https://data.thoviet.com/api/addWork', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        // 'Access-Control-Allow-Origin': '*',
+                    },
+                    body: JSON.stringify(data1),
+                })
+
+                if (res.status !== 200) {
+                    const err = new Error("Error")
+                    throw err;
+                }
+                if (confirm('Đặt lịch thành công! Trở về trang chủ')) {
+                    window.location.replace('https://thoviet.com.vn/');
+                }
+                console.log('data', data);
+            } catch (error) {
+                console.log(error);
+            }
+        });
+
+
+    </script>
+    <!-- <div class="containerContact">
+                                                                        <div class="gridContactLeft">
+                                                                            <h3>Tư Vấn - Báo Giá - Đặt Lịch Ngay</h3>
+                                                                            <form action="" id="orderForm" method="post">
                 <div class="contactWork">
                     <div class="workCont">
                         <label class="yccv">Yêu cầu công việc <span>(*)</span></label>
@@ -300,7 +631,7 @@
         form.addEventListener('submit', async function (e) {
             e.preventDefault();
             const data1 = {
-                yccvCont: document.getElementById('cvCont').value + '' + 'thoviet.com.vn',
+                yccvCont: document.getElementById('cvCont').value + '&nbsp' + '(' + window.location.href + ')',
                 tenCont: document.getElementById('tenCont').value,
                 sdtCont: document.getElementById('sdtCont').value,
                 quanCont: document.getElementById('qCont').value,
@@ -337,7 +668,7 @@
         console.log(d);
         document.getElementById("dateCont").value = moment().format('dd-MM-yyyy');
         console.log();
-    </script>
+    </script> -->
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 

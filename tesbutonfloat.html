@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="Description" content="Enter your description here" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
+    <title>Title</title>
+</head>
+
+<body>
+
+    <div class="btnBookNow btnBookNow1">
+      
+        <span onclick="orderClick()">
+            <img src="https://thoviet.com.vn/wp-content/uploads/2023/05/logoBooknow.png" alt="">
+        </span>
+        <br>
+    </div>
+    <script>
+        function orderClick() {
+            window.open("https://thoviet.com.vn/dat-dich-vu-nhanh-chong", '_blank');
+        }
+    </script>
+    <style>
+        /* button book now  */
+        .btnBookNow {
+            position: relative;
+            position: fixed;
+            bottom: 180px;
+            left: 30px;
+            cursor: pointer;
+        }
+
+        .btnBookNow img {
+            width: 160px;
+            transition: width 2s;
+        }
+
+        .btnBookNow img:hover {
+            width: 180px;
+        }
+
+        @media only screen and (max-width: 768px) {
+            .btnBookNow img {
+                width: 120px;
+            }
+        }
+
+        @-webkit-keyframes my {
+            0% {
+                background-color: #ffd100;
+            }
+
+            30% {
+                background-color: black;
+            }
+
+            100% {
+                background-color: #ffd100;
+            }
+        }
+
+        @-moz-keyframes my {
+             0% {
+                background-color: #ffd100;
+            }
+
+            30% {
+                background-color: black;
+            }
+
+            100% {
+                background-color: #ffd100;
+            }
+        }
+
+        @-o-keyframes my {
+             0% {
+                background-color: #ffd100;
+            }
+
+            30% {
+                background-color: black;
+            }
+
+            100% {
+                background-color: #ffd100;
+            }
+        }
+
+        @keyframes my {
+             0% {
+                background-color: #ffd100;
+            }
+
+            30% {
+                background-color: black;
+            }
+
+            100% {
+                background-color: #ffd100;
+            }
+        }
+
+        .btnBookNow1 {
+          
+            background: #3d3d3d;
+            font-size: 24px;
+            font-weight: bold;
+            border-radius: 5px;
+            z-index: -1;
+            -webkit-animation: my 700ms infinite;
+            -moz-animation: my 700ms infinite;
+            -o-animation: my 700ms infinite;
+            animation: my 700ms infinite;
+        }
+
+        /* end button book now  */
+    </style>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script>
+        function orderClick() {
+            window.open("https://thoviet.com.vn/dat-dich-vu-nhanh-chong", '_blank');
+        }
+    </script>
+</body>
+
+</html>

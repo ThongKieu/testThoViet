@@ -1,0 +1,430 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>test modall - thoviet.vn</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <style>
+
+        .gridContactLeft {
+            grid-area: left;
+            width: 100%;
+        }
+
+        .gridContactLeft h3 {
+            font-size: 30px;
+            text-align: center;
+        }
+
+        .gridContactLeft input {
+            width: 100%;
+            border: none;
+            border-bottom: 1px solid #ccc;
+            padding-left: 0;
+            padding-right: 0;
+            border-radius: 0;
+            background: none;
+            outline: none;
+            margin-top: 5px;
+        }
+
+        .gridContactLeft input:focus {
+            border-bottom: 1px solid black;
+
+        }
+
+        .gridContactLeft select {
+            width: 100%;
+            border: none;
+            border-bottom: 1px solid #ccc;
+            padding-left: 0;
+            padding-right: 0;
+            border-radius: 0;
+            background: none;
+            outline: none;
+        }
+
+        .gridContactLeft select:focus {
+            border-bottom: 1px solid black;
+        }
+
+
+
+        .form-control {
+            display: block;
+            width: 100%;
+            height: calc(1.5em + 0.75rem + 2px);
+            padding: 0.375rem 0.75rem;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #495057;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #ced4da;
+            border-radius: 0.25rem;
+            -webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+            transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+            -o-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+        }
+
+        .gridContactRight {
+            grid-area: right;
+            width: 100%;
+        }
+
+        .containerContact {
+            width: 100%;
+            margin: auto;
+            display: grid;
+            grid-template-areas:
+                'left   left right';
+        }
+
+        .gridContactLeft {
+            background-color: white;
+        }
+
+        .gridContactRight {
+            color: white;
+            background-color: #ffb400;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .containerContact label {
+            font-size: 14px;
+            color: #b3b3b3;
+            margin: 0 0 10px 0;
+            display: inline-block;
+            padding: 0;
+        }
+
+        .contactWork {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+        }
+
+        .workCont {
+            width: 100%;
+            margin-right: 20px;
+        }
+
+        .namePro {
+            width: 100%;
+            margin-right: 30px;
+        }
+
+        .noteOrder {
+            margin-right: 30px;
+            margin-top: 15px;
+        }
+
+        .buttonSubmit {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .buttonItem {
+            padding: 4px;
+            border: none;
+            color: white;
+            background-color: #ffb400;
+            font-size: 15px;
+            width: 100%;
+            border-radius: 5px;
+        }
+
+        .contentContactRight {
+            padding: 5px;
+        }
+
+        .buttonItem:not(:disabled):not(.disabled) {
+            cursor: pointer;
+        }
+
+        /* reponsive  */
+        @media only screen and (max-width : 768px) {
+
+            /* Styles */
+            .containerContact {
+              
+                display: block;
+                height: 100%;
+            }
+
+            .contactWork {
+                display: block;
+                margin-top: 15px;
+            }
+
+            .workCont {
+                width: 100%;
+                margin-right: 0;
+                margin-top: 20px;
+            }
+
+            .namePro {
+                width: 100%;
+                margin-right: 0;
+                margin-top: 20px;
+            }
+
+            .noteOrder {
+                margin-right: 0;
+                margin-top: 20px;
+            }
+
+            #orderForm {
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+            .gridContactRight{
+                display: none;
+            }
+        }
+
+        #orderForm {
+            padding-left: 10px;
+        }
+        .modal-dialog {
+    max-width: 80%;
+}
+    </style>
+</head>
+
+<body>
+    <!-- Button trigger modal -->
+    <button type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter">
+        <img src="./logoBooknow.png" alt="">
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    
+                    <h3 class="modal-title" id="exampleModalLongTitle">Tư Vấn - Báo Giá - Đặt Lịch Ngay</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="containerContact">
+                        <div class="gridContactLeft">
+                          
+                            <form action="" id="orderForm" method="post">
+                                <div class="contactWork">
+                                    <div class="workCont">
+                                        <label class="yccv">Yêu cầu công việc<span class="required "
+                                                style="float: none !important; color: red;">(*)</span></label>
+                                        <br>
+                                        <input class="inputText" type="text" name="cvCont" id="cvCont" required
+                                            placeholder='Ví dụ: Vệ sinh máy lạnh, sửa máy giặt,...'>
+                                    </div>
+                                    <div class="namePro">
+                                        <label class="ten">Họ Và Tên</label>
+                                        <input class="inputText" type="text" name="tenCont" id="tenCont" placeholder='Nguyễn Văn A'>
+                                    </div>
+                                </div>
+                                <div class="contactWork">
+                                    <div class="workCont">
+                                        <label>Số điện thoại<span class="required " style="float: none !important; color: red;">(*)</span></label>
+                                        <input class="inputTel" type="tel" name="sdtCont" id="sdtCont" placeholder="VD: 0903 532 938"
+                                            required>
+                                    </div>
+                                    <div class="namePro">
+                                        <label>Ngày làm<span class="required " style="float: none !important; color: red;">(*)</span></label>
+                                        <input type="datetime-local" class="inputDate" name="dateCont" id="dateCont"
+                                            placeholder="dd-mm-yyyy" required>
+                                    </div>
+                    
+                                </div>
+                                <div class="contactWork">
+                                    <div class="workCont">
+                                        <label class="spanDiaChi">Địa Chỉ<span class="required "
+                                                style="float: none !important; color: red;">(*)</span></label>
+                                        <input type="text" class="inputText" name="diaChiCont" placeholder="Số nhà, tên đường"
+                                            id="diaChiCont" required>
+                                    </div>
+                                    <div class="namePro">
+                                        <label>Quận, Huyện<span class="required " style="float: none !important; color: red;">(*)</span></label> <br>
+                                        <select id="qCont" required>
+                                            <option value="">Chọn</option>
+                                            <option value="Quận 1"> Quận 1</option>
+                                            <option value="Quận 3"> Quận 3</option>
+                                            <option value="Quận 4"> Quận 4</option>
+                                            <option value="Quận 5"> Quận 5</option>
+                                            <option value="Quận 6"> Quận 6</option>
+                                            <option value="Quận 7"> Quận 7</option>
+                                            <option value="Quận 8"> Quận 8</option>
+                                            <option value="Quận 10"> Quận 10</option>
+                                            <option value="Quận 11"> Quận 11</option>
+                                            <option value="Quận 12"> Quận 12</option>
+                                            <option value="TP Thủ Đức">Thành phố Thủ Đức</option>
+                                            <option value="Bình Tân">Quận Bình Tân</option>
+                                            <option value="Bình Thạnh">Quận Bình Thạnh</option>
+                                            <option value="Gò Vấp"> Quận Gò Vấp</option>
+                                            <option value="Phú Nhuận">Quận Phú Nhuận</option>
+                                            <option value="Tân Bình">Quận Tân Bình</option>
+                                            <option value="Tân Phú">Quận Tân Phú</option>
+                                            <option value="Bình Chánh">Huyện Bình Chánh</option>
+                                            <option value="Cần Giờ">Huyện Cần Giờ</option>
+                                            <option value="Củ Chi"> Huyện Củ Chi</option>
+                                            <option value="Hooc Môn">Huyện Hóc Môn</option>
+                                            <option value="Nhà Bè"> Huyện Nhà Bè</option>
+                                            <option value="Dĩ An"> Dĩ An - Bình Dương</option>
+                                            <option value="Thuận An">Thuận An - Bình Dương</option>
+                                            <option value="Khác">Khác</option>
+                                        </select>
+                                    </div>
+                    
+                                </div>
+                                <div class="noteOrder">
+                                    <label>Ghi Chú<span class="required " style="float: none !important;"></span></label>
+                                    <input type="text" class="inputText" name="ghiChuCont " id="ghiChuCont"
+                                        placeholder="VD: Mang thang cao,...">
+                                </div>
+                    
+                              
+                           
+                        </div>
+                        <div class="gridContactRight" style="word-wrap: break-word;">
+                            <div class="contentContactRight">
+                                <h3 style="text-align: center; background-color:#ffb400; color: white; ">THỢ VIỆT <br> ĐÃ TIẾP NHẬN VÀ XỬ LÝ
+                                </h3>
+                                <div
+                                    style="color:black; margin: auto; margin-top: 5px; width: fit-content; height: 440px; border-radius: 15px;  justify-content: space-between; overflow: hidden; z-index: 1; background-color: white">
+                                    <marquee direction="up" height="100%" data-speed=100 scrollamount="10" hspace="15px" vspace="0%"
+                                         class="card1">
+                                        <div id="output1"></div>
+                                    </marquee>
+                                </div>
+                            </div>
+                        </div>
+                    
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <button type="button" class="  btn btn-secondary " data-dismiss="modal" style="width: 20%;">Đóng</button>
+                    <div class="buttonSubmit buttonItem" style="text-align: center; width: 20%;">
+                        <button class="buttonItem"  type="submit">Đặt Lịch</button>
+                    </div>
+                </div>
+            </form>
+            </div>
+        </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+        <script>
+            const ul2 = document.getElementById('output1');
+            const list = document.createDocumentFragment();
+            // const url = 'https://data.thoviet.com/api/showAllWork';
+            const url = 'https://data.thoviet.com/api/list_work_show';
+            function load() {
+                fetch(url, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        // 'Access-Control-Allow-Origin': '*',
+                    }
+                }).then((response) => {
+                    return response.json();
+                }).then((data) => {
+                    let authors = data;
+                    console.log(authors);
+                    authors.map(function (author) {
+        
+                        const divItem = document.createElement('div');
+                        divItem.innerHTML = `
+                                <span style="color:#0619f9;"><b>${author.work_content}</b></span> <br>
+                                <span>${author.work_name_cus} - ${author.work_distric}</span> <br>
+                                <span><b>${author.work_phone} </b></span>
+                                <hr>
+                            `;
+                        ul2.appendChild(divItem);
+                    });
+                }).catch(function (error) {
+                    console.log(error);
+                });
+            }
+            // output1.appendChild(list);
+            // console.log(list);
+            load();
+        </script>
+        <script>
+            config = {
+                enableTime: false,
+                dateFormat: "d-m-Y",
+                minDate: "today"
+            }
+            flatpickr("input[type = datetime-local]", config);
+        </script>
+        <script>
+            const form = document.getElementById('orderForm');
+            form.addEventListener('submit', async function (e) {
+                e.preventDefault();
+        
+                const data1 = {
+                    yccvCont: document.getElementById('cvCont').value + '&nbsp' + '(' + window.location.href + ')',
+                    tenCont: document.getElementById('tenCont').value,
+                    sdtCont: document.getElementById('sdtCont').value,
+                    quanCont: document.getElementById('qCont').value,
+                    diaChiCont: document.getElementById('diaChiCont').value,
+                    dateCont: document.getElementById('dateCont').value,
+                    ghiChuCont: document.getElementById('ghiChuCont').value,
+                    from_cus: 1
+                }
+        
+                try {
+                    const res = await fetch('https://data.thoviet.com/api/addWork', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            // 'Access-Control-Allow-Origin': '*',
+                        },
+                        body: JSON.stringify(data1),
+                    })
+        
+                    if (res.status !== 200) {
+                        const err = new Error("Error")
+                        throw err;
+                    }
+                    if (confirm('Đặt lịch thành công! Trở về trang chủ')) {
+                        window.location.replace('https://thoviet.com.vn/');
+                    }
+                    console.log('data', data);
+                } catch (error) {
+                    console.log(error);
+                }
+            });
+        
+        
+        </script>
+</body>
+
+</html>

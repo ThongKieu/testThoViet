@@ -1,0 +1,53 @@
+@import url(https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css);
+@import url(https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js);
+@media (min-width: 568px) {
+  .end {
+    margin-left: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  #post {
+    width: 100%;
+  }
+}
+
+#post {
+  margin: 10px;
+  padding: 6px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  text-align: center;
+  background-color: #ecb21f;
+  border-color: #a88734 #9c7e31 #846a29;
+  color: black;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 13px;
+  width: 50%;
+}
+
+.comments {
+  margin-top: 3%;
+  padding-left: 10px;
+  border-left: 1px solid grey;
+}
+
+.blog-comment ul {
+  list-style-type: none;
+  padding: 0;
+  padding-left: 10px;
+}
+.h4Cmt {
+  color: black;
+}
+#infoCmt{
+    width: 50%;
+}
+textarea{
+    resize: none;
+}
+/* #replyCmt{
+    display: none;
+} */
+

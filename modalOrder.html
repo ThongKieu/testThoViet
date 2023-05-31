@@ -6,8 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="Description" content="Enter your description here" />
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> -->
 
     <title>Modal - Order</title>
 
@@ -124,88 +122,89 @@
                 </div>
             </div>
         </div>
+    </div>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-app.js";
+        import { getAuth, signInWithPhoneNumber, RecaptchaVerifier } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-auth.js";
 
-        <script type="module">
-            import { initializeApp } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-app.js";
-            import { getAuth, signInWithPhoneNumber, RecaptchaVerifier } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-auth.js";
+        const firebaseConfig = {
+            apiKey: "AIzaSyBl5rDC-JcMqyi0Ds7xQWkDRXwW7rFAa0A",
+            authDomain: "appthoviet.firebaseapp.com",
+            databaseURL: "https://www.appthoviet-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "appthoviet",
+            storageBucket: "appthoviet.appspot.com",
+            messagingSenderId: "886027498015",
+            appId: "1:886027498015:web:59d9efe286b74e198a5b2a",
+            measurementId: "G-FNYWG3WVSP"
+        };
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
 
-            const firebaseConfig = {
-                apiKey: "AIzaSyBl5rDC-JcMqyi0Ds7xQWkDRXwW7rFAa0A",
-                authDomain: "appthoviet.firebaseapp.com",
-                databaseURL: "https://appthoviet-default-rtdb.asia-southeast1.firebasedatabase.app",
-                projectId: "appthoviet",
-                storageBucket: "appthoviet.appspot.com",
-                messagingSenderId: "886027498015",
-                appId: "1:886027498015:web:59d9efe286b74e198a5b2a",
-                measurementId: "G-FNYWG3WVSP"
-            };
-            const app = initializeApp(firebaseConfig);
-            const auth = getAuth(app);
-
-            const numberPhoneInput = document.querySelector('#numberPhone');
-            const orderButtonId = document.querySelector('#orderButton');
-            const successDiv = document.querySelector('.p-conf');
-            const errorDiv = document.querySelector('.n-conf');
+        const numberPhoneInput = document.querySelector('#numberPhone');
+        const orderButtonId = document.querySelector('#orderButton');
+        const successDiv = document.querySelector('.p-conf');
+        const errorDiv = document.querySelector('.n-conf');
 
 
-            window.recaptchaVerifier = new RecaptchaVerifier('recaptcha-container', {}, auth);
-            // recaptchaVerifier.render().then((widgetId) => {
-            //     window.recaptchaWidgetId = widgetId;
-            // });
-            orderButtonId.addEventListener('click', function order(e) {
-                e.preventDefault();
-                const numberPhoneVal = numberPhoneInput.value;
-                const appVerifier = window.recaptchaVerifier;
-                console.log(numberPhoneVal);
-                if (isPhoneNumberValid()) {
-                    signInWithPhoneNumber(auth, numberPhoneVal, appVerifier)
-                        .then((confirmationResult) => {
-                            return window.confirmationResult = confirmationResult;
-                            console.log(confirmationResult);
+        window.recaptchaVerifier = new RecaptchaVerifier('recaptcha-container', {}, auth);
+        // recaptchaVerifier.render().then((widgetId) => {
+        //     window.recaptchaWidgetId = widgetId;
+        // });
+        orderButtonId.addEventListener('click', function order(e) {
+            e.preventDefault();
+            const numberPhoneVal = numberPhoneInput.value;
+            const appVerifier = window.recaptchaVerifier;
+            console.log(numberPhoneVal);
 
-                        })
-                        .catch((error) => {
-                            alert(error.message);
-                        })
-                }
-                else (signInWithPhoneNumber(auth, numberPhoneVal, appVerifier)
+            if (isPhoneNumberValid()) {
+                signInWithPhoneNumber(auth, numberPhoneVal, appVerifier)
                     .then((confirmationResult) => {
                         return window.confirmationResult = confirmationResult;
                         console.log(confirmationResult);
 
                     })
                     .catch((error) => {
-                        alert(error.message);
-                    }))
+                        alert('Loi la' + error.message);
+                    })
+            }
+            else (signInWithPhoneNumber(auth, numberPhoneVal, appVerifier)
+                .then((confirmationResult) => {
+                    return window.confirmationResult = confirmationResult;
+                    console.log(confirmationResult);
 
-            })
-
-            function codeverifier() {
-                var code = document.getElementById('verificationcode').style.display = 'block';
-                confirmationResult.confirm(code).then(function () {
-                    document.getElementById('p-conf')[0].style.display = "block";
-                    document.getElementById('n-conf')[0].style.display = 'none';
-                }).catch(function () {
-                    document.getElementById('p-conf')[0].style.display = "none";
-                    document.getElementById('n-conf')[0].style.display = 'block';
                 })
-            }
-            isPhoneNumberValid();
-            function getPhoneNumberFromUserInput() {
-                return document.getElementById('numberPhone').value;
-            }
-            function isPhoneNumberValid() {
-                var pattern = /^\+[0-9\s\-\(\)]+$/;
-                var phoneNumber = getPhoneNumberFromUserInput();
-                return phoneNumber.search(pattern) !== -1;
-                console.log(phoneNumber);
-            }
+                .catch((error) => {
+                    alert('Số điện thoại không đúng định dạng!' + error.message);
+                }))
+
+        })
+
+        function codeverifier() {
+            var code = document.getElementById('verificationcode').style.display = 'block';
+            confirmationResult.confirm(code).then(function () {
+                document.getElementById('p-conf')[0].style.display = "block";
+                document.getElementById('n-conf')[0].style.display = 'none';
+            }).catch(function () {
+                document.getElementById('p-conf')[0].style.display = "none";
+                document.getElementById('n-conf')[0].style.display = 'block';
+            })
+        }
+        isPhoneNumberValid();
+        function getPhoneNumberFromUserInput() {
+            return document.getElementById('numberPhone').value;
+        }
+        function isPhoneNumberValid() {
+            var pattern = /^\+[0-9\s\-\(\)]+$/;
+            var phoneNumber = getPhoneNumberFromUserInput();
+            return phoneNumber.search(pattern) !== -1;
+            console.log(phoneNumber);
+        }
 
 
-        </script>
-        </script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </script>
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
 
 </html>

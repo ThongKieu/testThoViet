@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Send OTP to Phone</title>
+    <!-- Include Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        div {
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input {
+            padding: 5px;
+            font-size: 14px;
+            width: 200px;
+        }
+
+        button {
+            padding: 5px 10px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Send OTP to Phone</h1>
+    <div>
+        <label for="phoneNumber">Phone Number:</label>
+        <input type="text" id="phoneNumber" placeholder="Enter phone number">
+        <button id="sendOTPButton">Send OTP</button>
+    </div>
+    <script>
+        // Initialize Firebase with your own config
+        const firebaseConfig = {
+            apiKey: "AIzaSyBl5rDC-JcMqyi0Ds7xQWkDRXwW7rFAa0A",
+            authDomain: "appthoviet.firebaseapp.com",
+            databaseURL: "https://appthoviet-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "appthoviet",
+            storageBucket: "appthoviet.appspot.com",
+            messagingSenderId: "886027498015",
+            appId: "1:886027498015:web:e641dc105b199eca8a5b2a",
+            measurementId: "G-LJJ8QGQ92R"
+        };
+        firebase.initializeApp(firebaseConfig);
+
+        // Get references to HTML elements
+        const phoneNumberInput = document.getElementById('phoneNumber');
+        const sendOTPButton = document.getElementById('sendOTPButton');
+
+        // Function to send OTP
+        function sendOTP() {
+            const phoneNumber = phoneNumberInput.value;
+            const appVerifier = new firebase.auth.RecaptchaVerifier('sendOTPButton', {
+                'size': 'invisible',
+                'callback': function (response) {
+                    // reCAPTCHA solved, allow signInWithPhoneNumber.
+                    // This callback function is optional.
+                }
+            });
+
+            // Send OTP to the provided phone number
+            firebase.auth().signInWithPhoneNumber(phoneNumber, appVerifier)
+                .then((confirmationResult) => {
+                    // OTP sent successfully.
+                    // You can store the confirmationResult to verify the OTP later.
+                    const verificationCode = window.prompt('Please enter the verification code that was sent to your phone:');
+                    return confirmationResult.confirm(verificationCode);
+                })
+                .then((result) => {
+                    // Phone number verification successful.
+                    console.log(result);
+                })
+                .catch((error) => {
+                    // Error occurred while sending OTP or verifying phone number.
+                    console.error(error);
+                });
+        }
+
+        // Attach click event listener to the sendOTPButton
+        sendOTPButton.addEventListener('click', sendOTP);
+
+    </script>
+
+    <!-- Include your own Firebase SDK configuration -->
+    <!-- <script src="/firebase-config.js"></script> -->
+    <!-- Include your custom JavaScript file -->
+    <!-- <script src="script.js"></script> -->
+</body>
+
+</html>
