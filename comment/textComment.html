@@ -1,96 +1,143 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Comment Form</title>
   <link rel="stylesheet" type="text/css" href="./styleComment.css">
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
 </head>
+
 <body>
-  <!-- Main Body -->
-  <section>
-    <div class="container mt-5">
-      <form id="algin-form">
-        <div class="">
-          <div class="">
-            <h4 class="h4Cmt">Bình Luận</h4>
-            <hr style="background-color: white;">
-            <div id="infoCmt" class="row">
-              <div class="form-group col-6">
-                <label for="name">Tên (<span style="color: red;">*</span>)</label>
-                <input type="text" name="name" id="fullname" class="form-control form-controlFi"
-                  style="background-color: white;" required>
-              </div>
-              <div class="form-group col-6">
-                <label for="email">Số điện thoại(<span style="color: red;">*</span>)</label>
-                <input type="text" name="email" id="email" class="form-control" style="background-color: white;"
-                  required>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="message">Nội dung (<span style="color: red;">*</span>)</label>
-              <textarea name="msg" id="" msg cols="30" rows="1" class="form-control resize-ta" style="background-color: white; overflow: hidden;"
-                placeholder="Điều quý khách hàng muốn nói!" required></textarea>
-            </div>
-            <div class="form-group">
-              <button type="button" id="post" class="btn">Bình Luận</button>
-            </div>
+
+  <section class="formCmt" style="width: 70%; margin: auto;">
+    <form id="formCmtTV" action="" method="post">
+      <h4 class="headCmtForm">Bình Luận</h4>
+      <hr>
+      <div id="infoCmt">
+        <div class="gridCmt">
+          <div class="grid-item-cmt">
+            <input type="text" name="name" id="fullName" class="form-controlFix" placeholder=" "
+              style="background-color: white;" required>
+            <label class="labelField" for="name">Tên (<span style="color: red;">*</span>)</label>
           </div>
-          <div id="blogCmt">
-            <div class="blog-comment">
-              <h3 class="text-success" style="color:black !important; ">Bình Luận</h3>
-              <hr />
-              <ul class="comments">
-                <li class="clearfix">
-                  <p class="contentCmt">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Etiam a sapien odio, sit amet <a href="#">JohnDoe</a> says : 
-                    <a href="#" id="replyCmtTV" ><small>Reply</small></a>
-                  </p>
-                  <div id="replyCmt" style="display: none;">
-                  <form action="">
-                    <div id="infoCmt" class="row">
-                      <div class="form-group col-6">
-                        <label for="name">Tên (<span style="color: red;">*</span>)</label>
-                        <input type="text" name="name" id="fullname" class="form-control form-controlFi"
-                          style="background-color: white;" required>
-                      </div>
-                      <div class="form-group col-6">
-                        <label for="email">Số điện thoại(<span style="color: red;">*</span>)</label>
-                        <input type="text" name="email" id="email" class="form-control" style="background-color: white;"
-                          required>
-                      </div>
+          <div class="grid-item-cmt">
+            <input type="number" name="sdt" id="sdt" class="form-controlFix" placeholder=" "
+              style="background-color: white;" required>
+            <label class="labelField" for="name">Số điện thoại (<span style="color: red;">*</span>)</label>
+
+          </div>
+        </div>
+        <div class="textarea-cmt">
+          <textarea name="msg" id="textAreaCmt" msg cols="30" rows="1" class="form-controlFixTextarea resize-ta"
+            style="background-color: white; overflow: hidden;" placeholder=" " required></textarea>
+          <label class="labelFieldTextarea" for="message">Nội dung (<span style="color: red;">*</span>)</label>
+        </div>
+        <div class="formBtnCmt">
+          <button type="button" id="postcmt" class="formBtn-Cmt">Bình Luận</button>
+        </div>
+      </div>
+      <div class="blog-comment">
+        <h4 class="headCmtForm">1 Bình Luận</h4>
+        <hr />
+        <!-- comment  -->
+        <div class="containerCmt">
+
+        </div>
+        <ul class="commentsCmt">
+          <!-- <li class="clearfixCmt">
+            <p class="pContentCmt">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Etiam a sapien odio, sit amet 1
+              <span><b>JohnDoe</b></span>
+              says :
+              <a href="#" id="replyCmtTV" class="aContentCmt" ><small>Reply</small></a>
+            </p>
+            <div id="replyCmt" >
+             
+              <form action="">
+                <div id="infoCmt">
+                  <div class="gridCmt">
+                    <div class="grid-item-cmt">
+                      <input type="text" name="name" id="fullname" class="form-controlFix" placeholder=" "
+                        style="background-color: white;" required>
+                      <label class="labelField" for="name">Tên (<span style="color: red;">*</span>)</label>
                     </div>
-                    <div class="form-group">
-                      <label for="message">Nội dung (<span style="color: red;">*</span>)</label>
-                      <textarea name="msg" id="" msg cols="30" rows="1" class="form-control resize-ta" style="background-color: white; overflow: hidden;"
-                      placeholder="Điều quý khách hàng muốn nói!" required></textarea>
-                    </div>
-                    <div class="form-group">
-                      <button type="button" id="post" class="btn">Bình Luận</button>
+                    <div class="grid-item-cmt">
+                      <input type="number" name="sdt" id="sdt" class="form-controlFix" placeholder=" "
+                        style="background-color: white;" required>
+                      <label class="labelField" for="name">Số điện thoại (<span style="color: red;">*</span>)</label>
+
                     </div>
                   </div>
-                  </form>
-                </li>
-                <li class="clearfix" >
-                  <p class="contentCmt">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Etiam a sapien odio, sit amet <a href="#">JohnDoe</a> says : <a href="#"><small>Reply</small></a>
-                  </p>
-                  <ul class="comments">
-                    <p class="contentCmt">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Etiam a sapien odio, sit amet <a href="#">JohnDoe</a> says : <a href="#"><small>Reply</small></a>
-                    </p>
-                    </p>
-                  </ul>
-                  
-                </li>
-              </ul>
+                  <div class="textarea-cmt">
+                    <textarea name="msg" id="textAreaCmt" msg cols="30" rows="1"
+                      class="form-controlFixTextarea resize-ta" style="background-color: white; overflow: hidden;"
+                      placeholder=" " required></textarea>
+                    <label class="labelFieldTextarea" for="message">Nội dung (<span
+                        style="color: red;">*</span>)</label>
+                  </div>
+                  <div class="formBtnCmt">
+                    <button type="button" id="postcmt" class="formBtn-Cmt">Bình Luận</button>
+                  </div>
+                </div>
+              </form>
             </div>
-          </div>
-      </form>
-    </div>
+           
+            <ul class="comments">
+              <p class="pContentCmt">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Etiam a sapien odio, sit amet 1
+                <span><b>JohnDoe</b></span>
+                says :
+                <a href="#" id="replyCmtTV" class="aContentCmt"><small>Reply</small></a>
+              </p>
+              <div id="replyCmt" >
+                <form action="">
+                  <div id="infoCmt">
+                    <div class="gridCmt">
+                      <div class="grid-item-cmt">
+                        <input type="text" name="name" id="fullname" class="form-controlFix" placeholder=" "
+                          style="background-color: white;" required>
+                        <label class="labelField" for="name">Tên (<span style="color: red;">*</span>)</label>
+                      </div>
+                      <div class="grid-item-cmt">
+                        <input type="number" name="sdt" id="sdt" class="form-controlFix" placeholder=" "
+                          style="background-color: white;" required>
+                        <label class="labelField" for="name">Số điện thoại (<span style="color: red;">*</span>)</label>
+  
+                      </div>
+                    </div>
+                    <div class="textarea-cmt">
+                      <textarea name="msg" id="textAreaCmt" msg cols="30" rows="1"
+                        class="form-controlFixTextarea resize-ta" style="background-color: white; overflow: hidden;"
+                        placeholder=" " required></textarea>
+                      <label class="labelFieldTextarea" for="message">Nội dung (<span
+                          style="color: red;">*</span>)</label>
+                    </div>
+                    <div class="formBtnCmt">
+                      <button type="button" id="postcmt" class="formBtn-Cmt">Bình Luận</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </ul>
+          </li> -->
+        </ul>
+        
+        <!-- end comment  -->
+      </div>
+    </form>
   </section>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+  <!-- Main Body -->
+
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> -->
   <script src="./textComment.js"></script>
 </body>
+
 </html>

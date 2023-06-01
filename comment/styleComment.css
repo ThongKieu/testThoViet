@@ -1,53 +1,152 @@
-@import url(https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css);
-@import url(https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js);
-@media (min-width: 568px) {
-  .end {
-    margin-left: auto;
-  }
-}
-
-@media (max-width: 768px) {
-  #post {
-    width: 100%;
-  }
-}
-
-#post {
-  margin: 10px;
-  padding: 6px;
-  padding-top: 2px;
-  padding-bottom: 2px;
-  text-align: center;
-  background-color: #ecb21f;
-  border-color: #a88734 #9c7e31 #846a29;
-  color: black;
-  border-width: 1px;
-  border-style: solid;
-  border-radius: 13px;
-  width: 50%;
-}
-
-.comments {
-  margin-top: 3%;
-  padding-left: 10px;
-  border-left: 1px solid grey;
-}
-
-.blog-comment ul {
-  list-style-type: none;
+.formCmt {
   padding: 0;
+  margin: 0;
+  font-size: 1.1rem;
+}
+.headCmtForm {
+  margin-bottom: 5px;
+  font-size: 16px;
+  color: gray;
+  font-weight: 500;
+}
+.infoCmt {
+  margin: auto;
+}
+.gridCmt {
+  display: grid;
+  grid-template-columns: auto auto;
+}
+.grid-item-cmt {
+  position: relative;
+  text-align: center;
+}
+.grid-item-cmt label {
+  display: block;
+}
+.grid-item-cmt input[type="number"]::-webkit-inner-spin-button,
+.grid-item-cmt input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.form-controlFix {
+  display: block;
+  width: 90%;
+  margin: auto;
+  height: calc(1.5em + 0.75rem + 2px);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   padding-left: 10px;
 }
-.h4Cmt {
+.form-controlFix:focus {
+  color: #495057;
+  background-color: #fff;
+  border-color: #80bdff;
+  outline: 0;
+}
+.labelField {
+  position: absolute;
+  top: 25%;
+  left: 25px;
+  z-index: 10;
+  color: grey;
+  font-size: 16px;
+  pointer-events: none;
+  transition: 0.25s ease;
+}
+.form-controlFix:not(:placeholder-shown) + .labelField,
+.form-controlFix:focus + .labelField {
+  top: -10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  display: inline-block;
+  background-color: #fff;
+  color: #80bdff;
+}
+.textarea-cmt {
+  position: relative;
+  margin-top: 15px;
+}
+.form-controlFixTextarea {
+  display: block;
+  width: 95%;
+  margin: auto;
+  height: calc(1.5em + 0.75rem + 2px);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  padding-left: 10px;
+  resize: none;
+}
+.form-controlFixTextarea:focus {
+  color: #495057;
+  background-color: #fff;
+  border-color: #80bdff;
+  outline: 0;
+}
+.labelFieldTextarea {
+  position: absolute;
+  top: 25%;
+  left: 25px;
+  z-index: 10;
+  color: grey;
+  font-size: 16px;
+  pointer-events: none;
+  transition: 0.25s ease;
+}
+.form-controlFixTextarea:not(:placeholder-shown) + .labelFieldTextarea,
+.form-controlFixTextarea:focus + .labelFieldTextarea {
+  top: -10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  display: inline-block;
+  background-color: #fff;
+  color: #80bdff;
+}
+.formBtnCmt {
+  text-align: right;
+  margin-top: 10px;
+  margin-right: 15px;
+}
+.formBtn-Cmt {
+  padding: 5px 30px;
   color: black;
+  border: 2px solid #fcb900;
+  border-radius: 5px;
+  background-color: #fcb900;
+  font-weight: 600;
+  cursor: pointer;
 }
-#infoCmt{
-    width: 50%;
+.formBtn-Cmt:hover {
+  background-color: white;
+  color: black;
+  border: 2px solid #fcb900;
 }
-textarea{
-    resize: none;
+.commentsCmt {
+  margin-left: 15px;
 }
-/* #replyCmt{
-    display: none;
-} */
-
+.blog-comment li {
+  list-style: none;
+}
+.blog-comment ul {
+  border-left: 2px solid grey;
+  padding-left: 15px;
+}
+.aContentCmt {
+  text-decoration: none;
+}
+#replyCmt {
+  display: none;
+}
