@@ -30,16 +30,28 @@ const textareaCmtEl = document.querySelector('#textAreaCmt');
 btnSubmitCmt.addEventListener('click', handleSubmitCmt);
 cmtArr = [];
 let positionCmt = false;
-let likeCount = 0;
+let cmtCount = 0;
 // function button comment 
 function handleSubmitCmt(e) {
-  e.preventDefault(); 
   const name = fullNameCmt.value;
   const phone = numberPhone.value;
   const textarea = textareaCmtEl.value;
+  if (name && phone && textarea !== "") {
+    // create comment 
+    newComment = {
+      "id": Math.floor((Math.random() * 1000) + 1),
+      "name":name,
+      "textarea": textarea,
+      "typeOfComment": positionCmt
+    }
+    cmtArr.push(newComment)
+    console.log(newComment);
+  }
   console.log(name);
   console.log(phone);
   console.log(textarea);
+
+  e.preventDefault();
 }
 
 
