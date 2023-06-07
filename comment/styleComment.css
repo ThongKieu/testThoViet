@@ -145,13 +145,10 @@
   padding: 5px;
 }
 .commentsCmt {
-  display: none;
+  display: block;
   margin-left: 15px;
 }
 
-.commentsCmt.opened {
-  display: block;
-}
 .blog-comment li {
   list-style: none;
 }

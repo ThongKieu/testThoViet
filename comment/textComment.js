@@ -74,79 +74,78 @@ function countCmtEl() {
   countCmt.innerHTML = cmtCount;
 
 }
-const showReplyCmtId = document.querySelectorAll('.showReply');
-showReplyCmtId.forEach((btn) =>
-  btn.addEventListener('click', (e) => {
-    let parentCmt = e.target.closest(".commentsCmt");
-    let _id = parentCmt.id;
-    if (_id) {
-      let childrenCmt = parentCmt.querySelectorAll(`[dataset=${_id}]`);
-      childrenCmt.forEach(child => child.classList.toggle("opened"));
-      console.log(_id);
-      console.log(showReplyCmtId);
-      console.log(parentCmt);
-    }
-  })
-)
+function createFormReply() {
+  let divFormReply = document.createComment('div');
+  divFormReply.setAttribute('class', 'commentCard');
+  divFormReply += `
+  <form action="">
+    <div id="infoCmt">
+      <div class="gridCmt">
+        <div class="grid-item-cmt">
+          <input type="text" name="name" id="fullname" class="form-controlFix" placeholder=" "
+            style="background-color: white;" required>
+          <label class="labelField" for="name">Tên (<span style="color: red;">*</span>)</label>
+        </div>
+        <div class="grid-item-cmt">
+          <input type="number" name="sdt" id="sdt" class="form-controlFix" placeholder=" "
+            style="background-color: white;" required>
+          <label class="labelField" for="name">Số điện thoại (<span style="color: red;">*</span>)</label>
+        </div>
+      </div>
+      <div class="textarea-cmt">
+        <textarea name="msg" id="textAreaCmt" msg cols="30" rows="1"
+          class="form-controlFixTextarea resize-ta" style="background-color: white; overflow: hidden;"
+          placeholder=" " required></textarea>
+        <label class="labelFieldTextarea" for="message">Nội dung (<span
+            style="color: red;">*</span>)</label>
+      </div>
+      <div class="formBtnCmt">
+        <button type="button" id="postcmt" class="formBtn-Cmt">Bình Luận</button>
+      </div>
+    </div>
+  </form>`
+  return divFormReply;
+}
 function addCmt(item) {
   // const letter = (item.fullNameCmt).charAt(0);
   // add element 
   const ulEl = document.createElement('div');
-  // add class 
-  ulEl.classList = "commentsCmt opened";
-  // ulEl.classList = "";
   // add id 
-  ulEl.id = item.id;
+  ulEl.id = "item.id";
+  // add class 
+  ulEl.classList = "commentsCmt";
   // add html 
   ulEl.innerHTML = `
-
-  <div class="commentCard">
-    <h4 class="nameTitle">${item.name}</h4>
+  <div class="commentCard ">
+    <h4 class="nameTitle"><em>${item.name}</em></h4>
     <p class="pContentCmt">
       ${item.textarea} 
     </p>
     <div class="footerContentCmt">
       <a href="#showCmtTV" id="showCmtTV" class="showComment" style="margin-right: 10px;"><small>Xem nhiều bình luận hơn</small></a>
       <a href="#replyCmtTV" id="replyCmtTV" class="showReply"><small>Phản hồi</small></a>
-      
     </div>
   </div>
-  <div class="commentsCmt" dataset="${item.id}" id="first-reply">
-    <div class="commentCard">
-      <form action="">
-        <div id="infoCmt">
-          <div class="gridCmt">
-            <div class="grid-item-cmt">
-              <input type="text" name="name" id="fullname" class="form-controlFix" placeholder=" "
-                style="background-color: white;" required>
-              <label class="labelField" for="name">Tên (<span style="color: red;">*</span>)</label>
-            </div>
-            <div class="grid-item-cmt">
-              <input type="number" name="sdt" id="sdt" class="form-controlFix" placeholder=" "
-                style="background-color: white;" required>
-              <label class="labelField" for="name">Số điện thoại (<span style="color: red;">*</span>)</label>
-
-            </div>
-          </div>
-          <div class="textarea-cmt">
-            <textarea name="msg" id="textAreaCmt" msg cols="30" rows="1"
-              class="form-controlFixTextarea resize-ta" style="background-color: white; overflow: hidden;"
-              placeholder=" " required></textarea>
-            <label class="labelFieldTextarea" for="message">Nội dung (<span
-                style="color: red;">*</span>)</label>
-          </div>
-          <div class="formBtnCmt">
-            <button type="button" id="postcmt" class="formBtn-Cmt">Bình Luận</button>
-          </div>
-        </div>
-      </form>
-    </div>
-  </div>
-
-
   `
   cmtEl.insertAdjacentElement('beforeend', ulEl);
+ 
 }
+const btnShowReply = document.getElementsByClassName('commentsCmt');
+for (const box of btnShowReply) {
+  box.addEventListener("click", function (e) {
+  // e.preventDefault();
+  let replyClicked = e.target.classList.contains('showReply');
+  let replySubmit = e.target.classList.contains('formBtn-Cmt');
+  let closeCard = e.target.closest('.commentsCmt');
+  if (replyClicked) {
+    closeCard.appendChild(createFormReply());
+    console.log(closeCard);
+  }
+  if (replySubmit) {
+
+  }
+
+})}
 // end function comment
 $('input[type=number]').on('mousewheel', function (e) {
   $(e.target).blur();
