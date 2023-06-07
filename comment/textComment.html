@@ -21,7 +21,7 @@
             <label class="labelField" for="name">Tên (<span style="color: red;">*</span>)</label>
           </div>
           <div class="grid-item-cmt">
-            <input type="number" name="sdt" id="sdt" class="form-controlFix" placeholder=" "
+            <input type="number" name="sdt" id="sdt" class="form-controlFix" placeholder=" " min="10" max="11"
               style="background-color: white;" required>
             <label class="labelField" for="name">Số điện thoại (<span style="color: red;">*</span>)</label>
 
@@ -37,100 +37,19 @@
         </div>
       </div>
       <div class="blog-comment">
-        <h4 class="headCmtForm">1 Bình Luận</h4>
+        <h4 class="headCmtForm"><span class="countClass"></span>   Bình Luận</h4>
         <hr />
         <!-- comment  -->
         <div class="containerCmt">
-
+         
+         
         </div>
-        <ul class="commentsCmt">
-          <!-- <li class="clearfixCmt">
-            <p class="pContentCmt">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Etiam a sapien odio, sit amet 1
-              <span><b>JohnDoe</b></span>
-              says :
-              <a href="#" id="replyCmtTV" class="aContentCmt" ><small>Reply</small></a>
-            </p>
-            <div id="replyCmt" >
-             
-              <form action="">
-                <div id="infoCmt">
-                  <div class="gridCmt">
-                    <div class="grid-item-cmt">
-                      <input type="text" name="name" id="fullname" class="form-controlFix" placeholder=" "
-                        style="background-color: white;" required>
-                      <label class="labelField" for="name">Tên (<span style="color: red;">*</span>)</label>
-                    </div>
-                    <div class="grid-item-cmt">
-                      <input type="number" name="sdt" id="sdt" class="form-controlFix" placeholder=" "
-                        style="background-color: white;" required>
-                      <label class="labelField" for="name">Số điện thoại (<span style="color: red;">*</span>)</label>
-
-                    </div>
-                  </div>
-                  <div class="textarea-cmt">
-                    <textarea name="msg" id="textAreaCmt" msg cols="30" rows="1"
-                      class="form-controlFixTextarea resize-ta" style="background-color: white; overflow: hidden;"
-                      placeholder=" " required></textarea>
-                    <label class="labelFieldTextarea" for="message">Nội dung (<span
-                        style="color: red;">*</span>)</label>
-                  </div>
-                  <div class="formBtnCmt">
-                    <button type="button" id="postcmt" class="formBtn-Cmt">Bình Luận</button>
-                  </div>
-                </div>
-              </form>
-            </div>
-           
-            <ul class="comments">
-              <p class="pContentCmt">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Etiam a sapien odio, sit amet 1
-                <span><b>JohnDoe</b></span>
-                says :
-                <a href="#" id="replyCmtTV" class="aContentCmt"><small>Reply</small></a>
-              </p>
-              <div id="replyCmt" >
-                <form action="">
-                  <div id="infoCmt">
-                    <div class="gridCmt">
-                      <div class="grid-item-cmt">
-                        <input type="text" name="name" id="fullname" class="form-controlFix" placeholder=" "
-                          style="background-color: white;" required>
-                        <label class="labelField" for="name">Tên (<span style="color: red;">*</span>)</label>
-                      </div>
-                      <div class="grid-item-cmt">
-                        <input type="number" name="sdt" id="sdt" class="form-controlFix" placeholder=" "
-                          style="background-color: white;" required>
-                        <label class="labelField" for="name">Số điện thoại (<span style="color: red;">*</span>)</label>
-  
-                      </div>
-                    </div>
-                    <div class="textarea-cmt">
-                      <textarea name="msg" id="textAreaCmt" msg cols="30" rows="1"
-                        class="form-controlFixTextarea resize-ta" style="background-color: white; overflow: hidden;"
-                        placeholder=" " required></textarea>
-                      <label class="labelFieldTextarea" for="message">Nội dung (<span
-                          style="color: red;">*</span>)</label>
-                    </div>
-                    <div class="formBtnCmt">
-                      <button type="button" id="postcmt" class="formBtn-Cmt">Bình Luận</button>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </ul>
-          </li> -->
-        </ul>
-        
         <!-- end comment  -->
       </div>
     </form>
   </section>
   <!-- Main Body -->
-
-
+  
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>
@@ -141,3 +60,83 @@
 </body>
 
 </html>
+<!-- <ul class="commentsCmt">
+  <li class="clearfixCmt">
+    <p class="pContentCmt">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      Etiam a sapien odio, sit amet 1
+      <span><b>JohnDoe</b></span>
+      says :
+      <a href="#" id="replyCmtTV" class="aContentCmt" ><small>Reply</small></a>
+    </p>
+    <div id="replyCmt" >
+     
+      <form action="">
+        <div id="infoCmt">
+          <div class="gridCmt">
+            <div class="grid-item-cmt">
+              <input type="text" name="name" id="fullname" class="form-controlFix" placeholder=" "
+                style="background-color: white;" required>
+              <label class="labelField" for="name">Tên (<span style="color: red;">*</span>)</label>
+            </div>
+            <div class="grid-item-cmt">
+              <input type="number" name="sdt" id="sdt" class="form-controlFix" placeholder=" "
+                style="background-color: white;" required>
+              <label class="labelField" for="name">Số điện thoại (<span style="color: red;">*</span>)</label>
+
+            </div>
+          </div>
+          <div class="textarea-cmt">
+            <textarea name="msg" id="textAreaCmt" msg cols="30" rows="1"
+              class="form-controlFixTextarea resize-ta" style="background-color: white; overflow: hidden;"
+              placeholder=" " required></textarea>
+            <label class="labelFieldTextarea" for="message">Nội dung (<span
+                style="color: red;">*</span>)</label>
+          </div>
+          <div class="formBtnCmt">
+            <button type="button" id="postcmt" class="formBtn-Cmt">Bình Luận</button>
+          </div>
+        </div>
+      </form>
+    </div>
+   
+    <ul class="comments">
+      <p class="pContentCmt">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Etiam a sapien odio, sit amet 1
+        <span><b>JohnDoe</b></span>
+        says :
+        <a href="#" id="replyCmtTV" class="aContentCmt"><small>Reply</small></a>
+      </p>
+      <div id="replyCmt" >
+        <form action="">
+          <div id="infoCmt">
+            <div class="gridCmt">
+              <div class="grid-item-cmt">
+                <input type="text" name="name" id="fullname" class="form-controlFix" placeholder=" "
+                  style="background-color: white;" required>
+                <label class="labelField" for="name">Tên (<span style="color: red;">*</span>)</label>
+              </div>
+              <div class="grid-item-cmt">
+                <input type="number" name="sdt" id="sdt" class="form-controlFix" placeholder=" "
+                  style="background-color: white;" required>
+                <label class="labelField" for="name">Số điện thoại (<span style="color: red;">*</span>)</label>
+
+              </div>
+            </div>
+            <div class="textarea-cmt">
+              <textarea name="msg" id="textAreaCmt" msg cols="30" rows="1"
+                class="form-controlFixTextarea resize-ta" style="background-color: white; overflow: hidden;"
+                placeholder=" " required></textarea>
+              <label class="labelFieldTextarea" for="message">Nội dung (<span
+                  style="color: red;">*</span>)</label>
+            </div>
+            <div class="formBtnCmt">
+              <button type="button" id="postcmt" class="formBtn-Cmt">Bình Luận</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </ul>
+  </li>
+</ul> -->

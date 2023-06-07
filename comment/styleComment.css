@@ -134,8 +134,23 @@
   color: black;
   border: 2px solid #fcb900;
 }
+.divContentCmt {
+  /* border: 1px solid grey; */
+  border-radius: 5px;
+  padding: 0px 10px;
+  display: none;
+  justify-content: space-between;
+}
+.pContentCmt {
+  padding: 5px;
+}
 .commentsCmt {
+  display: none;
   margin-left: 15px;
+}
+
+.commentsCmt.opened {
+  display: block;
 }
 .blog-comment li {
   list-style: none;
@@ -147,6 +162,60 @@
 .aContentCmt {
   text-decoration: none;
 }
-#replyCmt {
-  display: none;
+
+.clearfixCmt {
+  border: 1px solid grey;
+  border-radius: 5px;
+  padding: 0px 10px;
+}
+/* commentCard */
+
+.commentCard {
+  border-left: 2px solid grey;
+  border-radius: 0 0 0 50px;
+  padding: 15px;
+}
+.footerContentCmt {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.nameTitle {
+  color: grey;
+  margin: 0px;
+}
+.pContentCmt {
+  margin-bottom: 5px;
+}
+.footerContentCmt a {
+  text-decoration: none;
+  color: #ffd100;
+  border: 1px solid #ffd100;
+  border-radius: 5px;
+  padding: 5px;
+  display: grid;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.footerContentCmt .showReply:hover {
+  border: none;
+  background-color: #ffd100;
+  text-decoration: none;
+  color: black;
+  border: 1px solid #ffd100;
+  border-radius: 5px;
+  padding: 5px;
+  display: grid;
+  margin-bottom: 10px;
+  text-align: center;
+}
+.footerContentCmt .showComment{
+  border: none;
+  color: grey;
+}
+.footerContentCmt .showComment:hover{
+  border: none;
+  color: black;
+  background-color: none;
 }
