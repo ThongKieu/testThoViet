@@ -207,12 +207,20 @@
   margin-bottom: 10px;
   text-align: center;
 }
-.footerContentCmt .showComment{
+.footerContentCmt .showComment {
   border: none;
   color: grey;
 }
-.footerContentCmt .showComment:hover{
+.footerContentCmt .showComment:hover {
   border: none;
   color: black;
   background-color: none;
+}
+@media only screen and (min-width: 1024px) {
+  .labelField {
+    left: 45px;
+  }
+  .labelFieldTextarea{
+    left: 45px;
+  }
 }

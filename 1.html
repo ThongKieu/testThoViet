@@ -119,79 +119,128 @@
 </head>
 
 <body>
-    <div class="formbold-main-wrapper">
-        <!-- Author: FormBold Team -->
-        <!-- Learn More: https://formbold.com -->
-        <div class="formbold-form-wrapper">
-            <form action="https://formbold.com/s/FORM_ID" method="POST">
-                <div class="formbold-mb-5">
-                    <label for="name" class="formbold-form-label"> Full Name </label>
-                    <input type="text" name="name" id="name" placeholder="Full Name" class="formbold-form-input" />
+    <ul>
+        <div class="par ">
+            <div class="comment_info"> Trần -- 1 -- 2023-06-07T09:32:06.000000Z</div>
+            <div class="comment_parent">
+                <div class="content">
+                    <p>11111111111111111111111</p>
                 </div>
-                <div class="formbold-mb-5">
-                    <label for="phone" class="formbold-form-label"> Phone Number </label>
-                    <input type="text" name="phone" id="phone" placeholder="Enter your phone number"
-                        class="formbold-form-input" />
-                </div>
-                <div class="formbold-mb-5">
-                    <label for="email" class="formbold-form-label"> Email Address </label>
-                    <input type="email" name="email" id="email" placeholder="Enter your email"
-                        class="formbold-form-input" />
-                </div>
-                <div class="flex flex-wrap formbold--mx-3">
-                    <div class="w-full sm:w-half formbold-px-3">
-                        <div class="formbold-mb-5 w-full">
-                            <label for="date" class="formbold-form-label"> Date </label>
-                            <input type="date" name="date" id="date" class="formbold-form-input" />
-                        </div>
-                    </div>
-                    <div class="w-full sm:w-half formbold-px-3">
-                        <div class="formbold-mb-5">
-                            <label for="time" class="formbold-form-label"> Time </label>
-                            <input type="time" name="time" id="time" class="formbold-form-input" />
-                        </div>
-                    </div>
-                </div>
+            </div>
+            <div class="image_coment"><img src="http://192.168.1.22/assets/commnet\06-2023_DULYSE.png" width="150px"
+                height="150px"> </div>
+        </div>
+      
+        <input type="hidden" id="name_comment10" value="Trần">
+        <div class="button-rep d-flex justify-content-end">
+            <button class="btn-replay btn btn-sm btn-outline-primary" onclick="showReplay(10)">Phản Hồi </button>
+            <form method="post" action="http://192.168.1.22/comment/del">
+                <input type="hidden" name="_token" value="Us58qiATiRoUPBwPsewSrZfT4oiG5fEvzakEMLPu"> <input
+                    type="hidden" value="10" name="id_comment">
+                <button class="btn btn-sm btn-outline-danger ml-2" type="submit">Xóa</button>
+            </form>
+        </div>
 
-                <div class="formbold-mb-5 formbold-pt-3">
-                    <label class="formbold-form-label formbold-form-label-2">
-                        Address Details
-                    </label>
-                    <div class="flex flex-wrap formbold--mx-3">
-                        <div class="w-full sm:w-half formbold-px-3">
-                            <div class="formbold-mb-5">
-                                <input type="text" name="area" id="area" placeholder="Enter area"
-                                    class="formbold-form-input" />
-                            </div>
-                        </div>
-                        <div class="w-full sm:w-half formbold-px-3">
-                            <div class="formbold-mb-5">
-                                <input type="text" name="city" id="city" placeholder="Enter city"
-                                    class="formbold-form-input" />
-                            </div>
-                        </div>
-                        <div class="w-full sm:w-half formbold-px-3">
-                            <div class="formbold-mb-5">
-                                <input type="text" name="state" id="state" placeholder="Enter state"
-                                    class="formbold-form-input" />
-                            </div>
-                        </div>
-                        <div class="w-full sm:w-half formbold-px-3">
-                            <div class="formbold-mb-5">
-                                <input type="text" name="post-code" id="post-code" placeholder="Post Code"
-                                    class="formbold-form-input" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
-                <div>
-                    <button class="formbold-btn">Book Appointment</button>
+        <div class="replay10" style="display:none; margin-top :5px;">
+            <form action="http://192.168.1.22/comment/sent_answer" method="post">
+                <input type="hidden" name="_token" value="Us58qiATiRoUPBwPsewSrZfT4oiG5fEvzakEMLPu">
+                <div class="row">
+                    <input type="hidden" name="new_answer" value="1">
+                    <input type="hidden" name="name_comment" value="Mr Thông Ngô">
+                    <input type="hidden" name="phone_comment" value="1">
+                    <input type="hidden" name="comment_parent" value="10">
+                    <div class="col-2">
+                        <p id="setText_10"></p>
+                    </div>
+                    <div class="col-9" style="margin: auto">
+                        <input name="awnser" id="textAreaCmt setText2_10" class="form-controlFixTextarea resize-ta">
+                    </div>
+                    <div class="col-1 ">
+                        <button type="submit" class="btn btn-sm btn-success"> <i class="fa fa-paper-plane"
+                                aria-hidden="true"></i></button>
+                    </div>
                 </div>
             </form>
         </div>
-    </div>
 
+
+        <div class="answer">
+            <div class="comment_info"> Trần -- 1 -- 2023-06-07 16:41:11</div>
+            <input type="hidden" id="name_comment12" value="Trần">
+            <div class="awnser_comment">
+                <div class="content">1111111111111111111111111111111111111</div>
+                <div class="button-rep d-flex justify-content-end">
+                    <button class="btn-replay btn btn-sm btn-outline-primary" onclick="showReplay(12)">Phản Hồi</button>
+                    <form method="post" action="http://192.168.1.22/comment/del">
+                        <input type="hidden" name="_token" value="Us58qiATiRoUPBwPsewSrZfT4oiG5fEvzakEMLPu"> <input
+                            type="hidden" value="12" name="id_an">
+                        <button class="btn btn-sm btn-outline-danger ml-2" type="submit">Xóa</button>
+                    </form>
+                </div>
+            </div>
+            <div class="replay12" style="display:none; margin-top :5px;">
+                <form action="http://192.168.1.22/comment/sent_answer" method="post">
+                    <input type="hidden" name="_token" value="Us58qiATiRoUPBwPsewSrZfT4oiG5fEvzakEMLPu">
+                    <div class="row">
+                        <input type="hidden" name="new_answer" value="1">
+                        <input type="hidden" name="name_comment" value="Mr Thông Ngô">
+                        <input type="hidden" name="phone_comment" value="1">
+                        <input type="hidden" name="comment_parent" value="10">
+                        <div class="col-2">
+                            <p id="setText_12"></p>
+                        </div>
+                        <div class="col-9" style="margin: auto">
+                            <input name="awnser" id="textAreaCmt setText2_12" class="form-controlFixTextarea resize-ta">
+                        </div>
+                        <div class="col-1 ">
+                            <button type="submit" class="btn btn-sm btn-success"> <i class="fa fa-paper-plane"
+                                    aria-hidden="true"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+        <div class="answer">
+            <div class="comment_info"> Trần -- 1 -- 2023-06-07 16:40:32</div>
+            <input type="hidden" id="name_comment11" value="Trần">
+            <div class="awnser_comment">
+                <div class="content">12321321</div>
+                <div class="button-rep d-flex justify-content-end">
+                    <button class="btn-replay btn btn-sm btn-outline-primary" onclick="showReplay(11)">Phản Hồi</button>
+                    <form method="post" action="http://192.168.1.22/comment/del">
+                        <input type="hidden" name="_token" value="Us58qiATiRoUPBwPsewSrZfT4oiG5fEvzakEMLPu"> <input
+                            type="hidden" value="11" name="id_an">
+                        <button class="btn btn-sm btn-outline-danger ml-2" type="submit">Xóa</button>
+                    </form>
+                </div>
+            </div>
+            <div class="replay11" style="display:none; margin-top :5px;">
+                <form action="http://192.168.1.22/comment/sent_answer" method="post">
+                    <input type="hidden" name="_token" value="Us58qiATiRoUPBwPsewSrZfT4oiG5fEvzakEMLPu">
+                    <div class="row">
+                        <input type="hidden" name="new_answer" value="1">
+                        <input type="hidden" name="name_comment" value="Mr Thông Ngô">
+                        <input type="hidden" name="phone_comment" value="1">
+                        <input type="hidden" name="comment_parent" value="10">
+                        <div class="col-2">
+                            <p id="setText_11"></p>
+                        </div>
+                        <div class="col-9" style="margin: auto">
+                            <input name="awnser" id="textAreaCmt setText2_11" class="form-controlFixTextarea resize-ta">
+                        </div>
+                        <div class="col-1 ">
+                            <button type="submit" class="btn btn-sm btn-success"> <i class="fa fa-paper-plane"
+                                    aria-hidden="true"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </ul>
 
     <!-- /wp:paragraph -->
     <!-- Optional JavaScript -->
