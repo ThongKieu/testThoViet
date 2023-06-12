@@ -22,11 +22,10 @@ fetch(url_con, {
 }).then((data) => {
   data.map(function (conver) {
     const divItem = document.createElement('ul');
-    divItem.classList="cmtUl"
+    divItem.classList = "cmtUl"
     // if (typeof conver.answer[0] !== 'undefined' ) {
-    console.log(conver.answer);
     divItem.innerHTML =
-    `
+      `
     <div class='par'>
       <div class='comment_info headCmtForm'> ${conver.comment_parent[0].name_comment}</div>
       <div class='comment_parent'>
@@ -39,22 +38,22 @@ fetch(url_con, {
         </div>
       </div>
       <div class='replay${conver.comment_parent[0].id}' style='display:none; margin-top :5px;'>
-        <form action="" id="formCmtTVReply" method="get">
+        <form id="formCmtTVReply" onsubmit="return handleReply(event, ${conver.comment_parent[0].id} )">
           <div id="infoCmt">
             <div class="gridCmt">
               <div class="grid-item-cmt">
-                <input type="text" name="name" id="fullNameReply" class="form-controlFix" placeholder=" "
+                <input type="text" name="name" id="fullNameReply${conver.comment_parent[0].id}" class="form-controlFix" placeholder=" "
                   style="background-color: white;" required>
                 <label class="labelField" for="name">Tên (<span style="color: red;">*</span>)</label>
               </div>
               <div class="grid-item-cmt">
-                <input type="number" name="sdt" id="sdtReply" class="form-controlFix" placeholder=" "
+                <input type="number" name="sdt" id="sdtReply${conver.comment_parent[0].id}" class="form-controlFix" placeholder=" "
                   style="background-color: white;" required>
                 <label class="labelField" for="name">Số điện thoại (<span style="color: red;">*</span>)</label>
               </div>
             </div>
             <div class="textarea-cmt">
-              <textarea name="msg" id="textAreaCmtReply" msg cols="30" rows="1" class="form-controlFixTextarea resize-ta"
+              <textarea name="msg" id="textAreaCmtReply${conver.comment_parent[0].id}" msg cols="30" rows="1" class="form-controlFixTextarea resize-ta"
                 style="background-color: white; padding-top:5px; overflow: hidden;" placeholder=" " required></textarea>
               <label class="labelFieldTextarea" for="message">Nội dung (<span style="color: red;">*</span>)</label>
             </div>
@@ -69,41 +68,12 @@ fetch(url_con, {
     for (const [key, value] of Object.entries(conver.answer)) {
       if (typeof conver.answer[0] !== 'undefined') {
         divItem.innerHTML +=
-        `<div class='answer'>
+          `<div class='answer'>
           <div class='comment_info'> ${conver.answer[key].name_comment}</div>
           <input type='hidden' id='name_comment${conver.answer[key].id}' value='${conver.answer[key].name_comment}' />
           <input type='hidden' id='name_answer' value='${conver.answer[key].id}' />
           <div class='awnser_comment'>
             <div class='content'>${conver.answer[key].comment}</div>
-            <div class='button-rep d-flex justify-content-end'>
-              <button class='btn-replay btn btn-sm btn-outline-primary' onclick='showReplay(${conver.answer[key].id})'>Phản Hồi</button>
-            </div>
-          </div>
-          <div class='replay${conver.answer[key].id}' style='display:none; margin-top :5px;'>
-            <form action="" id="formCmtTVReply${conver.answer[key].id}" method="post">
-              <div id="infoCmt">
-                <div class="gridCmt">
-                  <div class="grid-item-cmt">
-                    <input type="text" name="name" id="fullNameReply" class="form-controlFix" placeholder=" "
-                      style="background-color: white;" required>
-                    <label class="labelField" for="name">Tên (<span style="color: red;">*</span>)</label>
-                  </div>
-                  <div class="grid-item-cmt">
-                    <input type="number" name="sdt" id="sdtReply" min="10" max="11" class="form-controlFix" placeholder=" "
-                      style="background-color: white;" required>
-                    <label class="labelField" for="name">Số điện thoại (<span style="color: red;">*</span>)</label>
-                  </div>
-                </div>
-                <div class="textarea-cmt">
-                  <textarea name="msg" id="textAreaCmtReply" msg cols="30" rows="1" class="form-controlFixTextarea resize-ta"
-                    style="background-color: white; padding-top:5px; overflow: hidden;" placeholder=" " required></textarea>
-                  <label class="labelFieldTextarea" for="message">Nội dung (<span style="color: red;">*</span>)</label>
-                </div>
-                <div class="formBtnCmt">
-                  <button type="button" id="postcmt" class="formBtn_Reply">Bình Luận</button>
-                </div>
-              </div>
-            </form>
           </div>
         </div>
         `;
@@ -157,8 +127,44 @@ form.addEventListener('submit', async function (e) {
     console.log(error);
   }
 });
+
+async function handleReply(e, id) {
+  e.preventDefault();
+
+  const data2 = {
+    id_comment: id,
+    name_comment: document.getElementById(`fullNameReply${id}`).value,
+    phone_comment: document.getElementById(`sdtReply${id}`).value,
+    answer: document.getElementById(`textAreaCmtReply${id}`).value,
+    new_answer: 1,
+  }
+
+  try {
+    const res = await fetch('https://data.thoviet.com/api/newAnswer', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        // 'Access-Control-Allow-Origin': '*',
+      },
+      body: JSON.stringify(data2),
+    })
+    console.log(res);
+    console.log(data2);
+    if (res.status === 200) {
+      window.location.reload();
+      console.log(res);
+    } else {
+      const err = new Error("Error")
+      throw err;
+    }
+    console.log('data', data2);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 function showReplay(id) {
-  console.log("show id",id);
+  console.log("show id", id);
   if ($('.replay' + id).css('display') === 'none') {
     $('.replay' + id).css('display', 'block');
     // var name = document.getElementById('fullNameReply' + id).value;
@@ -166,50 +172,10 @@ function showReplay(id) {
     // i_na.innerHTML = 'Trả lời : ' + name;
     // console.log(name);
     const d = document.getElementById('text123').value
-    const btnReply = document.getElementById('formCmtTVReply')
-    if(btnReply){
-    btnReply.addEventListener('submit', async function (e) {
-      e.preventDefault();
-      const data2 = {
-        // id: Math.floor((Math.random() * 1000) + 1),
-        
-        id_comment: id,
-        name_comment: document.getElementById('fullNameReply').value,
-        phone_comment: document.getElementById('sdtReply').value,
-        answer: document.getElementById('textAreaCmtReply').value,
-        new_answer: 1,
-      }
-      const formData = new FormData()
-      Object.keys(data2).map((key) => {
-
-        console.log(data2[key]);
-        formData.append(key, data2[key])
-      })
-      console.log(data2);
-      try {
-        const res = await fetch('https://data.thoviet.com/api/newAnswer', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            // 'Access-Control-Allow-Origin': '*',
-          },
-          body: JSON.stringify(data2),
-        })
-        console.log(res);
-        console.log(data2);
-        if (res.status === 200) {
-          window.location.reload();
-          console.log(res);
-        } else {
-          const err = new Error("Error")
-          throw err;
-        }
-        console.log('data', data2);
-      } catch (error) {
-        console.log(error);
-      }
-    });
-  }
+    // const btnReply = document.getElementById('formCmtTVReply')
+    // if (btnReply) {
+    //   console.log(true);
+    // }
     // console.log(btnReply);
 
   } else {
