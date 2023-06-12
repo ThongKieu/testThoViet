@@ -10,7 +10,7 @@
 <body>
 
   <section class="formCmt" style="width: 90%; margin: auto;">
-    <form id="formCmtTV" action="" method="post">
+    <form id="formCmtTV" action="" method="GET">
       <h4 class="headCmtForm">Bình Luận</h4>
       <hr>
       <div id="infoCmt">
@@ -35,107 +35,23 @@
           <button type="submit" id="postcmt" class="formBtn-Cmt">Bình Luận</button>
         </div>
       </div>
-      <div class="blog-comment">
-        <h4 class="headCmtForm"><span class="countClass"></span> Bình Luận</h4>
-        <hr />
-        <!-- comment  -->
-        <div class="containerCmt">
-
-        </div>
-
-        <!-- end comment  -->
-      </div>
     </form>
+    <div class="blog-comment">
+      <h4 class="headCmtForm"><span class="countClass"></span> Bình Luận</h4>
+      <hr />
+      <!-- comment  -->
+      <div class="containerCmt"></div>
+      <!-- end comment  -->
+    </div>
   </section>
+  
+  </div>
   <!-- Main Body -->
-
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>
-  <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> -->
-  <script src="./textComment.js"></script>
+    <script src="./textComment.js"></script>
+  <!-- <script src="./testjs.js"></script> -->
 </body>
 
 </html>
-<!-- <ul class="commentsCmt">
-  <li class="clearfixCmt">
-    <p class="pContentCmt">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-      Etiam a sapien odio, sit amet 1
-      <span><b>JohnDoe</b></span>
-      says :
-      <a href="#" id="replyCmtTV" class="aContentCmt" ><small>Reply</small></a>
-    </p>
-    <div id="replyCmt" >
-     
-      <form action="">
-        <div id="infoCmt">
-          <div class="gridCmt">
-            <div class="grid-item-cmt">
-              <input type="text" name="name" id="fullname" class="form-controlFix" placeholder=" "
-                style="background-color: white;" required>
-              <label class="labelField" for="name">Tên (<span style="color: red;">*</span>)</label>
-            </div>
-            <div class="grid-item-cmt">
-              <input type="number" name="sdt" id="sdt" class="form-controlFix" placeholder=" "
-                style="background-color: white;" required>
-              <label class="labelField" for="name">Số điện thoại (<span style="color: red;">*</span>)</label>
-
-            </div>
-          </div>
-          <div class="textarea-cmt">
-            <textarea name="msg" id="textAreaCmt" msg cols="30" rows="1"
-              class="form-controlFixTextarea resize-ta" style="background-color: white; overflow: hidden;"
-              placeholder=" " required></textarea>
-            <label class="labelFieldTextarea" for="message">Nội dung (<span
-                style="color: red;">*</span>)</label>
-          </div>
-          <div class="formBtnCmt">
-            <button type="button" id="postcmt" class="formBtn-Cmt">Bình Luận</button>
-          </div>
-        </div>
-      </form>
-    </div>
-   
-    <ul class="comments">
-      <p class="pContentCmt">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        Etiam a sapien odio, sit amet 1
-        <span><b>JohnDoe</b></span>
-        says :
-        <a href="#" id="replyCmtTV" class="aContentCmt"><small>Reply</small></a>
-      </p>
-      <div id="replyCmt" >
-        <form action="">
-          <div id="infoCmt">
-            <div class="gridCmt">
-              <div class="grid-item-cmt">
-                <input type="text" name="name" id="fullname" class="form-controlFix" placeholder=" "
-                  style="background-color: white;" required>
-                <label class="labelField" for="name">Tên (<span style="color: red;">*</span>)</label>
-              </div>
-              <div class="grid-item-cmt">
-                <input type="number" name="sdt" id="sdt" class="form-controlFix" placeholder=" "
-                  style="background-color: white;" required>
-                <label class="labelField" for="name">Số điện thoại (<span style="color: red;">*</span>)</label>
-
-              </div>
-            </div>
-            <div class="textarea-cmt">
-              <textarea name="msg" id="textAreaCmt" msg cols="30" rows="1"
-                class="form-controlFixTextarea resize-ta" style="background-color: white; overflow: hidden;"
-                placeholder=" " required></textarea>
-              <label class="labelFieldTextarea" for="message">Nội dung (<span
-                  style="color: red;">*</span>)</label>
-            </div>
-            <div class="formBtnCmt">
-              <button type="button" id="postcmt" class="formBtn-Cmt">Bình Luận</button>
-            </div>
-          </div>
-        </form>
-      </div>
-    </ul>
-  </li>
-</ul> -->

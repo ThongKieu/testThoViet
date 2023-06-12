@@ -152,8 +152,13 @@
 .blog-comment li {
   list-style: none;
 }
-.blog-comment ul {
-  border-left: 2px solid grey;
+.cmtUl {
+  border-left: 1px solid grey;
+  padding-left: 15px;
+}
+.answer{
+  margin-top: 10px;
+  border-left: 1px solid blue;
   padding-left: 15px;
 }
 .aContentCmt {
