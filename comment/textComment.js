@@ -8,8 +8,6 @@ textarea.addEventListener("keyup", () => {
   textarea.style.height = calcHeight(textarea.value) + "px";
 });
 // --function comment
-
-// var output1 = document.getElementById('convertition');
 var url_con = 'https://data.thoviet.com/api/comment';
 console.log(url_con);
 fetch(url_con, {
@@ -23,7 +21,6 @@ fetch(url_con, {
   data.map(function (conver) {
     const divItem = document.createElement('ul');
     divItem.classList = "cmtUl"
-    // if (typeof conver.answer[0] !== 'undefined' ) {
     divItem.innerHTML =
       `
     <div class='par'>
@@ -32,6 +29,7 @@ fetch(url_con, {
         <div class='content'>${conver.comment_parent[0].comment}</div>
         <input type='hidden' id='name_comment${conver.comment_parent[0].id}' value='${conver.comment_parent[0].name_comment}' />
         <input type="hidden" id="text123" value="${conver.comment_parent[0].id}" />
+        
         <div class='button-rep d-flex justify-content-end'>
           <button class='btn-replay btn btn-sm btn-outline-primary'
             onclick='showReplay(${conver.comment_parent[0].id})'>Phản Hồi - ${conver.comment_parent[0].id}</button>
@@ -57,6 +55,10 @@ fetch(url_con, {
                 style="background-color: white; padding-top:5px; overflow: hidden;" placeholder=" " required></textarea>
               <label class="labelFieldTextarea" for="message">Nội dung (<span style="color: red;">*</span>)</label>
             </div>
+            <div class="imgUpload">
+          <img class="image${conver.comment_parent[0].id}" src="">
+          <button class="file-upload"><input type="file" class="file-input" accept="image/*">Chọn hình</button>
+        </div>
             <div class="formBtnCmt">
               <button type="submit" id="postcmt" class="formBtn_Reply">Bình Luận</button>
             </div>
@@ -90,47 +92,65 @@ const cmtEl = document.querySelector('.containerCmt');
 const fullNameCmt = document.querySelector('#fullName');
 const numberPhone = document.querySelector('#sdt');
 const textareaCmtEl = document.querySelector('#textAreaCmt');
-// const countCmt = document.querySelector(".countClass");
+const image_uploadsCmt  = document.querySelector('#image_uploads');
 
 
 const form = document.getElementById('formCmtTV');
 form.addEventListener('submit', async function (e) {
   e.preventDefault();
+  const nameCmt =  document.getElementById('fullName').value;
+  const phoneCmt =  document.getElementById('sdt').value;
+  const cmt =  document.getElementById('textAreaCmt').value;
+  const imgCmtPath =  document.getElementById('image_uploads').files[0];
+  const newConverCmt = 1;
+  // const data1 ={
+  //   name_comment:document.getElementById('fullName').value,
+  //   phone_comment: document.getElementById('sdt').value,
+  //   comment: document.getElementById('textAreaCmt').value,
+  //   img_comment_path: document.getElementById('image_uploads').files[0],
+  //   new_convertition: 1
+  // }
+  // console.log(data1);
+  // console.log(e);
+  const formDataCmt = new FormData();
+  formDataCmt.append('name_comment',nameCmt);
+  formDataCmt.append('phone_comment',phoneCmt);
+  formDataCmt.append('comment',cmt);
+  formDataCmt.append('img_comment_path',imgCmtPath,'img_comment_path.jpg');
+  formDataCmt.append('new_convertition',newConverCmt);
+  console.log("Form data",formDataCmt);
+  fetch('https://data.thoviet.com/api/newConver', {
+    method:"post",
+    body:formDataCmt,
+  }).then(res=>res.json())
+  .then(data=>console.log(data))
+  .catch(err=>console.log(err))
+  // try {
+  //   const res = await fetch('https://data.thoviet.com/api/newConver', {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       // 'Access-Control-Allow-Origin': '*',
+  //     },
+  //     body: JSON.stringify(data1),
+  //   })
+  //   console.log(res);
+  //   if (res.status === 200) {
+  //     // window.location.reload();
 
-  const data1 = {
-    name_comment: document.getElementById('fullName').value,
-    phone_comment: document.getElementById('sdt').value,
-    comment: document.getElementById('textAreaCmt').value,
-    new_convertition: 1
-  }
-  console.log(data1);
-  console.log(e);
-  try {
-    const res = await fetch('https://data.thoviet.com/api/newConver', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        // 'Access-Control-Allow-Origin': '*',
-      },
-      body: JSON.stringify(data1),
-    })
-    console.log(res);
-    if (res.status === 200) {
-      window.location.reload();
-
-    } else {
-      const err = new Error("Error")
-      throw err;
-    }
-    console.log('data', data);
-  } catch (error) {
-    console.log(error);
-  }
+  //   } else {
+  //     const err = new Error("Error")
+  //     throw err;
+  //   }
+  //   console.log('data', data);
+  // } catch (error) {
+  //   console.log(error);
+  // }
 });
-
+// const d = document.getElementById('text123').value
 async function handleReply(e, id) {
   e.preventDefault();
-
+  console.log("kiem tra", id);
   const data2 = {
     id_comment: id,
     name_comment: document.getElementById(`fullNameReply${id}`).value,
@@ -167,17 +187,6 @@ function showReplay(id) {
   console.log("show id", id);
   if ($('.replay' + id).css('display') === 'none') {
     $('.replay' + id).css('display', 'block');
-    // var name = document.getElementById('fullNameReply' + id).value;
-    // var i_na = document.getElementById('name_comment' + id);
-    // i_na.innerHTML = 'Trả lời : ' + name;
-    // console.log(name);
-    const d = document.getElementById('text123').value
-    // const btnReply = document.getElementById('formCmtTVReply')
-    // if (btnReply) {
-    //   console.log(true);
-    // }
-    // console.log(btnReply);
-
   } else {
     $('.replay' + id).css('display', 'none');
   }
@@ -185,3 +194,127 @@ function showReplay(id) {
 $('input[type=number]').on('mousewheel', function (e) {
   $(e.target).blur();
 });
+
+// $('.file-input').change(function(){
+//   var curElement = $('.image');
+//   console.log(curElement);
+//   var reader = new FileReader();
+
+//   reader.onload = function (e) {
+//       // get loaded data and render thumbnail.
+//       curElement.attr('src', e.target.result);
+//   };
+//   // read the image file as a data URL.
+//   reader.readAsDataURL(this.files[0]);
+// });
+
+// image Input upload 
+const input = document.getElementById('image_uploads');
+const preview_im_coment = document.querySelector('.preview');
+// https://developer.mozilla.org/en-US/docs/Web/Media/Formats/Image_types
+const fileTypes = [
+  "image/jpeg",
+  "image/png"
+];
+
+function validFileType(file) {
+  return fileTypes.includes(file.type);
+}
+
+input.style.opacity = 0;
+input.addEventListener('change', updateImageDisplay);
+function updateImageDisplay() {
+  while (preview.firstChild) {
+    preview.removeChild(preview.firstChild);
+  }
+
+  const curFiles = input.files;
+  if (curFiles.length === 0) {
+    const para = document.createElement('p');
+    para.textContent = 'No files currently selected for upload';
+    preview.appendChild(para);
+  } else {
+    const list = document.createElement('ol');
+    preview.appendChild(list);
+
+    for (const file of curFiles) {
+      const listItem = document.createElement('li');
+      const para = document.createElement('p');
+      if (validFileType(file)) {
+        para.textContent = `File name ${file.name}, file size ${returnFileSize(file.size)}.`;
+        const image = document.createElement('img');
+        image.src = URL.createObjectURL(file);
+
+        listItem.appendChild(image);
+        listItem.appendChild(para);
+      } else {
+        para.textContent = `File name ${file.name}: Not a valid file type. Update your selection.`;
+        listItem.appendChild(para);
+      }
+
+      list.appendChild(listItem);
+    }
+  }
+}
+function validFileType(file) {
+  return fileTypes.includes(file.type);
+}
+function returnFileSize(number) {
+  if (number < 1024) {
+    return `${number} bytes`;
+  } else if (number >= 1024 && number < 1048576) {
+    return `${(number / 1024).toFixed(1)} KB`;
+  } else if (number >= 1048576) {
+    return `${(number / 1048576).toFixed(1)} MB`;
+  }
+}
+input.style.opacity = 0;
+
+input.addEventListener('change', updateImageDisplay);
+
+function updateImageDisplay() {
+  while (preview_im_coment.firstChild) {
+    preview_im_coment.removeChild(preview_im_coment.firstChild);
+  }
+
+  const curFiles = input.files;
+  if (curFiles.length === 0) {
+    const para = document.createElement('p');
+    para.textContent = 'Không chọn được hình ảnh';
+    preview_im_coment.appendChild(para);
+  } else {
+    const list = document.createElement('ol');
+    preview_im_coment.appendChild(list);
+
+    for (const file of curFiles) {
+      const listItem = document.createElement('li');
+      const para = document.createElement('p');
+      if (validFileType(file)) {
+        para.textContent = `Hình ảnh: ${file.name}, kích thước ${returnFileSize(file.size)}.`;
+        const image = document.createElement('img');
+        image.src = URL.createObjectURL(file);
+
+        listItem.appendChild(image);
+        listItem.appendChild(para);
+      } else {
+        para.textContent = `Hình ${file.name}: Không đúng định dạng`;
+        listItem.appendChild(para);
+      }
+
+      list.appendChild(listItem);
+    }
+  }
+}
+function validFileType(file) {
+  return fileTypes.includes(file.type);
+}
+
+function returnFileSize(number) {
+  if (number < 1024) {
+    return `${number} bytes`;
+  } else if (number >= 1024 && number < 1048576) {
+    return `${(number / 1024).toFixed(1)} KB`;
+  } else if (number >= 1048576) {
+    return `${(number / 1048576).toFixed(1)} MB`;
+  }
+}

@@ -10,7 +10,7 @@
 <body>
 
   <section class="formCmt" style="width: 90%; margin: auto;">
-    <form id="formCmtTV" action="" method="GET">
+    <form id="formCmtTV" action="" method="GET" enctype="multipart/form-data">
       <h4 class="headCmtForm">Bình Luận</h4>
       <hr>
       <div id="infoCmt">
@@ -31,6 +31,14 @@
             style="background-color: white; overflow: hidden;" placeholder=" " required></textarea>
           <label class="labelFieldTextarea" for="message">Nội dung (<span style="color: red;">*</span>)</label>
         </div>
+        <div>
+          <label for="image_uploads" style="background-color: gray; padding: 10px; margin-top: 30px;">Chọn hình</>
+          <input type="file" class="file-input" id="image_uploads" name="image_uploads" accept=".jpg, .jpeg, .png" 
+          multiple />
+        </div>
+        <div class="preview">
+          <p>Chưa chọn hình.</p>
+        </div>
         <div class="formBtnCmt">
           <button type="submit" id="postcmt" class="formBtn-Cmt">Bình Luận</button>
         </div>
@@ -44,13 +52,13 @@
       <!-- end comment  -->
     </div>
   </section>
-  
+
   </div>
   <!-- Main Body -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>
-    <script src="./textComment.js"></script>
+  <script src="./textComment.js"></script>
   <!-- <script src="./testjs.js"></script> -->
 </body>
 
