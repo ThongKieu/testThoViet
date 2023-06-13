@@ -31,14 +31,21 @@
             style="background-color: white; overflow: hidden;" placeholder=" " required></textarea>
           <label class="labelFieldTextarea" for="message">Nội dung (<span style="color: red;">*</span>)</label>
         </div>
-        <div>
-          <label for="image_uploads" style="background-color: gray; padding: 10px; margin-top: 30px;">Chọn hình</>
-          <input type="file" class="file-input" id="image_uploads" name="image_uploads" accept=".jpg, .jpeg, .png" 
-          multiple />
+        <div class="imgUpload">
+          <div class="imgUpLeft">
+            <label for="image_uploads">Chọn hình</label>
+            <input type="file" class="file-input" id="image_uploads" name="image_uploads" accept=".jpg, .jpeg, .png"
+              multiple />
+          </div>
+
+          <div class="imgUpRight" style="background-color: #dbdbdb;border-radius: 10px;text-align: center;">
+            <div class="preview">
+              <p>Chưa chọn hình.</p>
+            </div>
+          </div>
+
         </div>
-        <div class="preview">
-          <p>Chưa chọn hình.</p>
-        </div>
+
         <div class="formBtnCmt">
           <button type="submit" id="postcmt" class="formBtn-Cmt">Bình Luận</button>
         </div>

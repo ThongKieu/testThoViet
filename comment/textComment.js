@@ -92,77 +92,36 @@ const cmtEl = document.querySelector('.containerCmt');
 const fullNameCmt = document.querySelector('#fullName');
 const numberPhone = document.querySelector('#sdt');
 const textareaCmtEl = document.querySelector('#textAreaCmt');
-const image_uploadsCmt  = document.querySelector('#image_uploads');
+const image_uploadsCmt = document.querySelector('#image_uploads');
 
 
 const form = document.getElementById('formCmtTV');
 form.addEventListener('submit', async function (e) {
   e.preventDefault();
-  const nameCmt =  document.getElementById('fullName').value;
-  const phoneCmt =  document.getElementById('sdt').value;
-  const cmt =  document.getElementById('textAreaCmt').value;
-  const imgCmtPath =  document.getElementById('image_uploads').files[0];
-  const newConverCmt = 1;
-  // const data1 ={
-  //   name_comment:document.getElementById('fullName').value,
-  //   phone_comment: document.getElementById('sdt').value,
-  //   comment: document.getElementById('textAreaCmt').value,
-  //   img_comment_path: document.getElementById('image_uploads').files[0],
-  //   new_convertition: 1
-  // }
-  // console.log(data1);
-  // console.log(e);
-  const formDataCmt = new FormData();
-  formDataCmt.append('name_comment',nameCmt);
-  formDataCmt.append('phone_comment',phoneCmt);
-  formDataCmt.append('comment',cmt);
-  formDataCmt.append('img_comment_path',imgCmtPath,'img_comment_path.jpg');
-  formDataCmt.append('new_convertition',newConverCmt);
-  console.log("Form data",formDataCmt);
-  fetch('https://data.thoviet.com/api/newConver', {
-    method:"post",
-    body:formDataCmt,
-  }).then(res=>res.json())
-  .then(data=>console.log(data))
-  .catch(err=>console.log(err))
-  // try {
-  //   const res = await fetch('https://data.thoviet.com/api/newConver', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //       // 'Access-Control-Allow-Origin': '*',
-  //     },
-  //     body: JSON.stringify(data1),
-  //   })
-  //   console.log(res);
-  //   if (res.status === 200) {
-  //     // window.location.reload();
 
-  const data1 = {
-    name_comment: document.getElementById('fullName').value,
-    phone_comment: document.getElementById('sdt').value,
-    comment: document.getElementById('textAreaCmt').value,
-    new_convertition: 1
-  }
-  console.log(data1);
-  console.log(e);
+  const formDataCmt = new FormData();
+  formDataCmt.append('name_comment', document.getElementById('fullName').value);
+  formDataCmt.append('phone_comment', document.getElementById('sdt').value);
+  formDataCmt.append('comment', document.getElementById('textAreaCmt').value);
+  formDataCmt.append('img_comment_path', document.getElementById('image_uploads').files[0]);
+  formDataCmt.append('new_convertition', 1);
+
   try {
     const res = await fetch('https://data.thoviet.com/api/newConver', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        // 'Access-Control-Allow-Origin': '*',
-      },
-      body: JSON.stringify(data1),
+      body: formDataCmt,
     })
-    console.log(res);
-    if (res.status === 200) {
-      window.location.reload();
 
-    } else {
+    if (res.status !== 200) {
       const err = new Error("Error")
       throw err;
     }
+
+    const data = await res.json()
+
+    console.log('data', data);
+    window.location.reload();
+
   } catch (error) {
     console.log(error);
   }
@@ -178,7 +137,7 @@ async function handleReply(e, id) {
     answer: document.getElementById(`textAreaCmtReply${id}`).value,
     new_answer: 1,
   }
-console.log(data2);
+  console.log(data2);
   try {
     const res = await fetch('https://data.thoviet.com/api/newAnswer', {
       method: 'POST',
@@ -214,20 +173,6 @@ function showReplay(id) {
 $('input[type=number]').on('mousewheel', function (e) {
   $(e.target).blur();
 });
-
-// $('.file-input').change(function(){
-//   var curElement = $('.image');
-//   console.log(curElement);
-//   var reader = new FileReader();
-
-//   reader.onload = function (e) {
-//       // get loaded data and render thumbnail.
-//       curElement.attr('src', e.target.result);
-//   };
-//   // read the image file as a data URL.
-//   reader.readAsDataURL(this.files[0]);
-// });
-
 // image Input upload 
 const input = document.getElementById('image_uploads');
 const preview_im_coment = document.querySelector('.preview');
