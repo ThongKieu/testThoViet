@@ -71,7 +71,7 @@ fetch(url_con, {
       if (typeof conver.answer[0] !== 'undefined') {
         divItem.innerHTML +=
           `<div class='answer'>
-          <div class='comment_info'> ${conver.answer[key].name_comment}</div>
+          <div class='comment_info'><em> ${conver.answer[key].name_comment}</em></div>
           <input type='hidden' id='name_comment${conver.answer[key].id}' value='${conver.answer[key].name_comment}' />
           <input type='hidden' id='name_answer' value='${conver.answer[key].id}' />
           <div class='awnser_comment'>
@@ -138,14 +138,34 @@ form.addEventListener('submit', async function (e) {
   //   if (res.status === 200) {
   //     // window.location.reload();
 
-  //   } else {
-  //     const err = new Error("Error")
-  //     throw err;
-  //   }
-  //   console.log('data', data);
-  // } catch (error) {
-  //   console.log(error);
-  // }
+  const data1 = {
+    name_comment: document.getElementById('fullName').value,
+    phone_comment: document.getElementById('sdt').value,
+    comment: document.getElementById('textAreaCmt').value,
+    new_convertition: 1
+  }
+  console.log(data1);
+  console.log(e);
+  try {
+    const res = await fetch('https://data.thoviet.com/api/newConver', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        // 'Access-Control-Allow-Origin': '*',
+      },
+      body: JSON.stringify(data1),
+    })
+    console.log(res);
+    if (res.status === 200) {
+      window.location.reload();
+
+    } else {
+      const err = new Error("Error")
+      throw err;
+    }
+  } catch (error) {
+    console.log(error);
+  }
 });
 // const d = document.getElementById('text123').value
 async function handleReply(e, id) {
@@ -158,7 +178,7 @@ async function handleReply(e, id) {
     answer: document.getElementById(`textAreaCmtReply${id}`).value,
     new_answer: 1,
   }
-
+console.log(data2);
   try {
     const res = await fetch('https://data.thoviet.com/api/newAnswer', {
       method: 'POST',

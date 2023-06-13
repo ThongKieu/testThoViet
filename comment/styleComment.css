@@ -221,6 +221,9 @@
   color: black;
   background-color: none;
 }
+.comment_info{
+  color: grey;
+}
 @media only screen and (min-width: 1024px) {
   .labelField {
     left: 45px;
