@@ -3,6 +3,19 @@ function calcHeight(value) {
   let newHeight = 20 + numberOfLineBreaks * 20 + 12 + 2;
   return newHeight;
 }
+$('input#sdt').on('keyup', function() {
+  limitText(this, 10)
+});
+function limitText(field, maxChar){
+  var ref = $(field),
+      val = ref.val();
+  if ( val.length > maxChar){
+      $(field).val(function() {
+          return val.substr(0, maxChar)            
+      });
+  }
+}
+
 let textarea = document.querySelector(".resize-ta");
 textarea.addEventListener("keyup", () => {
   textarea.style.height = calcHeight(textarea.value) + "px";
@@ -20,61 +33,83 @@ fetch(url_con, {
 }).then((data) => {
   data.map(function (conver) {
     const divItem = document.createElement('ul');
-    divItem.classList = "cmtUl"
+    var stringNameAvatar = conver.comment_parent[0].name_comment;
+    var a = stringNameAvatar.toUpperCase().slice(0,1)
+    divItem.classList = "cmtUlNew"
     divItem.innerHTML =
-      `
-    <div class='par'>
-      <div class='comment_info headCmtForm'> ${conver.comment_parent[0].name_comment}</div>
+      `<div class='par'>
+      <div class="avatarCmtNew">
+        <span class="avatarNew">${a}</span>
+        <div class='comment_infoNew headCmtFormNew'> ${conver.comment_parent[0].name_comment}</div>
+      </div>
       <div class='comment_parent'>
-        <div class='content'>${conver.comment_parent[0].comment}</div>
+        <div class='contentNew'>${conver.comment_parent[0].comment}</div>
         <input type='hidden' id='name_comment${conver.comment_parent[0].id}' value='${conver.comment_parent[0].name_comment}' />
-        <input type="hidden" id="text123" value="${conver.comment_parent[0].id}" />
+        <input type="hidden" id="text123" value="${conver.comment_parent[0].id}" />`;
+        if (conver.comment_parent[0].img_comment_path) {
+          divItem.innerHTML +=`<div class="imgCmtNew">
+          <a class="button" href="#popup${conver.comment_parent[0].id}">
+          <image src ='https://data.thoviet.com/${conver.comment_parent[0].img_comment_path}' width='100px'/>
+          
+          </a>
+          
+          <div id="popup${conver.comment_parent[0].id}" class="overlayNew">
+            <div class="popupNew">
+              <a class="closeNew" href="#">&times;</a>
+              <image src ='https://data.thoviet.com/${conver.comment_parent[0].img_comment_path}' width='300px'/>
+            </div>
+          </div>
+          </div>`;}
         
-        <div class='button-rep d-flex justify-content-end'>
-          <button class='btn-replay btn btn-sm btn-outline-primary'
-            onclick='showReplay(${conver.comment_parent[0].id})'>Phản Hồi - ${conver.comment_parent[0].id}</button>
-        </div>
+        divItem.innerHTML += ` 
+        <div class='button-repD-flex'>
+        <button class='btn-replayNew btn btn-sm btn-outline-primary'
+          onclick='showReplay(${conver.comment_parent[0].id})'>Phản Hồi</button>
+      </div>
       </div>
       <div class='replay${conver.comment_parent[0].id}' style='display:none; margin-top :5px;'>
-        <form id="formCmtTVReply" onsubmit="return handleReply(event, ${conver.comment_parent[0].id} )">
+        <form id="formCmtTVReply" onsubmit="return handleReply(event, ${conver.comment_parent[0].id} )" enctype="multipart/form-data">
           <div id="infoCmt">
-            <div class="gridCmt">
-              <div class="grid-item-cmt">
-                <input type="text" name="name" id="fullNameReply${conver.comment_parent[0].id}" class="form-controlFix" placeholder=" "
+            <div class="gridCmtNew">
+              <div class="grid-item-cmtNew">
+                <input type="text" name="name" id="fullNameReply${conver.comment_parent[0].id}" class="form-controlFixNew" placeholder=" "
                   style="background-color: white;" required>
-                <label class="labelField" for="name">Tên (<span style="color: red;">*</span>)</label>
+                <label class="labelFieldNew" for="name">Tên (<span style="color: red;">*</span>)</label>
               </div>
-              <div class="grid-item-cmt">
-                <input type="number" name="sdt" id="sdtReply${conver.comment_parent[0].id}" class="form-controlFix" placeholder=" "
+              <div class="grid-item-cmtNew">
+                <input type="number" name="sdt" id="sdtReply${conver.comment_parent[0].id}" class="form-controlFixNew" placeholder=" "
                   style="background-color: white;" required>
-                <label class="labelField" for="name">Số điện thoại (<span style="color: red;">*</span>)</label>
+                <label class="labelFieldNew" for="name">Số điện thoại (<span style="color: red;">*</span>)</label>
               </div>
             </div>
-            <div class="textarea-cmt">
-              <textarea name="msg" id="textAreaCmtReply${conver.comment_parent[0].id}" msg cols="30" rows="1" class="form-controlFixTextarea resize-ta"
+            <div class="textarea-cmtNew">
+              <textarea name="msg" id="textAreaCmtReply${conver.comment_parent[0].id}" msg cols="30" rows="1" class="form-controlFixTextareaNew resize-ta"
                 style="background-color: white; padding-top:5px; overflow: hidden;" placeholder=" " required></textarea>
-              <label class="labelFieldTextarea" for="message">Nội dung (<span style="color: red;">*</span>)</label>
+              <label class="labelFieldTextareaNew" for="message">Nội dung (<span style="color: red;">*</span>)</label>
             </div>
-            <div class="imgUpload">
-          <img class="image${conver.comment_parent[0].id}" src="">
-          <button class="file-upload"><input type="file" class="file-input" accept="image/*">Chọn hình</button>
-        </div>
-            <div class="formBtnCmt">
+            <div class="formBtnCmtNew">
               <button type="submit" id="postcmt" class="formBtn_Reply">Bình Luận</button>
             </div>
           </div>
         </form>
       </div>
     </div>
+    </div>
     `;
     for (const [key, value] of Object.entries(conver.answer)) {
+      var stringAvatarAnswer = conver.answer[key].name_comment;
+      var nameAva = stringAvatarAnswer.toUpperCase().slice(0,1)
       if (typeof conver.answer[0] !== 'undefined') {
         divItem.innerHTML +=
-          `<div class='answer'>
-          <div class='comment_info'><em> ${conver.answer[key].name_comment}</em></div>
+          `<div class='answerNew'>
+          <div class="avatarCmtNew">
+            <span class="avatarNew">${nameAva}</span>
+            <div class='comment_infoNew'><em> ${conver.answer[key].name_comment}</em></div>
+          </div>
+          
           <input type='hidden' id='name_comment${conver.answer[key].id}' value='${conver.answer[key].name_comment}' />
           <input type='hidden' id='name_answer' value='${conver.answer[key].id}' />
-          <div class='awnser_comment'>
+          <div class='awnser_commentNew'>
             <div class='content'>${conver.answer[key].comment}</div>
           </div>
         </div>
@@ -87,23 +122,23 @@ fetch(url_con, {
 }).catch(function (error) {
   console.log(error);
 });
-const btnSubmitCmt = document.querySelector('.formBtn-Cmt');
-const cmtEl = document.querySelector('.containerCmt');
+const btnSubmitCmt = document.querySelector('.formBtn-CmtNew');
+const cmtEl = document.querySelector('.containerCmtNew');
 const fullNameCmt = document.querySelector('#fullName');
 const numberPhone = document.querySelector('#sdt');
 const textareaCmtEl = document.querySelector('#textAreaCmt');
 const image_uploadsCmt = document.querySelector('#image_uploads');
 
 
-const form = document.getElementById('formCmtTV');
-form.addEventListener('submit', async function (e) {
+const formCmt = document.getElementById('formCmtTV');
+formCmt.addEventListener('submit', async function (e) {
   e.preventDefault();
 
   const formDataCmt = new FormData();
   formDataCmt.append('name_comment', document.getElementById('fullName').value);
   formDataCmt.append('phone_comment', document.getElementById('sdt').value);
   formDataCmt.append('comment', document.getElementById('textAreaCmt').value);
-  formDataCmt.append('img_comment_path', document.getElementById('image_uploads').files[0]);
+  formDataCmt.append('img_comment', document.getElementById('image_uploads').files[0]);
   formDataCmt.append('new_convertition', 1);
 
   try {
@@ -116,11 +151,9 @@ form.addEventListener('submit', async function (e) {
       const err = new Error("Error")
       throw err;
     }
-
     const data = await res.json()
-
     console.log('data', data);
-    window.location.reload();
+    window.location.onload();
 
   } catch (error) {
     console.log(error);
@@ -130,33 +163,25 @@ form.addEventListener('submit', async function (e) {
 async function handleReply(e, id) {
   e.preventDefault();
   console.log("kiem tra", id);
-  const data2 = {
-    id_comment: id,
-    name_comment: document.getElementById(`fullNameReply${id}`).value,
-    phone_comment: document.getElementById(`sdtReply${id}`).value,
-    answer: document.getElementById(`textAreaCmtReply${id}`).value,
-    new_answer: 1,
-  }
-  console.log(data2);
+  const formDataReply = new FormData();
+  formDataReply.append('name_comment', document.getElementById(`fullNameReply${id}`).value);
+  formDataReply.append('phone_comment', document.getElementById(`sdtReply${id}`).value);
+  formDataReply.append('answer', document.getElementById(`textAreaCmtReply${id}`).value);
+  // formDataReply.append('img_comment', document.getElementById(`image_uploadsReply${id}`).files[0]);
+  formDataReply.append('id_comment', id);
+  formDataReply.append('new_answer', 1);
   try {
     const res = await fetch('https://data.thoviet.com/api/newAnswer', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        // 'Access-Control-Allow-Origin': '*',
-      },
-      body: JSON.stringify(data2),
+      body: formDataReply,
     })
-    console.log(res);
-    console.log(data2);
-    if (res.status === 200) {
-      window.location.reload();
-      console.log(res);
-    } else {
+    if (res.status !== 200) {
       const err = new Error("Error")
       throw err;
     }
-    console.log('data', data2);
+    const dataReply = await res.json()
+    window.location.reload();
+    console.log(dataReply);
   } catch (error) {
     console.log(error);
   }
@@ -164,63 +189,36 @@ async function handleReply(e, id) {
 
 function showReplay(id) {
   console.log("show id", id);
+  const replyCmtShow = document.getElementsByClassName('replay' + id).value;
+  console.log(replyCmtShow);
   if ($('.replay' + id).css('display') === 'none') {
     $('.replay' + id).css('display', 'block');
   } else {
     $('.replay' + id).css('display', 'none');
   }
 }
+// function showReplay(id) {
+//   console.log("show id", id);
+//   const replyCmtShow = document.getElementsByClassName('replay' + id).value;
+//   console.log(replyCmtShow);
+//   if (replyCmtShow.setAttribute('display') === 'none') {
+//   replyCmtShow.setAttribute('display', 'block');
+//   } else {
+//     replyCmtShow.setAttribute('display', 'none');
+//   }
+// }
 $('input[type=number]').on('mousewheel', function (e) {
   $(e.target).blur();
 });
 // image Input upload 
 const input = document.getElementById('image_uploads');
-const preview_im_coment = document.querySelector('.preview');
+const preview_img_coment = document.querySelector('.previewNew');
 // https://developer.mozilla.org/en-US/docs/Web/Media/Formats/Image_types
 const fileTypes = [
   "image/jpeg",
   "image/png"
 ];
 
-function validFileType(file) {
-  return fileTypes.includes(file.type);
-}
-
-input.style.opacity = 0;
-input.addEventListener('change', updateImageDisplay);
-function updateImageDisplay() {
-  while (preview.firstChild) {
-    preview.removeChild(preview.firstChild);
-  }
-
-  const curFiles = input.files;
-  if (curFiles.length === 0) {
-    const para = document.createElement('p');
-    para.textContent = 'No files currently selected for upload';
-    preview.appendChild(para);
-  } else {
-    const list = document.createElement('ol');
-    preview.appendChild(list);
-
-    for (const file of curFiles) {
-      const listItem = document.createElement('li');
-      const para = document.createElement('p');
-      if (validFileType(file)) {
-        para.textContent = `File name ${file.name}, file size ${returnFileSize(file.size)}.`;
-        const image = document.createElement('img');
-        image.src = URL.createObjectURL(file);
-
-        listItem.appendChild(image);
-        listItem.appendChild(para);
-      } else {
-        para.textContent = `File name ${file.name}: Not a valid file type. Update your selection.`;
-        listItem.appendChild(para);
-      }
-
-      list.appendChild(listItem);
-    }
-  }
-}
 function validFileType(file) {
   return fileTypes.includes(file.type);
 }
@@ -234,22 +232,20 @@ function returnFileSize(number) {
   }
 }
 input.style.opacity = 0;
-
 input.addEventListener('change', updateImageDisplay);
-
 function updateImageDisplay() {
-  while (preview_im_coment.firstChild) {
-    preview_im_coment.removeChild(preview_im_coment.firstChild);
+  while (preview_img_coment.firstChild) {
+    preview_img_coment.removeChild(preview_img_coment.firstChild);
   }
 
   const curFiles = input.files;
   if (curFiles.length === 0) {
     const para = document.createElement('p');
     para.textContent = 'Không chọn được hình ảnh';
-    preview_im_coment.appendChild(para);
+    preview_img_coment.appendChild(para);
   } else {
     const list = document.createElement('ol');
-    preview_im_coment.appendChild(list);
+    preview_img_coment.appendChild(list);
 
     for (const file of curFiles) {
       const listItem = document.createElement('li');
@@ -270,16 +266,39 @@ function updateImageDisplay() {
     }
   }
 }
-function validFileType(file) {
-  return fileTypes.includes(file.type);
-}
+// Reply Image 
+// input.style.opacity = 0;
+// input.addEventListener('change', updateImageDisplay);
+// function updateImageDisplay() {
+//   while (preview.firstChild) {
+//     preview.removeChild(preview.firstChild);
+//   }
 
-function returnFileSize(number) {
-  if (number < 1024) {
-    return `${number} bytes`;
-  } else if (number >= 1024 && number < 1048576) {
-    return `${(number / 1024).toFixed(1)} KB`;
-  } else if (number >= 1048576) {
-    return `${(number / 1048576).toFixed(1)} MB`;
-  }
-}
+//   const curFiles = input.files;
+//   if (curFiles.length === 0) {
+//     const para = document.createElement('p');
+//     para.textContent = 'No files currently selected for upload';
+//     preview.appendChild(para);
+//   } else {
+//     const list = document.createElement('ol');
+//     preview.appendChild(list);
+
+//     for (const file of curFiles) {
+//       const listItem = document.createElement('li');
+//       const para = document.createElement('p');
+//       if (validFileType(file)) {
+//         para.textContent = `File name ${file.name}, file size ${returnFileSize(file.size)}.`;
+//         const image = document.createElement('img');
+//         image.src = URL.createObjectURL(file);
+
+//         listItem.appendChild(image);
+//         listItem.appendChild(para);
+//       } else {
+//         para.textContent = `File name ${file.name}: Not a valid file type. Update your selection.`;
+//         listItem.appendChild(para);
+//       }
+
+//       list.appendChild(listItem);
+//     }
+//   }
+// }

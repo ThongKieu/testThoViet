@@ -1,58 +1,93 @@
-.formCmt {
+/* css cmt  */
+/* comment  */
+.avatarCmtNew {
+  display: flex;
+  background-color: rgb(212, 212, 212);
+  border-radius: 30px 0px 0px 30px;
+  align-items: center;
+}
+.comment_parent {
+  background-color: #f1f1f1;
+  margin-left: 40px;
+  padding: 10px;
+}
+.imgCmtNew {
+  margin-left: 40px;
+  padding: 10px;
+}
+.button-repD-flex {
+  display: flex;
+  justify-content: end;
+}
+.awnser_commentNew {
+  background-color: #f1f1f1;
+  margin-left: 40px;
+  margin-bottom: 20px;
+  padding: 10px;
+  border-radius: 0px 0px 10px 10px;
+}
+.avatarNew {
+  border: 1px solid rgb(212, 212, 212);
+  padding: 10px 15px;
+  border-radius: 50%;
+  color: black;
+  background-color: #00b38f;
+}
+.formCmtNew {
   padding: 0;
   margin: 0;
   font-size: 1.1rem;
 }
-.headCmtForm {
+.headCmtFormNew {
   margin-bottom: 5px;
   font-size: 16px;
   color: gray;
   font-weight: 500;
 }
-.infoCmt {
+.infoCmtNew {
   margin: auto;
 }
-.gridCmt {
+.gridCmtNew {
   display: grid;
   grid-template-columns: auto auto;
 }
-.grid-item-cmt {
+.grid-item-cmtNew {
   position: relative;
   text-align: center;
 }
-.grid-item-cmt label {
+.grid-item-cmtNew > label {
   display: block;
 }
-.grid-item-cmt input[type="number"]::-webkit-inner-spin-button,
-.grid-item-cmt input[type="number"]::-webkit-outer-spin-button {
+.grid-item-cmtNew > input[type="number"]::-webkit-inner-spin-button,
+.grid-item-cmtNew > input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-.form-controlFix {
+.form-controlFixNew {
   display: block;
-  width: 90%;
-  margin: auto;
-  height: calc(1.5em + 0.75rem + 2px);
-  font-size: 1rem;
+  width: 90% !important;
+  margin: auto !important;
+  height: calc(1.5em + 0.75rem + 2px) !important;
+  font-size: 1rem !important;
   font-weight: 400;
   line-height: 1.5;
-  color: #495057;
-  background-color: #fff;
+  color: #495057 !important;
+  background-color: #fff !important;
   background-clip: padding-box;
-  border: 1px solid #ced4da;
-  border-radius: 0.25rem;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-  padding-left: 10px;
+  border: 1px solid #ced4da !important;
+  border-radius: 0.25rem !important;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out !important;
+  padding-left: 10px !important;
 }
-.form-controlFix:focus {
+.form-controlFixNew:focus {
   color: #495057;
   background-color: #fff;
   border-color: #80bdff;
   outline: 0;
 }
-.labelField {
+.labelFieldNew {
   position: absolute;
-  top: 25%;
+  top: 10%;
   left: 25px;
   z-index: 10;
   color: grey;
@@ -60,8 +95,8 @@
   pointer-events: none;
   transition: 0.25s ease;
 }
-.form-controlFix:not(:placeholder-shown) + .labelField,
-.form-controlFix:focus + .labelField {
+.form-controlFixNew:not(:placeholder-shown) + .labelFieldNew,
+.form-controlFixNew:focus + .labelFieldNew {
   top: -10px;
   padding-left: 10px;
   padding-right: 10px;
@@ -69,14 +104,14 @@
   background-color: #fff;
   color: #80bdff;
 }
-.textarea-cmt {
+.textarea-cmtNew {
   position: relative;
   margin-top: 15px;
 }
-.form-controlFixTextarea {
+.form-controlFixTextareaNew {
   display: block;
   width: 95%;
-  margin: auto;
+  margin: auto !important;
   height: calc(1.5em + 0.75rem + 2px);
   font-size: 1rem;
   font-weight: 400;
@@ -90,13 +125,13 @@
   padding-left: 10px;
   resize: none;
 }
-.form-controlFixTextarea:focus {
+.form-controlFixTextareaNew:focus {
   color: #495057;
   background-color: #fff;
   border-color: #80bdff;
   outline: 0;
 }
-.labelFieldTextarea {
+.labelFieldTextareaNew {
   position: absolute;
   top: 25%;
   left: 25px;
@@ -106,8 +141,8 @@
   pointer-events: none;
   transition: 0.25s ease;
 }
-.form-controlFixTextarea:not(:placeholder-shown) + .labelFieldTextarea,
-.form-controlFixTextarea:focus + .labelFieldTextarea {
+.form-controlFixTextareaNew:not(:placeholder-shown) + .labelFieldTextareaNew,
+.form-controlFixTextareaNew:focus + .labelFieldTextareaNew {
   top: -10px;
   padding-left: 10px;
   padding-right: 10px;
@@ -115,81 +150,82 @@
   background-color: #fff;
   color: #80bdff;
 }
-.formBtnCmt {
+.formBtnCmtNew {
   text-align: right;
   margin-top: 10px;
   margin-right: 15px;
 }
-.formBtn-Cmt {
+.formBtn-CmtNew {
   padding: 5px 30px;
   color: black;
   border: 2px solid #fcb900;
   border-radius: 5px;
-  background-color: #fcb900;
+   background-color: #fcb900 !important;
   font-weight: 600;
   cursor: pointer;
 }
-.formBtn-Cmt:hover {
+.formBtn-CmtNew:hover {
   background-color: white;
   color: black;
   border: 2px solid #fcb900;
 }
-.divContentCmt {
+.divContentCmtNew {
   /* border: 1px solid grey; */
   border-radius: 5px;
   padding: 0px 10px;
   display: none;
   justify-content: space-between;
 }
-.pContentCmt {
+.pContentCmtNew {
   padding: 5px;
 }
-.commentsCmt {
+.commentsCmtNew {
   display: block;
   margin-left: 15px;
 }
 
-.blog-comment li {
+.containerCmtNew > li {
   list-style: none;
 }
-.cmtUl {
+.cmtUlNew {
   border-left: 1px solid grey;
   padding-left: 15px;
+  margin-bottom: 5px;
 }
-.answer {
+.answerNew {
   margin-top: 10px;
   border-left: 1px solid blue;
   padding-left: 15px;
 }
-.aContentCmt {
+.aContentCmtNew {
   text-decoration: none;
 }
 
-.clearfixCmt {
+.clearfixCmtNew {
   border: 1px solid grey;
   border-radius: 5px;
   padding: 0px 10px;
 }
 /* commentCard */
 
-.commentCard {
+.commentCardNew {
   border-left: 2px solid grey;
   border-radius: 0 0 0 50px;
   padding: 15px;
 }
-.footerContentCmt {
+.footerContentCmtNew {
   display: flex;
   justify-content: flex-end;
   align-items: center;
 }
-.nameTitle {
+.nameTitleNew {
   color: grey;
   margin: 0px;
 }
-.pContentCmt {
+.pContentCmtNew {
   margin-bottom: 5px;
 }
-.footerContentCmt a {
+.footerContentCmtNew a {
   text-decoration: none;
   color: #ffd100;
   border: 1px solid #ffd100;
@@ -200,7 +236,7 @@
   text-align: center;
 }
 
-.footerContentCmt .showReply:hover {
+.footerContentCmtNew .showReplyNew:hover {
   border: none;
   background-color: #ffd100;
   text-decoration: none;
@@ -212,51 +248,143 @@
   margin-bottom: 10px;
   text-align: center;
 }
-.footerContentCmt .showComment {
+.footerContentCmtNew .showCommentNew {
   border: none;
   color: grey;
 }
-.footerContentCmt .showComment:hover {
+.footerContentCmtNew .showCommentNew:hover {
   border: none;
   color: black;
   background-color: none;
 }
-.comment_info {
-  color: grey;
+.comment_infoNew {
+  color: #00b38f;
+  padding-left: 15px;
+  width: 100%;
 }
 @media only screen and (min-width: 1024px) {
-  .labelField {
+  .labelFieldNew {
     left: 45px;
   }
-  .labelFieldTextarea {
+  .labelFieldTextareaNew {
     left: 45px;
   }
 }
-.imgUpload {
+
+.imgUploadNew {
+   width: 100%;
+  margin: auto;
   text-align: center;
   margin-top: 1.2rem;
-  margin-left: 0.5rem;
   display: grid;
   grid-template-columns: auto auto;
   align-items: center;
 }
-.imgUpLeft {
+.imgUpLeftNew {
   display: flex;
   align-items: center;
   justify-content: flex-end;
   flex-direction: column-reverse;
 }
-.imgUpLeft > label {
+.imgUpLeftNew > label {
   background-color: grey;
   text-align: center;
   width: 50%;
   margin: auto;
+  padding: 8px;
+  border-radius: 5px;
+  cursor: pointer;
 }
-
-.preview img {
+.imgUpRightNew {
+  margin-right: 10px;
+}
+.previewNew {
+  background-color: #dbdbdb;
+  border-radius: 10px;
+  text-align: center;
+}
+.previewNew > ol > li > img {
   width: 100px;
   height: 100px;
+  padding-top: 10px;
 }
-.preview > ol > li {
+
+.previewNew > ol {
+  padding-left: 0;
+}
+.previewNew > ol > li {
   list-style: none;
+}
+@media only screen and (max-width: 700px) {
+  .imgUploadNew {
+    grid-template-columns: auto;
+  }
+  .imgUpLeftNew {
+    margin-bottom: 5px;
+  }
+}
+/* popup */
+.overlayNew {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+  z-index: 12;
+}
+.overlayNew:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+.popupNew {
+  margin: 20% auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  width: 50%;
+  position: relative;
+}
+.popupNew .closeNew {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+}
+.popupNew .closeNew:hover {
+  color: #fcb900;
+}
+.popupNew .contentNew {
+  max-height: 30%;
+  overflow: auto;
+}
+
+@media screen and (max-width: 700px) {
+  .popupNew {
+    width: 70%;
+  }
+}
+/* button phan hoi  */
+.btn-replayNew {
+  border-radius: 10px;
+  border: 1px solid orange;
+  background-color: white;
+  color: orange;
+  cursor: pointer;
+   padding: 0px 10px;
+  margin-top: 3px;
+  font-size: 10px !important;
+}
+.btn-replayNew:hover {
+  background-color: #fcb900;
+  color: white;
+  border: 1px solid orange;
 }

@@ -4,67 +4,60 @@
 <head>
   <title>Comment Form</title>
   <link rel="stylesheet" type="text/css" href="./styleComment.css">
-  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
 </head>
-
 <body>
 
-  <section class="formCmt" style="width: 90%; margin: auto;">
+  <section class="formCmtNew" style="width: 90%; margin: auto;">
     <form id="formCmtTV" action="" method="GET" enctype="multipart/form-data">
-      <h4 class="headCmtForm">Bình Luận</h4>
+      <h4 class="headCmtFormNew">Bình Luận</h4>
       <hr>
-      <div id="infoCmt">
-        <div class="gridCmt">
-          <div class="grid-item-cmt">
-            <input type="text" name="name" id="fullName" class="form-controlFix" placeholder=" "
+      <div id="infoCmtNew">
+        <div class="gridCmtNew">
+          <div class="grid-item-cmtNew">
+            <input type="text" name="name" id="fullName" class="form-controlFixNew" placeholder=" "
               style="background-color: white;" required>
-            <label class="labelField" for="name">Tên (<span style="color: red;">*</span>)</label>
+            <label class="labelFieldNew" for="name">Tên (<span style="color: red;">*</span>)</label>
           </div>
-          <div class="grid-item-cmt">
-            <input type="number" name="sdt" id="sdt" class="form-controlFix" placeholder=" "
+          <div class="grid-item-cmtNew">
+            <input type="number" name="sdt" id="sdt" class="form-controlFixNew" placeholder=" "
               style="background-color: white;" required>
-            <label class="labelField" for="name">Số điện thoại (<span style="color: red;">*</span>)</label>
+            <label class="labelFieldNew" for="name">Số điện thoại (<span style="color: red;">*</span>)</label>
           </div>
         </div>
-        <div class="textarea-cmt">
-          <textarea name="msg" id="textAreaCmt" msg cols="30" rows="1" class="form-controlFixTextarea resize-ta"
+        <div class="textarea-cmtNew">
+          <textarea name="msg" id="textAreaCmt" msg cols="30" rows="1" class="form-controlFixTextareaNew resize-ta"
             style="background-color: white; overflow: hidden;" placeholder=" " required></textarea>
-          <label class="labelFieldTextarea" for="message">Nội dung (<span style="color: red;">*</span>)</label>
+          <label class="labelFieldTextareaNew" for="message">Nội dung (<span style="color: red;">*</span>)</label>
         </div>
-        <div class="imgUpload">
-          <div class="imgUpLeft">
+        <div class="imgUploadNew">
+          <div class="imgUpLeftNew">
             <label for="image_uploads">Chọn hình</label>
-            <input type="file" class="file-input" id="image_uploads" name="image_uploads" accept=".jpg, .jpeg, .png"
+            <input style="display: none;" type="file" class="file-inputNew" id="image_uploads" name="image_uploads" accept=".jpg, .jpeg, .png"
               multiple />
           </div>
-
-          <div class="imgUpRight" style="background-color: #dbdbdb;border-radius: 10px;text-align: center;">
-            <div class="preview">
-              <p>Chưa chọn hình.</p>
-            </div>
-          </div>
-
+          <div class="imgUpRightNew" ><div class="previewNew"></div></div>
         </div>
 
-        <div class="formBtnCmt">
-          <button type="submit" id="postcmt" class="formBtn-Cmt">Bình Luận</button>
+        <div class="formBtnCmtNew">
+          <button type="submit" id="postcmt" class="formBtn-CmtNew">Bình Luận</button>
         </div>
       </div>
     </form>
-    <div class="blog-comment">
-      <h4 class="headCmtForm"><span class="countClass"></span> Bình Luận</h4>
+    <div class="blog-commentNew">
+      <h4 class="headCmtFormNew"><span class="countClassNew"></span> Bình Luận</h4>
       <hr />
       <!-- comment  -->
-      <div class="containerCmt"></div>
+      <div class="containerCmtNew"></div>
       <!-- end comment  -->
     </div>
   </section>
 
   </div>
   <!-- Main Body -->
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+  <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
+    crossorigin="anonymous"></script> -->
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
   <script src="./textComment.js"></script>
   <!-- <script src="./testjs.js"></script> -->
 </body>
